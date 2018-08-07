@@ -1,3 +1,9 @@
+postgresql-10 (10.4-0ubuntu0.18.04bb1) bionic; urgency=medium
+
+  * Balabit patched version
+
+ -- Balabit Platform Team <devnull@dev.null>  Tue, 07 Aug 2018 18:46:03 +0200
+
 postgresql-10 (10.4-0ubuntu0.18.04) bionic; urgency=medium
 
   * New upstream release (LP: #1769888)
