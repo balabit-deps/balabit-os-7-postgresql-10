@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>E.169. Release 8.4</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="release-8-4-1.html" title="E.168. Release 8.4.1" /><link rel="next" href="release-8-3-23.html" title="E.170. Release 8.3.23" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">E.169. Release 8.4</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="release-8-4-1.html" title="E.168. Release 8.4.1">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="release.html" title="Appendix E. Release Notes">Up</a></td><th width="60%" align="center">Appendix E. Release Notes</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.4 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="release-8-3-23.html" title="E.170. Release 8.3.23">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="RELEASE-8-4"><div class="titlepage"><div><div><h2 class="title" style="clear: both">E.169. Release 8.4</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="release-8-4.html#id-1.11.6.173.3">E.169.1. Overview</a></span></dt><dt><span class="sect2"><a href="release-8-4.html#id-1.11.6.173.4">E.169.2. Migration to Version 8.4</a></span></dt><dt><span class="sect2"><a href="release-8-4.html#id-1.11.6.173.5">E.169.3. Changes</a></span></dt></dl></div><p><strong>Release date: </strong>2009-07-01</p><div class="sect2" id="id-1.11.6.173.3"><div class="titlepage"><div><div><h3 class="title">E.169.1. Overview</h3></div></div></div><p>    After many years of development, <span class="productname">PostgreSQL</span> has
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>E.174. Release 8.4</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="release-8-4-1.html" title="E.173. Release 8.4.1" /><link rel="next" href="release-8-3-23.html" title="E.175. Release 8.3.23" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">E.174. Release 8.4</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="release-8-4-1.html" title="E.173. Release 8.4.1">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="release.html" title="Appendix E. Release Notes">Up</a></td><th width="60%" align="center">Appendix E. Release Notes</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.5 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="release-8-3-23.html" title="E.175. Release 8.3.23">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="RELEASE-8-4"><div class="titlepage"><div><div><h2 class="title" style="clear: both">E.174. Release 8.4</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="release-8-4.html#id-1.11.6.178.3">E.174.1. Overview</a></span></dt><dt><span class="sect2"><a href="release-8-4.html#id-1.11.6.178.4">E.174.2. Migration to Version 8.4</a></span></dt><dt><span class="sect2"><a href="release-8-4.html#id-1.11.6.178.5">E.174.3. Changes</a></span></dt></dl></div><p><strong>Release date: </strong>2009-07-01</p><div class="sect2" id="id-1.11.6.178.3"><div class="titlepage"><div><div><h3 class="title">E.174.1. Overview</h3></div></div></div><p>    After many years of development, <span class="productname">PostgreSQL</span> has
     become feature-complete in many areas.   This release shows a
     targeted approach to adding features (e.g., authentication,
     monitoring, space reuse), and adds capabilities defined in the
@@ -21,18 +21,18 @@
      </p></li><li class="listitem"><p>      Easy editing of functions in psql
      </p></li><li class="listitem"><p>      New contrib modules: pg_stat_statements, auto_explain, citext, btree_gin
      </p></li></ul></div><p>    The above items are explained in more detail in the sections below.
-   </p></div><div class="sect2" id="id-1.11.6.173.4"><div class="titlepage"><div><div><h3 class="title">E.169.2. Migration to Version 8.4</h3></div></div></div><p>    A dump/restore using <span class="application">pg_dump</span> is
+   </p></div><div class="sect2" id="id-1.11.6.178.4"><div class="titlepage"><div><div><h3 class="title">E.174.2. Migration to Version 8.4</h3></div></div></div><p>    A dump/restore using <span class="application">pg_dump</span> is
     required for those wishing to migrate data from any previous
     release.
    </p><p>    Observe the following incompatibilities:
-   </p><div class="sect3" id="id-1.11.6.173.4.4"><div class="titlepage"><div><div><h4 class="title">E.169.2.1. General</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Use 64-bit integer datetimes by default (Neil Conway)
+   </p><div class="sect3" id="id-1.11.6.178.4.4"><div class="titlepage"><div><div><h4 class="title">E.174.2.1. General</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Use 64-bit integer datetimes by default (Neil Conway)
       </p><p>       Previously this was selected by <span class="application">configure</span>'s
        <code class="option">--enable-integer-datetimes</code> option.  To retain
        the old behavior, build with <code class="option">--disable-integer-datetimes</code>.
       </p></li><li class="listitem"><p>       Remove <span class="application">ipcclean</span> utility command (Bruce)
       </p><p>       The utility only worked on a few platforms.  Users should use
        their operating system tools instead.
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.173.4.5"><div class="titlepage"><div><div><h4 class="title">E.169.2.2. Server Settings</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Change default setting for
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.178.4.5"><div class="titlepage"><div><div><h4 class="title">E.174.2.2. Server Settings</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Change default setting for
        <code class="literal">log_min_messages</code> to <code class="literal">warning</code> (previously
        it was <code class="literal">notice</code>) to reduce log file volume (Tom)
       </p></li><li class="listitem"><p>       Change default setting for <code class="literal">max_prepared_transactions</code> to
@@ -53,9 +53,9 @@
        instead use <code class="varname">log_checkpoints</code> (Simon)
       </p></li><li class="listitem"><p>       Remove <code class="varname">krb_realm</code> and <code class="varname">krb_server_hostname</code>;
        these are now set in <code class="filename">pg_hba.conf</code> instead (Magnus)
-      </p></li><li class="listitem"><p>       There are also significant changes in <a class="link" href="release-8-4.html#RELEASE-8-4-PG-HBA-CONF" title="E.169.3.2.3. pg_hba.conf"><code class="filename">pg_hba.conf</code></a>,
+      </p></li><li class="listitem"><p>       There are also significant changes in <a class="link" href="release-8-4.html#RELEASE-8-4-PG-HBA-CONF" title="E.174.3.2.3. pg_hba.conf"><code class="filename">pg_hba.conf</code></a>,
        as described below.
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.173.4.6"><div class="titlepage"><div><div><h4 class="title">E.169.2.3. Queries</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Change <code class="command">TRUNCATE</code> and <code class="command">LOCK</code> to
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.178.4.6"><div class="titlepage"><div><div><h4 class="title">E.174.2.3. Queries</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Change <code class="command">TRUNCATE</code> and <code class="command">LOCK</code> to
        apply to child tables of the specified table(s) (Peter)
       </p><p>       These commands now accept an <code class="literal">ONLY</code> option that prevents
        processing child tables; this option must be used if the old
@@ -87,7 +87,7 @@
       </p></li><li class="listitem"><p>       Sequences now contain an additional <code class="structfield">start_value</code> column
        (Zoltan Boszormenyi)
       </p><p>       This supports <code class="command">ALTER SEQUENCE ... RESTART</code>.
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.173.4.7"><div class="titlepage"><div><div><h4 class="title">E.169.2.4. Functions and Operators</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Make <code class="type">numeric</code> zero raised to a fractional power return
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.178.4.7"><div class="titlepage"><div><div><h4 class="title">E.174.2.4. Functions and Operators</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Make <code class="type">numeric</code> zero raised to a fractional power return
        <code class="literal">0</code>, rather than throwing an error, and make
        <code class="type">numeric</code> zero raised to the zero power return <code class="literal">1</code>,
        rather than error (Bruce)
@@ -120,7 +120,7 @@
        based on work of Bob Jenkins)
       </p><p>       Many of the built-in hash functions now deliver different results on
        little-endian and big-endian platforms.
-      </p></li></ul></div><div class="sect4" id="id-1.11.6.173.4.7.3"><div class="titlepage"><div><div><h5 class="title">E.169.2.4.1. Temporal Functions and Operators</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        <code class="varname">DateStyle</code> no longer controls <code class="type">interval</code> output
+      </p></li></ul></div><div class="sect4" id="id-1.11.6.178.4.7.3"><div class="titlepage"><div><div><h5 class="title">E.174.2.4.1. Temporal Functions and Operators</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        <code class="varname">DateStyle</code> no longer controls <code class="type">interval</code> output
         formatting; instead there is a new variable <code class="varname">IntervalStyle</code>
         (Ron Mayer)
        </p></li><li class="listitem"><p>        Improve consistency of handling of fractional seconds in
@@ -142,10 +142,10 @@
         Jurd)
        </p><p>        For example, input value <code class="literal">ad</code> now matches the format
         string <code class="literal">AD</code>.
-       </p></li></ul></div></div></div></div><div class="sect2" id="id-1.11.6.173.5"><div class="titlepage"><div><div><h3 class="title">E.169.3. Changes</h3></div></div></div><p>    Below you will find a detailed account of the changes between
+       </p></li></ul></div></div></div></div><div class="sect2" id="id-1.11.6.178.5"><div class="titlepage"><div><div><h3 class="title">E.174.3. Changes</h3></div></div></div><p>    Below you will find a detailed account of the changes between
     <span class="productname">PostgreSQL</span> 8.4 and the previous major
     release.
-   </p><div class="sect3" id="id-1.11.6.173.5.3"><div class="titlepage"><div><div><h4 class="title">E.169.3.1. Performance</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Improve optimizer statistics calculations (Jan Urbanski, Tom)
+   </p><div class="sect3" id="id-1.11.6.178.5.3"><div class="titlepage"><div><div><h4 class="title">E.174.3.1. Performance</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Improve optimizer statistics calculations (Jan Urbanski, Tom)
       </p><p>       In particular, estimates for full-text-search operators are
        greatly improved.
       </p></li><li class="listitem"><p>       Allow <code class="command">SELECT DISTINCT</code> and
@@ -196,7 +196,7 @@
       </p></li><li class="listitem"><p>       Avoid waiting for idle-in-transaction sessions during
        <code class="command">CREATE INDEX CONCURRENTLY</code> (Simon)
       </p></li><li class="listitem"><p>       Improve performance of shared cache invalidation (Tom)
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.173.5.4"><div class="titlepage"><div><div><h4 class="title">E.169.3.2. Server</h4></div></div></div><div class="sect4" id="id-1.11.6.173.5.4.2"><div class="titlepage"><div><div><h5 class="title">E.169.3.2.1. Settings</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Convert many <code class="filename">postgresql.conf</code> settings to enumerated
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.178.5.4"><div class="titlepage"><div><div><h4 class="title">E.174.3.2. Server</h4></div></div></div><div class="sect4" id="id-1.11.6.178.5.4.2"><div class="titlepage"><div><div><h5 class="title">E.174.3.2.1. Settings</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Convert many <code class="filename">postgresql.conf</code> settings to enumerated
         values so that <code class="literal">pg_settings</code> can display the valid
         values (Magnus)
        </p></li><li class="listitem"><p>        Add <code class="varname">cursor_tuple_fraction</code> parameter to control the
@@ -204,7 +204,7 @@
         fetched (Robert Hell)
        </p></li><li class="listitem"><p>        Allow underscores in the names of custom variable
         classes in <code class="filename">postgresql.conf</code> (Tom)
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.173.5.4.3"><div class="titlepage"><div><div><h5 class="title">E.169.3.2.2. Authentication and security</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Remove support for the (insecure) <code class="literal">crypt</code> authentication method
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.178.5.4.3"><div class="titlepage"><div><div><h5 class="title">E.174.3.2.2. Authentication and security</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Remove support for the (insecure) <code class="literal">crypt</code> authentication method
         (Magnus)
        </p><p>        This effectively obsoletes pre-<span class="productname">PostgreSQL</span> 7.2 client
         libraries, as there is no longer any non-plaintext password method that
@@ -221,7 +221,7 @@
         commercial CAs.
        </p></li><li class="listitem"><p>        Report appropriate error message for combination of <code class="literal">MD5</code>
         authentication and <code class="varname">db_user_namespace</code> enabled (Bruce)
-       </p></li></ul></div></div><div class="sect4" id="RELEASE-8-4-PG-HBA-CONF"><div class="titlepage"><div><div><h5 class="title">E.169.3.2.3. <code class="filename">pg_hba.conf</code></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Change all authentication options to use <code class="literal">name=value</code>
+       </p></li></ul></div></div><div class="sect4" id="RELEASE-8-4-PG-HBA-CONF"><div class="titlepage"><div><div><h5 class="title">E.174.3.2.3. <code class="filename">pg_hba.conf</code></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Change all authentication options to use <code class="literal">name=value</code>
         syntax (Magnus)
        </p><p>        This makes incompatible changes to the <code class="literal">ldap</code>,
         <code class="literal">pam</code> and <code class="literal">ident</code> authentication methods. All
@@ -262,7 +262,7 @@
         aborting after the first one (Selena Deckelmann)
        </p></li><li class="listitem"><p>        Support <code class="literal">ident</code> authentication over Unix-domain sockets
         on <span class="productname">Solaris</span> (Garick Hamlin)
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.173.5.4.5"><div class="titlepage"><div><div><h5 class="title">E.169.3.2.4. Continuous Archiving</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Provide an option to <code class="function">pg_start_backup()</code> to force its
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.178.5.4.5"><div class="titlepage"><div><div><h5 class="title">E.174.3.2.4. Continuous Archiving</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Provide an option to <code class="function">pg_start_backup()</code> to force its
         implied checkpoint to finish as quickly as possible (Tom)
        </p><p>        The default behavior avoids excess I/O consumption, but that is
         pointless if no concurrent query activity is going on.
@@ -281,7 +281,7 @@
         same range of string values as <code class="filename">postgresql.conf</code>
         boolean variables
         (Bruce)
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.173.5.4.6"><div class="titlepage"><div><div><h5 class="title">E.169.3.2.5. Monitoring</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add <code class="function">pg_conf_load_time()</code> to report when
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.178.5.4.6"><div class="titlepage"><div><div><h5 class="title">E.174.3.2.5. Monitoring</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add <code class="function">pg_conf_load_time()</code> to report when
         the <span class="productname">PostgreSQL</span> configuration files were last loaded
         (George Gensure)
        </p></li><li class="listitem"><p>        Add <code class="function">pg_terminate_backend()</code> to safely terminate a
@@ -312,7 +312,7 @@
         <acronym class="acronym">RAM</acronym>-resident directory to reduce I/O requirements.
         On startup/shutdown, the file is copied to its traditional location
         (<code class="literal">$PGDATA/global/</code>) so it is preserved across restarts.
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.173.5.5"><div class="titlepage"><div><div><h4 class="title">E.169.3.3. Queries</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Add support for <code class="literal">WINDOW</code> functions (Hitoshi Harada)
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.178.5.5"><div class="titlepage"><div><div><h4 class="title">E.174.3.3. Queries</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Add support for <code class="literal">WINDOW</code> functions (Hitoshi Harada)
       </p></li><li class="listitem"><p>       Add support for <code class="literal">WITH</code> clauses (CTEs), including <code class="literal">WITH
        RECURSIVE</code> (Yoshiyuki Asaba, Tatsuo Ishii, Tom)
       </p></li><li class="listitem"><p>       Add <code class="command">TABLE</code> command (Peter)
@@ -357,7 +357,7 @@
       </p></li><li class="listitem"><p>       Improve the parser's ability to report error locations (Tom)
       </p><p>       An error location is now reported for many semantic errors,
        such as mismatched datatypes, that previously could not be localized.
-      </p></li></ul></div><div class="sect4" id="id-1.11.6.173.5.5.3"><div class="titlepage"><div><div><h5 class="title">E.169.3.3.1. <code class="command">TRUNCATE</code></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Support statement-level <code class="literal">ON TRUNCATE</code> triggers (Simon)
+      </p></li></ul></div><div class="sect4" id="id-1.11.6.178.5.5.3"><div class="titlepage"><div><div><h5 class="title">E.174.3.3.1. <code class="command">TRUNCATE</code></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Support statement-level <code class="literal">ON TRUNCATE</code> triggers (Simon)
        </p></li><li class="listitem"><p>        Add <code class="literal">RESTART</code>/<code class="literal">CONTINUE IDENTITY</code> options
         for <code class="command">TRUNCATE TABLE</code>
         (Zoltan Boszormenyi)
@@ -365,7 +365,7 @@
         SEQUENCE START WITH</code>.
        </p></li><li class="listitem"><p>        Allow <code class="command">TRUNCATE tab1, tab1</code> to succeed (Bruce)
        </p></li><li class="listitem"><p>        Add a separate <code class="command">TRUNCATE</code> permission (Robert Haas)
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.173.5.5.4"><div class="titlepage"><div><div><h5 class="title">E.169.3.3.2. <code class="command">EXPLAIN</code></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Make <code class="command">EXPLAIN VERBOSE</code> show the output columns of each
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.178.5.5.4"><div class="titlepage"><div><div><h5 class="title">E.174.3.3.2. <code class="command">EXPLAIN</code></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Make <code class="command">EXPLAIN VERBOSE</code> show the output columns of each
         plan node (Tom)
        </p><p>        Previously <code class="command">EXPLAIN VERBOSE</code> output an internal
         representation of the query plan.  (That behavior is now
@@ -374,13 +374,13 @@
         individual labels (Tom)
        </p></li><li class="listitem"><p>        Make <code class="command">EXPLAIN</code> honor <code class="varname">debug_print_plan</code> (Tom)
        </p></li><li class="listitem"><p>        Allow <code class="command">EXPLAIN</code> on <code class="command">CREATE TABLE AS</code> (Peter)
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.173.5.5.5"><div class="titlepage"><div><div><h5 class="title">E.169.3.3.3. <code class="literal">LIMIT</code>/<code class="literal">OFFSET</code></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Allow sub-selects in <code class="literal">LIMIT</code> and <code class="literal">OFFSET</code> (Tom)
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.178.5.5.5"><div class="titlepage"><div><div><h5 class="title">E.174.3.3.3. <code class="literal">LIMIT</code>/<code class="literal">OFFSET</code></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Allow sub-selects in <code class="literal">LIMIT</code> and <code class="literal">OFFSET</code> (Tom)
        </p></li><li class="listitem"><p>        Add <acronym class="acronym">SQL</acronym>-standard syntax for
         <code class="literal">LIMIT</code>/<code class="literal">OFFSET</code> capabilities (Peter)
        </p><p>        To wit,
         <code class="literal">OFFSET num {ROW|ROWS} FETCH {FIRST|NEXT} [num] {ROW|ROWS}
         ONLY</code>.
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.173.5.6"><div class="titlepage"><div><div><h4 class="title">E.169.3.4. Object Manipulation</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Add support for column-level privileges (Stephen Frost, KaiGai
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.178.5.6"><div class="titlepage"><div><div><h4 class="title">E.174.3.4. Object Manipulation</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Add support for column-level privileges (Stephen Frost, KaiGai
        Kohei)
       </p></li><li class="listitem"><p>       Refactor multi-object <code class="command">DROP</code> operations to reduce the
        need for <code class="literal">CASCADE</code> (Alex Hunsaker)
@@ -406,7 +406,7 @@
        types.
       </p></li><li class="listitem"><p>       Allow <code class="command">CREATE OR REPLACE VIEW</code> to add columns to the
        end of a view (Robert Haas)
-      </p></li></ul></div><div class="sect4" id="id-1.11.6.173.5.6.3"><div class="titlepage"><div><div><h5 class="title">E.169.3.4.1. <code class="command">ALTER</code></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add <code class="command">ALTER TYPE RENAME</code> (Petr Jelinek)
+      </p></li></ul></div><div class="sect4" id="id-1.11.6.178.5.6.3"><div class="titlepage"><div><div><h5 class="title">E.174.3.4.1. <code class="command">ALTER</code></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add <code class="command">ALTER TYPE RENAME</code> (Petr Jelinek)
        </p></li><li class="listitem"><p>        Add <code class="command">ALTER SEQUENCE ... RESTART</code> (with no parameter) to
         reset a sequence to its initial value (Zoltan Boszormenyi)
        </p></li><li class="listitem"><p>        Modify the <code class="command">ALTER TABLE</code> syntax to allow all reasonable
@@ -430,7 +430,7 @@
         to physically remove <code class="type">OID</code> values (Tom)
        </p><p>        Also, add <code class="command">ALTER TABLE SET WITH OIDS</code> to rewrite the
         table to add <code class="type">OID</code>s.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.173.5.6.4"><div class="titlepage"><div><div><h5 class="title">E.169.3.4.2. Database Manipulation</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Improve reporting of
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.178.5.6.4"><div class="titlepage"><div><div><h5 class="title">E.174.3.4.2. Database Manipulation</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Improve reporting of
         <code class="command">CREATE</code>/<code class="command">DROP</code>/<code class="command">RENAME DATABASE</code>
         failure when uncommitted prepared transactions are the cause
         (Tom)
@@ -446,11 +446,11 @@
         This prevents possibly copying data that doesn't match the settings.
        </p></li><li class="listitem"><p>        Add <code class="command">ALTER DATABASE SET TABLESPACE</code> to move a database
         to a new tablespace (Guillaume Lelarge, Bernd Helmle)
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.173.5.7"><div class="titlepage"><div><div><h4 class="title">E.169.3.5. Utility Operations</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Add a <code class="literal">VERBOSE</code> option to the <code class="command">CLUSTER</code> command and
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.178.5.7"><div class="titlepage"><div><div><h4 class="title">E.174.3.5. Utility Operations</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Add a <code class="literal">VERBOSE</code> option to the <code class="command">CLUSTER</code> command and
        <span class="application">clusterdb</span> (Jim Cox)
       </p></li><li class="listitem"><p>       Decrease memory requirements for recording pending trigger
        events (Tom)
-      </p></li></ul></div><div class="sect4" id="id-1.11.6.173.5.7.3"><div class="titlepage"><div><div><h5 class="title">E.169.3.5.1. Indexes</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Dramatically improve the speed of building and accessing hash
+      </p></li></ul></div><div class="sect4" id="id-1.11.6.178.5.7.3"><div class="titlepage"><div><div><h5 class="title">E.174.3.5.1. Indexes</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Dramatically improve the speed of building and accessing hash
         indexes (Tom Raney, Shreya Bhargava)
        </p><p>        This allows hash indexes to be sometimes faster than btree
         indexes.  However, hash indexes are still not crash-safe.
@@ -463,7 +463,7 @@
         speed.
        </p></li><li class="listitem"><p>        <code class="literal">xxx_pattern_ops</code> indexes can now be used for simple
         equality comparisons, not only for <code class="literal">LIKE</code> (Tom)
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.173.5.7.4"><div class="titlepage"><div><div><h5 class="title">E.169.3.5.2. Full Text Indexes</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Remove the requirement to use <code class="literal">@@@</code> when doing
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.178.5.7.4"><div class="titlepage"><div><div><h5 class="title">E.174.3.5.2. Full Text Indexes</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Remove the requirement to use <code class="literal">@@@</code> when doing
         <acronym class="acronym">GIN</acronym> weighted lookups on full text indexes (Tom, Teodor)
        </p><p>        The normal <code class="literal">@@</code> text search operator can be used
         instead.
@@ -473,7 +473,7 @@
         Oleg Bartunov)
        </p></li><li class="listitem"><p>        Support multi-column <acronym class="acronym">GIN</acronym> indexes (Teodor Sigaev)
        </p></li><li class="listitem"><p>        Improve support for Nepali language and Devanagari alphabet (Teodor)
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.173.5.7.5"><div class="titlepage"><div><div><h5 class="title">E.169.3.5.3. <code class="command">VACUUM</code></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Track free space in separate per-relation <span class="quote">“<span class="quote">fork</span>”</span> files (Heikki)
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.178.5.7.5"><div class="titlepage"><div><div><h5 class="title">E.174.3.5.3. <code class="command">VACUUM</code></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Track free space in separate per-relation <span class="quote">“<span class="quote">fork</span>”</span> files (Heikki)
        </p><p>        Free space discovered by <code class="command">VACUUM</code> is now recorded in
         <code class="filename">*_fsm</code> files, rather than in a fixed-sized shared memory
         area.  The <code class="varname">max_fsm_pages</code> and <code class="varname">max_fsm_relations</code>
@@ -496,7 +496,7 @@
        </p><p>        Autovacuum options used to be stored in a system table.
        </p></li><li class="listitem"><p>        Add <code class="literal">--freeze</code> option to <span class="application">vacuumdb</span>
         (Bruce)
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.173.5.8"><div class="titlepage"><div><div><h4 class="title">E.169.3.6. Data Types</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Add a <code class="literal">CaseSensitive</code> option for text search synonym
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.178.5.8"><div class="titlepage"><div><div><h4 class="title">E.174.3.6. Data Types</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Add a <code class="literal">CaseSensitive</code> option for text search synonym
        dictionaries (Simon)
       </p></li><li class="listitem"><p>       Improve the precision of <code class="type">NUMERIC</code> division (Tom)
       </p></li><li class="listitem"><p>       Add basic arithmetic operators for <code class="type">int2</code> with <code class="type">int8</code>
@@ -508,7 +508,7 @@
        (Itagaki Takahiro)
       </p></li><li class="listitem"><p>       Allow spaces around <code class="literal">NaN</code> in the input string for
        type <code class="type">numeric</code> (Sam Mason)
-      </p></li></ul></div><div class="sect4" id="id-1.11.6.173.5.8.3"><div class="titlepage"><div><div><h5 class="title">E.169.3.6.1. Temporal Data Types</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Reject year <code class="literal">0 BC</code> and years <code class="literal">000</code> and
+      </p></li></ul></div><div class="sect4" id="id-1.11.6.178.5.8.3"><div class="titlepage"><div><div><h5 class="title">E.174.3.6.1. Temporal Data Types</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Reject year <code class="literal">0 BC</code> and years <code class="literal">000</code> and
         <code class="literal">0000</code> (Tom)
        </p><p>        Previously these were interpreted as <code class="literal">1 BC</code>.
         (Note: years <code class="literal">0</code> and <code class="literal">00</code> are still assumed to be
@@ -540,7 +540,7 @@
         some fields have positive/negative designations.
        </p></li><li class="listitem"><p>        Improve consistency of handling of fractional seconds in
         <code class="type">timestamp</code> and <code class="type">interval</code> output (Ron Mayer)
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.173.5.8.4"><div class="titlepage"><div><div><h5 class="title">E.169.3.6.2. Arrays</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Improve the handling of casts applied to <code class="literal">ARRAY[]</code>
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.178.5.8.4"><div class="titlepage"><div><div><h5 class="title">E.174.3.6.2. Arrays</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Improve the handling of casts applied to <code class="literal">ARRAY[]</code>
         constructs, such as <code class="literal">ARRAY[...]::integer[]</code>
         (Brendan Jurd)
        </p><p>        Formerly <span class="productname">PostgreSQL</span> attempted to determine a data type
@@ -566,7 +566,7 @@
         a value (Pavel Stehule)
        </p></li><li class="listitem"><p>        Add <code class="function">generate_subscripts()</code> to simplify generating
         the range of an array's subscripts (Pavel Stehule)
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.173.5.8.5"><div class="titlepage"><div><div><h5 class="title">E.169.3.6.3. Wide-Value Storage (<acronym class="acronym">TOAST</acronym>)</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Consider <acronym class="acronym">TOAST</acronym> compression on values as short as
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.178.5.8.5"><div class="titlepage"><div><div><h5 class="title">E.174.3.6.3. Wide-Value Storage (<acronym class="acronym">TOAST</acronym>)</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Consider <acronym class="acronym">TOAST</acronym> compression on values as short as
         32 bytes (previously 256 bytes) (Greg Stark)
        </p></li><li class="listitem"><p>        Require 25% minimum space savings before using <acronym class="acronym">TOAST</acronym>
         compression (previously 20% for small values and any-savings-at-all
@@ -574,7 +574,7 @@
        </p></li><li class="listitem"><p>        Improve <acronym class="acronym">TOAST</acronym> heuristics for rows that have a mix of large
         and small toastable fields, so that we prefer to push large values out
         of line and don't compress small values unnecessarily (Greg, Tom)
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.173.5.9"><div class="titlepage"><div><div><h4 class="title">E.169.3.7. Functions</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Document that <code class="function">setseed()</code> allows values from
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.178.5.9"><div class="titlepage"><div><div><h4 class="title">E.174.3.7. Functions</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Document that <code class="function">setseed()</code> allows values from
        <code class="literal">-1</code> to <code class="literal">1</code> (not just <code class="literal">0</code> to
        <code class="literal">1</code>), and enforce the valid range (Kris Jurka)
       </p></li><li class="listitem"><p>       Add server-side function <code class="function">lo_import(filename, oid)</code>
@@ -590,7 +590,7 @@
        division without rounding (Tom)
       </p></li><li class="listitem"><p>       Add <code class="type">timestamp</code> and <code class="type">timestamptz</code> versions of
        <code class="function">generate_series()</code> (Hitoshi Harada)
-      </p></li></ul></div><div class="sect4" id="id-1.11.6.173.5.9.3"><div class="titlepage"><div><div><h5 class="title">E.169.3.7.1. Object Information Functions</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Implement <code class="function">current_query()</code> for use by functions
+      </p></li></ul></div><div class="sect4" id="id-1.11.6.178.5.9.3"><div class="titlepage"><div><div><h5 class="title">E.174.3.7.1. Object Information Functions</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Implement <code class="function">current_query()</code> for use by functions
         that need to know the currently running query (Tomas Doran)
        </p></li><li class="listitem"><p>        Add <code class="function">pg_get_keywords()</code> to return a list of the
         parser keywords (Dave Page)
@@ -639,7 +639,7 @@
        </p></li><li class="listitem"><p>        Add <code class="function">has_column_privilege()</code> and
         <code class="function">has_any_column_privilege()</code> functions (Stephen
         Frost, Tom)
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.173.5.9.4"><div class="titlepage"><div><div><h5 class="title">E.169.3.7.2. Function Creation</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Support variadic functions (functions with a variable number
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.178.5.9.4"><div class="titlepage"><div><div><h5 class="title">E.174.3.7.2. Function Creation</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Support variadic functions (functions with a variable number
         of arguments) (Pavel Stehule)
        </p><p>        Only trailing arguments can be optional, and they all must be
         of the same data type.
@@ -649,7 +649,7 @@
        </p></li><li class="listitem"><p>        Allow <acronym class="acronym">SQL</acronym>-language functions to return the output
         of an <code class="command">INSERT</code>/<code class="command">UPDATE</code>/<code class="command">DELETE</code>
         <code class="literal">RETURNING</code> clause (Tom)
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.173.5.9.5"><div class="titlepage"><div><div><h5 class="title">E.169.3.7.3. PL/pgSQL Server-Side Language</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Support <code class="literal">EXECUTE USING</code> for easier insertion of data
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.178.5.9.5"><div class="titlepage"><div><div><h5 class="title">E.174.3.7.3. PL/pgSQL Server-Side Language</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Support <code class="literal">EXECUTE USING</code> for easier insertion of data
         values into a dynamic query string (Pavel Stehule)
        </p></li><li class="listitem"><p>        Allow looping over the results of a cursor using a <code class="literal">FOR</code>
         loop (Pavel Stehule)
@@ -688,7 +688,7 @@
         <code class="varname">standard_conforming_strings</code> is on.
        </p></li><li class="listitem"><p>        Avoid memory leakage when the same function is called at varying
         exception-block nesting depths (Tom)
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.173.5.10"><div class="titlepage"><div><div><h4 class="title">E.169.3.8. Client Applications</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Fix <code class="literal">pg_ctl restart</code> to preserve command-line arguments
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.178.5.10"><div class="titlepage"><div><div><h4 class="title">E.174.3.8. Client Applications</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Fix <code class="literal">pg_ctl restart</code> to preserve command-line arguments
        (Bruce)
       </p></li><li class="listitem"><p>       Add <code class="literal">-w</code>/<code class="literal">--no-password</code> option that
        prevents password prompting in all utilities that have a
@@ -698,7 +698,7 @@
        <span class="application">dropuser</span> (Peter)
       </p><p>       These options have had no effect since <span class="productname">PostgreSQL</span>
        8.3.
-      </p></li></ul></div><div class="sect4" id="id-1.11.6.173.5.10.3"><div class="titlepage"><div><div><h5 class="title">E.169.3.8.1. <span class="application">psql</span></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Remove verbose startup banner; now just suggest <code class="literal">help</code>
+      </p></li></ul></div><div class="sect4" id="id-1.11.6.178.5.10.3"><div class="titlepage"><div><div><h5 class="title">E.174.3.8.1. <span class="application">psql</span></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Remove verbose startup banner; now just suggest <code class="literal">help</code>
         (Joshua Drake)
        </p></li><li class="listitem"><p>        Make <code class="literal">help</code> show common backslash commands (Greg
         Sabino Mullane)
@@ -725,7 +725,7 @@
         allow (Andrew Gilligan)
        </p></li><li class="listitem"><p>        Add the <code class="command">\ef</code> command to edit function definitions
         (Abhijit Menon-Sen)
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.173.5.10.4"><div class="titlepage"><div><div><h5 class="title">E.169.3.8.2. <span class="application">psql</span> \d* commands</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Make <code class="command">\d*</code> commands that do not have a pattern argument
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.178.5.10.4"><div class="titlepage"><div><div><h5 class="title">E.174.3.8.2. <span class="application">psql</span> \d* commands</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Make <code class="command">\d*</code> commands that do not have a pattern argument
         show system objects only if the <code class="literal">S</code> modifier is specified
         (Greg Sabino Mullane, Bruce)
        </p><p>        The former behavior was inconsistent across different variants
@@ -756,7 +756,7 @@
         datatype I/O functions, which were deemed uninteresting.  The new
         policy about hiding system functions by default makes this wart
         unnecessary.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.173.5.10.5"><div class="titlepage"><div><div><h5 class="title">E.169.3.8.3. <span class="application">pg_dump</span></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add a <code class="literal">--no-tablespaces</code> option to
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.178.5.10.5"><div class="titlepage"><div><div><h5 class="title">E.174.3.8.3. <span class="application">pg_dump</span></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add a <code class="literal">--no-tablespaces</code> option to
         <span class="application">pg_dump</span>/<span class="application">pg_dumpall</span>/<span class="application">pg_restore</span>
         so that dumps can be restored to clusters that have non-matching
         tablespace layouts (Gavin Roy)
@@ -791,7 +791,7 @@
         connections to do the restore (Andrew)
        </p><p>        The number of concurrent connections is controlled by the option
         <code class="literal">--jobs</code>.  This is supported only for custom-format archives.
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.173.5.11"><div class="titlepage"><div><div><h4 class="title">E.169.3.9. Programming Tools</h4></div></div></div><div class="sect4" id="id-1.11.6.173.5.11.2"><div class="titlepage"><div><div><h5 class="title">E.169.3.9.1. <span class="application">libpq</span></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Allow the <code class="type">OID</code> to be specified when importing a large
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.178.5.11"><div class="titlepage"><div><div><h4 class="title">E.174.3.9. Programming Tools</h4></div></div></div><div class="sect4" id="id-1.11.6.178.5.11.2"><div class="titlepage"><div><div><h5 class="title">E.174.3.9.1. <span class="application">libpq</span></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Allow the <code class="type">OID</code> to be specified when importing a large
         object, via new function <code class="function">lo_import_with_oid()</code> (Tatsuo)
        </p></li><li class="listitem"><p>        Add <span class="quote">“<span class="quote">events</span>”</span> support (Andrew Chernow, Merlin Moncure)
        </p><p>        This adds the ability to register callbacks to manage private
@@ -813,7 +813,7 @@
         The default username is now determined the same way with or
         without Kerberos.  Note however that the database username must still
         match the ticket when Kerberos authentication is used.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.173.5.11.3"><div class="titlepage"><div><div><h5 class="title">E.169.3.9.2. <span class="application">libpq</span> <acronym class="acronym">SSL</acronym> (Secure Sockets Layer)
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.178.5.11.3"><div class="titlepage"><div><div><h5 class="title">E.174.3.9.2. <span class="application">libpq</span> <acronym class="acronym">SSL</acronym> (Secure Sockets Layer)
       support</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Fix certificate validation for <acronym class="acronym">SSL</acronym> connections
         (Magnus)
        </p><p>        <span class="application">libpq</span> now supports verifying both the certificate
@@ -838,12 +838,12 @@
         (Bruce, Magnus, Russell Smith)
        </p><p>        This is required for applications that unload the libpq library,
         otherwise invalid <span class="application">OpenSSL</span> callbacks will remain.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.173.5.11.4"><div class="titlepage"><div><div><h5 class="title">E.169.3.9.3. <span class="application">ecpg</span></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add localization support for messages (Euler Taveira de
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.178.5.11.4"><div class="titlepage"><div><div><h5 class="title">E.174.3.9.3. <span class="application">ecpg</span></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add localization support for messages (Euler Taveira de
         Oliveira)
        </p></li><li class="listitem"><p>        ecpg parser is now automatically generated from the server
         parser (Michael)
        </p><p>        Previously the ecpg parser was hand-maintained.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.173.5.11.5"><div class="titlepage"><div><div><h5 class="title">E.169.3.9.4. Server Programming Interface (<acronym class="acronym">SPI</acronym>)</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add support for single-use plans with out-of-line
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.178.5.11.5"><div class="titlepage"><div><div><h5 class="title">E.174.3.9.4. Server Programming Interface (<acronym class="acronym">SPI</acronym>)</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add support for single-use plans with out-of-line
         parameters (Tom)
        </p></li><li class="listitem"><p>        Add new <code class="varname">SPI_OK_REWRITTEN</code> return code for
         <code class="function">SPI_execute()</code> (Heikki)
@@ -853,7 +853,7 @@
        </p><p>        SPI-using modules might need to add some <code class="literal">#include</code>
         lines if they were depending on <code class="filename">spi.h</code> to include
         things for them.
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.173.5.12"><div class="titlepage"><div><div><h4 class="title">E.169.3.10. Build Options</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Update build system to use <span class="productname">Autoconf</span> 2.61 (Peter)
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.178.5.12"><div class="titlepage"><div><div><h4 class="title">E.174.3.10. Build Options</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Update build system to use <span class="productname">Autoconf</span> 2.61 (Peter)
       </p></li><li class="listitem"><p>       Require <span class="productname">GNU bison</span> for source code builds (Peter)
       </p><p>       This has effectively been required for several years, but now there
        is no infrastructure claiming to support other parser tools.
@@ -895,7 +895,7 @@
        <span class="productname">Cygwin</span> (Richard Evans)
       </p></li><li class="listitem"><p>       Fix the use of <span class="productname">Mingw</span> as a cross-compiling source
        platform (Peter)
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.173.5.13"><div class="titlepage"><div><div><h4 class="title">E.169.3.11. Source Code</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Support 64-bit time zone data files (Heikki)
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.178.5.13"><div class="titlepage"><div><div><h4 class="title">E.174.3.11. Source Code</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Support 64-bit time zone data files (Heikki)
       </p><p>       This adds support for daylight saving time (<acronym class="acronym">DST</acronym>)
        calculations beyond the year 2038.
       </p></li><li class="listitem"><p>       Deprecate use of platform's <code class="type">time_t</code> data type (Tom)
@@ -957,7 +957,7 @@
       </p></li><li class="listitem"><p>       Fix problem when setting <code class="varname">LC_MESSAGES</code> on
        <span class="application">MSVC</span>-built systems (Hiroshi Inoue, Hiroshi
        Saito, Magnus)
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.173.5.14"><div class="titlepage"><div><div><h4 class="title">E.169.3.12. Contrib</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Add <code class="filename">contrib/auto_explain</code> to automatically run
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.178.5.14"><div class="titlepage"><div><div><h4 class="title">E.174.3.12. Contrib</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Add <code class="filename">contrib/auto_explain</code> to automatically run
        <code class="command">EXPLAIN</code> on queries exceeding a specified duration
        (Itagaki Takahiro, Tom)
       </p></li><li class="listitem"><p>       Add <code class="filename">contrib/btree_gin</code> to allow GIN indexes to
@@ -1013,4 +1013,4 @@
        will no longer remove the trigger file itself.
       </p></li><li class="listitem"><p>       <code class="filename">contrib/pg_standby</code>'s <code class="option">-l</code> option is now a no-op,
        because it is unsafe to use a symlink (Simon)
-      </p></li></ul></div></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="release-8-4-1.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="release.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="release-8-3-23.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">E.168. Release 8.4.1 </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> E.170. Release 8.3.23</td></tr></table></div></body></html>
+      </p></li></ul></div></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="release-8-4-1.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="release.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="release-8-3-23.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">E.173. Release 8.4.1 </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> E.175. Release 8.3.23</td></tr></table></div></body></html>

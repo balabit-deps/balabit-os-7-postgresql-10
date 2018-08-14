@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>E.122. Release 9.1</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="release-9-1-1.html" title="E.121. Release 9.1.1" /><link rel="next" href="release-9-0-23.html" title="E.123. Release 9.0.23" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">E.122. Release 9.1</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="release-9-1-1.html" title="E.121. Release 9.1.1">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="release.html" title="Appendix E. Release Notes">Up</a></td><th width="60%" align="center">Appendix E. Release Notes</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.4 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="release-9-0-23.html" title="E.123. Release 9.0.23">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="RELEASE-9-1"><div class="titlepage"><div><div><h2 class="title" style="clear: both">E.122. Release 9.1</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="release-9-1.html#id-1.11.6.126.3">E.122.1. Overview</a></span></dt><dt><span class="sect2"><a href="release-9-1.html#id-1.11.6.126.4">E.122.2. Migration to Version 9.1</a></span></dt><dt><span class="sect2"><a href="release-9-1.html#id-1.11.6.126.5">E.122.3. Changes</a></span></dt></dl></div><p><strong>Release date: </strong>2011-09-12</p><div class="sect2" id="id-1.11.6.126.3"><div class="titlepage"><div><div><h3 class="title">E.122.1. Overview</h3></div></div></div><p>    This release shows <span class="productname">PostgreSQL</span> moving beyond the
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>E.127. Release 9.1</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="release-9-1-1.html" title="E.126. Release 9.1.1" /><link rel="next" href="release-9-0-23.html" title="E.128. Release 9.0.23" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">E.127. Release 9.1</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="release-9-1-1.html" title="E.126. Release 9.1.1">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="release.html" title="Appendix E. Release Notes">Up</a></td><th width="60%" align="center">Appendix E. Release Notes</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.5 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="release-9-0-23.html" title="E.128. Release 9.0.23">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="RELEASE-9-1"><div class="titlepage"><div><div><h2 class="title" style="clear: both">E.127. Release 9.1</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="release-9-1.html#id-1.11.6.131.3">E.127.1. Overview</a></span></dt><dt><span class="sect2"><a href="release-9-1.html#id-1.11.6.131.4">E.127.2. Migration to Version 9.1</a></span></dt><dt><span class="sect2"><a href="release-9-1.html#id-1.11.6.131.5">E.127.3. Changes</a></span></dt></dl></div><p><strong>Release date: </strong>2011-09-12</p><div class="sect2" id="id-1.11.6.131.3"><div class="titlepage"><div><div><h3 class="title">E.127.1. Overview</h3></div></div></div><p>    This release shows <span class="productname">PostgreSQL</span> moving beyond the
     traditional relational-database feature set with new, ground-breaking
     functionality that is unique to <span class="productname">PostgreSQL</span>.
     The streaming replication feature introduced in release 9.0 is
@@ -27,13 +27,13 @@
      </p></li><li class="listitem"><p>      Update the <a class="link" href="plpython.html" title="Chapter 45. PL/Python - Python Procedural Language">PL/Python</a> server-side
       language
      </p></li></ul></div><p>    The above items are explained in more detail in the sections below.
-   </p></div><div class="sect2" id="id-1.11.6.126.4"><div class="titlepage"><div><div><h3 class="title">E.122.2. Migration to Version 9.1</h3></div></div></div><p>    A dump/restore using <span class="application">pg_dump</span>,
+   </p></div><div class="sect2" id="id-1.11.6.131.4"><div class="titlepage"><div><div><h3 class="title">E.127.2. Migration to Version 9.1</h3></div></div></div><p>    A dump/restore using <span class="application">pg_dump</span>,
     or use of <span class="application">pg_upgrade</span>, is required
     for those wishing to migrate data from any previous
     release.
    </p><p>    Version 9.1 contains a number of changes that may affect compatibility
     with previous releases.  Observe the following incompatibilities:
-   </p><div class="sect3" id="id-1.11.6.126.4.4"><div class="titlepage"><div><div><h4 class="title">E.122.2.1. Strings</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Change the default value of <a class="link" href="runtime-config-compatible.html#GUC-STANDARD-CONFORMING-STRINGS"><code class="varname">standard_conforming_strings</code></a>
+   </p><div class="sect3" id="id-1.11.6.131.4.4"><div class="titlepage"><div><div><h4 class="title">E.127.2.1. Strings</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Change the default value of <a class="link" href="runtime-config-compatible.html#GUC-STANDARD-CONFORMING-STRINGS"><code class="varname">standard_conforming_strings</code></a>
        to on (Robert Haas)
       </p><p>       By default, backslashes are now ordinary characters in string literals,
        not escape characters.  This change removes a long-standing
@@ -47,7 +47,7 @@
         holes.  Be sure to test applications that are exposed to untrusted
         input, to ensure that they correctly handle single quotes and
         backslashes in text strings.
-       </p></div></li></ul></div></div><div class="sect3" id="id-1.11.6.126.4.5"><div class="titlepage"><div><div><h4 class="title">E.122.2.2. Casting</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Disallow function-style and attribute-style data type casts for
+       </p></div></li></ul></div></div><div class="sect3" id="id-1.11.6.131.4.5"><div class="titlepage"><div><div><h4 class="title">E.127.2.2. Casting</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Disallow function-style and attribute-style data type casts for
        composite types (Tom Lane)
       </p><p>       For example, disallow
        <code class="literal"><em class="replaceable"><code>composite_value</code></em>.text</code> and
@@ -65,7 +65,7 @@
        <code class="literal">UPDATE ... SET domaincol[5] = ...</code>, will now result in
        rechecking the domain type's constraints, whereas before the checks
        were skipped.
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.126.4.6"><div class="titlepage"><div><div><h4 class="title">E.122.2.3. Arrays</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Change <a class="link" href="functions-array.html#ARRAY-FUNCTIONS-TABLE" title="Table 9.49. Array Functions"><code class="function">string_to_array()</code></a>
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.131.4.6"><div class="titlepage"><div><div><h4 class="title">E.127.2.3. Arrays</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Change <a class="link" href="functions-array.html#ARRAY-FUNCTIONS-TABLE" title="Table 9.49. Array Functions"><code class="function">string_to_array()</code></a>
        to return an empty array for a zero-length string (Pavel
        Stehule)
       </p><p>       Previously this returned a null value.
@@ -73,21 +73,21 @@
        so a <code class="literal">NULL</code> separator splits the string into characters
        (Pavel Stehule)
       </p><p>       Previously this returned a null value.
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.126.4.7"><div class="titlepage"><div><div><h4 class="title">E.122.2.4. Object Modification</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Fix improper checks for before/after triggers (Tom Lane)
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.131.4.7"><div class="titlepage"><div><div><h4 class="title">E.127.2.4. Object Modification</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Fix improper checks for before/after triggers (Tom Lane)
       </p><p>       Triggers can now be fired in three cases: <code class="literal">BEFORE</code>,
        <code class="literal">AFTER</code>, or <code class="literal">INSTEAD OF</code> some action.
        Trigger function authors should verify that their logic behaves
        sanely in all three cases.
       </p></li><li class="listitem"><p>        Require superuser or <code class="literal">CREATEROLE</code> permissions in order to
         set comments on roles (Tom Lane)
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.126.4.8"><div class="titlepage"><div><div><h4 class="title">E.122.2.5. Server Settings</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Change <a class="link" href="functions-admin.html#FUNCTIONS-RECOVERY-INFO-TABLE" title="Table 9.80. Recovery Information Functions"><code class="function">pg_last_xlog_receive_location()</code></a>
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.131.4.8"><div class="titlepage"><div><div><h4 class="title">E.127.2.5. Server Settings</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Change <a class="link" href="functions-admin.html#FUNCTIONS-RECOVERY-INFO-TABLE" title="Table 9.80. Recovery Information Functions"><code class="function">pg_last_xlog_receive_location()</code></a>
        so it never moves backwards (Fujii Masao)
       </p><p>       Previously, the value of <code class="function">pg_last_xlog_receive_location()</code>
        could move backward when streaming replication is restarted.
       </p></li><li class="listitem"><p>       Have logging of replication connections honor <a class="link" href="runtime-config-logging.html#GUC-LOG-CONNECTIONS"><code class="varname">log_connections</code></a>
        (Magnus Hagander)
       </p><p>       Previously, replication connections were always logged.
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.126.4.9"><div class="titlepage"><div><div><h4 class="title">E.122.2.6. <a class="link" href="plpgsql.html" title="Chapter 42. PL/pgSQL - SQL Procedural Language">PL/pgSQL</a> Server-Side Language</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Change PL/pgSQL's <code class="literal">RAISE</code> command without parameters
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.131.4.9"><div class="titlepage"><div><div><h4 class="title">E.127.2.6. <a class="link" href="plpgsql.html" title="Chapter 42. PL/pgSQL - SQL Procedural Language">PL/pgSQL</a> Server-Side Language</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Change PL/pgSQL's <code class="literal">RAISE</code> command without parameters
        to be catchable by the attached exception block (Piyush Newe)
       </p><p>       Previously <code class="literal">RAISE</code> in a code block was always scoped to
        an attached exception block, so it was uncatchable at the same
@@ -109,7 +109,7 @@
        columns declared with the same modifier.  This is not expected to make
        any visible difference in most cases, but it could result in subtle
        changes for some SQL commands issued by PL/pgSQL functions.
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.126.4.10"><div class="titlepage"><div><div><h4 class="title">E.122.2.7. Contrib</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       All contrib modules are now installed with <a class="link" href="sql-createextension.html" title="CREATE EXTENSION"><code class="command">CREATE EXTENSION</code></a>
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.131.4.10"><div class="titlepage"><div><div><h4 class="title">E.127.2.7. Contrib</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       All contrib modules are now installed with <a class="link" href="sql-createextension.html" title="CREATE EXTENSION"><code class="command">CREATE EXTENSION</code></a>
        rather than by manually invoking their SQL scripts
        (Dimitri Fontaine, Tom Lane)
       </p><p>       To update an existing database containing the 9.0 version of a contrib
@@ -117,17 +117,17 @@
        to wrap the existing contrib module's objects into an extension.  When
        updating from a pre-9.0 version, drop the contrib module's objects
        using its old uninstall script, then use <code class="literal">CREATE EXTENSION</code>.
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.126.4.11"><div class="titlepage"><div><div><h4 class="title">E.122.2.8. Other Incompatibilities</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Make <a class="link" href="monitoring-stats.html#MONITORING-STATS-FUNCS-TABLE" title="Table 28.19. Additional Statistics Functions"><code class="function">pg_stat_reset()</code></a>
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.131.4.11"><div class="titlepage"><div><div><h4 class="title">E.127.2.8. Other Incompatibilities</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Make <a class="link" href="monitoring-stats.html#MONITORING-STATS-FUNCS-TABLE" title="Table 28.19. Additional Statistics Functions"><code class="function">pg_stat_reset()</code></a>
        reset all database-level statistics (Tomas Vondra)
       </p><p>       Some <code class="structname">pg_stat_database</code> counters were not being reset.
       </p></li><li class="listitem"><p>        Fix some <a class="link" href="infoschema-triggers.html" title="36.55. triggers"><code class="structname">information_schema.triggers</code></a>
         column names to match the new SQL-standard names (Dean Rasheed)
       </p></li><li class="listitem"><p>       Treat <span class="application">ECPG</span> cursor names as case-insensitive
        (Zoltan Boszormenyi)
-      </p></li></ul></div></div></div><div class="sect2" id="id-1.11.6.126.5"><div class="titlepage"><div><div><h3 class="title">E.122.3. Changes</h3></div></div></div><p>    Below you will find a detailed account of the changes between
+      </p></li></ul></div></div></div><div class="sect2" id="id-1.11.6.131.5"><div class="titlepage"><div><div><h3 class="title">E.127.3. Changes</h3></div></div></div><p>    Below you will find a detailed account of the changes between
     <span class="productname">PostgreSQL</span> 9.1 and the previous major
     release.
-   </p><div class="sect3" id="id-1.11.6.126.5.3"><div class="titlepage"><div><div><h4 class="title">E.122.3.1. Server</h4></div></div></div><div class="sect4" id="id-1.11.6.126.5.3.2"><div class="titlepage"><div><div><h5 class="title">E.122.3.1.1. Performance</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Support unlogged tables using the <code class="literal">UNLOGGED</code>
+   </p><div class="sect3" id="id-1.11.6.131.5.3"><div class="titlepage"><div><div><h4 class="title">E.127.3.1. Server</h4></div></div></div><div class="sect4" id="id-1.11.6.131.5.3.2"><div class="titlepage"><div><div><h5 class="title">E.127.3.1.1. Performance</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Support unlogged tables using the <code class="literal">UNLOGGED</code>
         option in <a class="link" href="sql-createtable.html" title="CREATE TABLE"><code class="command">CREATE
         TABLE</code></a> (Robert Haas)
        </p><p>        Such tables provide better update performance than regular tables,
@@ -155,14 +155,14 @@
        </p><p>        This fixes scenarios in which backends might hold files open long
         after they were deleted, preventing the kernel from reclaiming
         disk space.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.3.3"><div class="titlepage"><div><div><h5 class="title">E.122.3.1.2. Optimizer</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Allow inheritance table scans to return meaningfully-sorted
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.3.3"><div class="titlepage"><div><div><h5 class="title">E.127.3.1.2. Optimizer</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Allow inheritance table scans to return meaningfully-sorted
         results (Greg Stark, Hans-Jurgen Schonig, Robert Haas, Tom Lane)
        </p><p>        This allows better optimization of queries that use <code class="literal">ORDER
         BY</code>, <code class="literal">LIMIT</code>, or <code class="literal">MIN</code>/<code class="literal">MAX</code> with
         inherited tables.
        </p></li><li class="listitem"><p>         Improve GIN index scan cost estimation (Teodor Sigaev)
        </p></li><li class="listitem"><p>        Improve cost estimation for aggregates and window functions (Tom Lane)
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.3.4"><div class="titlepage"><div><div><h5 class="title">E.122.3.1.3. Authentication</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Support host names and host suffixes
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.3.4"><div class="titlepage"><div><div><h5 class="title">E.127.3.1.3. Authentication</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Support host names and host suffixes
         (e.g. <code class="literal">.example.com</code>) in <a class="link" href="auth-pg-hba-conf.html" title="20.1. The pg_hba.conf File"><code class="filename">pg_hba.conf</code></a>
         (Peter Eisentraut)
        </p><p>        Previously only host <acronym class="acronym">IP</acronym> addresses and <acronym class="acronym">CIDR</acronym>
@@ -194,7 +194,7 @@
         <code class="function">getpeereid</code> function or an equivalent socket operation.
         So far as is known, the only platform for which peer authentication
         worked before and now will not is pre-5.0 NetBSD.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.3.5"><div class="titlepage"><div><div><h5 class="title">E.122.3.1.4. Monitoring</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add details to the logging of restartpoints and checkpoints,
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.3.5"><div class="titlepage"><div><div><h5 class="title">E.127.3.1.4. Monitoring</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add details to the logging of restartpoints and checkpoints,
         which is controlled by <a class="link" href="runtime-config-logging.html#GUC-LOG-CHECKPOINTS"><code class="varname">log_checkpoints</code></a>
         (Fujii Masao, Greg Smith)
        </p><p>        New details include <acronym class="acronym">WAL</acronym> file and sync activity.
@@ -205,7 +205,7 @@
         logging to 900 bytes plus prefixes (Noah Misch)
        </p><p>        This avoids truncation of long log lines on syslog implementations
         that have a 1KB length limit, rather than the more common 2KB.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.3.6"><div class="titlepage"><div><div><h5 class="title">E.122.3.1.5. Statistical Views</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add <code class="structfield">client_hostname</code> column to <a class="link" href="monitoring-stats.html#MONITORING-STATS-VIEWS-TABLE" title="Table 28.2. Collected Statistics Views"><code class="structname">pg_stat_activity</code></a>
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.3.6"><div class="titlepage"><div><div><h5 class="title">E.127.3.1.5. Statistical Views</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add <code class="structfield">client_hostname</code> column to <a class="link" href="monitoring-stats.html#MONITORING-STATS-VIEWS-TABLE" title="Table 28.2. Collected Statistics Views"><code class="structname">pg_stat_activity</code></a>
         (Peter Eisentraut)
        </p><p>        Previously only the client address was reported.
        </p></li><li class="listitem"><p>        Add <a class="link" href="monitoring-stats.html#MONITORING-STATS-VIEWS-TABLE" title="Table 28.2. Collected Statistics Views"><code class="structname">pg_stat_xact_*</code></a>
@@ -221,7 +221,7 @@
         (Greg Smith)
        </p><p>        This new column counts the number of times a backend fsyncs a
         buffer.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.3.7"><div class="titlepage"><div><div><h5 class="title">E.122.3.1.6. Server Settings</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Provide auto-tuning of <a class="link" href="runtime-config-wal.html#GUC-WAL-BUFFERS"><code class="varname">wal_buffers</code></a> (Greg
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.3.7"><div class="titlepage"><div><div><h5 class="title">E.127.3.1.6. Server Settings</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Provide auto-tuning of <a class="link" href="runtime-config-wal.html#GUC-WAL-BUFFERS"><code class="varname">wal_buffers</code></a> (Greg
         Smith)
        </p><p>        By default, the value of <code class="varname">wal_buffers</code> is now chosen
         automatically based on the value of <code class="varname">shared_buffers</code>.
@@ -232,7 +232,7 @@
         (Peter Eisentraut)
        </p><p>        The maximum value for each of these parameters was previously
         only about 35 minutes.  Much larger values are now allowed.
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.126.5.4"><div class="titlepage"><div><div><h4 class="title">E.122.3.2. Replication and Recovery</h4></div></div></div><div class="sect4" id="id-1.11.6.126.5.4.2"><div class="titlepage"><div><div><h5 class="title">E.122.3.2.1. Streaming Replication and Continuous Archiving</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Allow <a class="link" href="warm-standby.html#SYNCHRONOUS-REPLICATION" title="26.2.8. Synchronous Replication">synchronous
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.131.5.4"><div class="titlepage"><div><div><h4 class="title">E.127.3.2. Replication and Recovery</h4></div></div></div><div class="sect4" id="id-1.11.6.131.5.4.2"><div class="titlepage"><div><div><h5 class="title">E.127.3.2.1. Streaming Replication and Continuous Archiving</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Allow <a class="link" href="warm-standby.html#SYNCHRONOUS-REPLICATION" title="26.2.8. Synchronous Replication">synchronous
        replication</a> (Simon Riggs, Fujii Masao)
       </p><p>       This allows the primary server to wait for a standby to write a
        transaction's information to disk before acknowledging the commit.
@@ -265,7 +265,7 @@
        It allows a non-superuser role to be used for replication connections.
        Previously only superusers could initiate replication
        connections; superusers still have this permission by default.
-      </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.4.3"><div class="titlepage"><div><div><h5 class="title">E.122.3.2.2. Replication Monitoring</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add system view <a class="link" href="monitoring-stats.html#PG-STAT-REPLICATION-VIEW" title="Table 28.5. pg_stat_replication View"><code class="structname">pg_stat_replication</code></a>
+      </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.4.3"><div class="titlepage"><div><div><h5 class="title">E.127.3.2.2. Replication Monitoring</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add system view <a class="link" href="monitoring-stats.html#PG-STAT-REPLICATION-VIEW" title="Table 28.5. pg_stat_replication View"><code class="structname">pg_stat_replication</code></a>
         which displays activity of <acronym class="acronym">WAL</acronym> sender processes (Itagaki
         Takahiro, Simon Riggs)
        </p><p>        This reports the status of all connected standby servers.
@@ -273,7 +273,7 @@
         (Fujii Masao)
        </p><p>        This returns the time at which the primary generated the most
         recent commit or abort record applied on the standby.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.4.4"><div class="titlepage"><div><div><h5 class="title">E.122.3.2.3. Hot Standby</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Add configuration parameter <a class="link" href="runtime-config-replication.html#GUC-HOT-STANDBY-FEEDBACK"><code class="varname">hot_standby_feedback</code></a>
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.4.4"><div class="titlepage"><div><div><h5 class="title">E.127.3.2.3. Hot Standby</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Add configuration parameter <a class="link" href="runtime-config-replication.html#GUC-HOT-STANDBY-FEEDBACK"><code class="varname">hot_standby_feedback</code></a>
        to enable standbys to postpone cleanup of old row versions on the
        primary (Simon Riggs)
       </p><p>       This helps avoid canceling long-running queries on the standby.
@@ -294,7 +294,7 @@
         error code to report recovery conflicts due to dropped databases
         (Tatsuo Ishii)
        </p><p>        This is useful for connection pooling software.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.4.5"><div class="titlepage"><div><div><h5 class="title">E.122.3.2.4. Recovery Control</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add functions to control streaming replication replay (Simon Riggs)
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.4.5"><div class="titlepage"><div><div><h5 class="title">E.127.3.2.4. Recovery Control</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add functions to control streaming replication replay (Simon Riggs)
        </p><p>        The new functions are <a class="link" href="functions-admin.html#FUNCTIONS-RECOVERY-CONTROL-TABLE" title="Table 9.81. Recovery Control Functions"><code class="function">pg_xlog_replay_pause()</code></a>,
         <a class="link" href="functions-admin.html#FUNCTIONS-RECOVERY-CONTROL-TABLE" title="Table 9.81. Recovery Control Functions"><code class="function">pg_xlog_replay_resume()</code></a>,
         and the status function <a class="link" href="functions-admin.html#FUNCTIONS-RECOVERY-CONTROL-TABLE" title="Table 9.81. Recovery Control Functions"><code class="function">pg_is_xlog_replay_paused()</code></a>.
@@ -321,7 +321,7 @@
         to use the same quoting behavior as <code class="filename">postgresql.conf</code>
         (Dimitri Fontaine)
        </p><p>        Previously all values had to be quoted.
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.126.5.5"><div class="titlepage"><div><div><h4 class="title">E.122.3.3. Queries</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add a true <a class="link" href="transaction-iso.html#XACT-SERIALIZABLE" title="13.2.3. Serializable Isolation Level">serializable isolation level</a>
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.131.5.5"><div class="titlepage"><div><div><h4 class="title">E.127.3.3. Queries</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add a true <a class="link" href="transaction-iso.html#XACT-SERIALIZABLE" title="13.2.3. Serializable Isolation Level">serializable isolation level</a>
         (Kevin Grittner, Dan Ports)
        </p><p>        Previously, asking for serializable isolation guaranteed only that a
         single MVCC snapshot would be used for the entire transaction, which
@@ -352,13 +352,13 @@
        </p><p>        Previously <code class="command">EXPLAIN ANALYZE</code> used slightly different
         snapshot timing for queries involving rules.  The
         <code class="command">EXPLAIN ANALYZE</code> behavior was judged to be more logical.
-       </p></li></ul></div><div class="sect4" id="id-1.11.6.126.5.5.3"><div class="titlepage"><div><div><h5 class="title">E.122.3.3.1. Strings</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add per-column <a class="link" href="collation.html" title="23.2. Collation Support">collation</a> support
+       </p></li></ul></div><div class="sect4" id="id-1.11.6.131.5.5.3"><div class="titlepage"><div><div><h5 class="title">E.127.3.3.1. Strings</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add per-column <a class="link" href="collation.html" title="23.2. Collation Support">collation</a> support
         (Peter Eisentraut, Tom Lane)
        </p><p>        Previously collation (the sort ordering of text strings) could only be
         chosen at database creation.
         Collation can now be set per column, domain, index, or
         expression, via the SQL-standard <code class="literal">COLLATE</code> clause.
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.126.5.6"><div class="titlepage"><div><div><h4 class="title">E.122.3.4. Object Manipulation</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add <a class="link" href="extend-extensions.html" title="37.15. Packaging Related Objects into an Extension">extensions</a> which
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.131.5.6"><div class="titlepage"><div><div><h4 class="title">E.127.3.4. Object Manipulation</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add <a class="link" href="extend-extensions.html" title="37.15. Packaging Related Objects into an Extension">extensions</a> which
         simplify packaging of additions to <span class="productname">PostgreSQL</span>
         (Dimitri Fontaine, Tom Lane)
        </p><p>        Extensions are controlled by the new <a class="link" href="sql-createextension.html" title="CREATE EXTENSION"><code class="command">CREATE</code></a>/<a class="link" href="sql-alterextension.html" title="ALTER EXTENSION"><code class="command">ALTER</code></a>/<a class="link" href="sql-dropextension.html" title="DROP EXTENSION"><code class="command">DROP EXTENSION</code></a>
@@ -376,7 +376,7 @@
       </p></li><li class="listitem"><p>        Add <a class="link" href="sql-altertype.html" title="ALTER TYPE"><code class="command">ALTER TYPE ...
         ADD/DROP/ALTER/RENAME ATTRIBUTE</code></a> (Peter Eisentraut)
        </p><p>        This allows modification of composite types.
-       </p></li></ul></div><div class="sect4" id="id-1.11.6.126.5.6.3"><div class="titlepage"><div><div><h5 class="title">E.122.3.4.1. <code class="command">ALTER</code> Object</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add <code class="literal">RESTRICT</code>/<code class="literal">CASCADE</code> to <a class="link" href="sql-altertype.html" title="ALTER TYPE"><code class="command">ALTER TYPE</code></a> operations
+       </p></li></ul></div><div class="sect4" id="id-1.11.6.131.5.6.3"><div class="titlepage"><div><div><h5 class="title">E.127.3.4.1. <code class="command">ALTER</code> Object</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add <code class="literal">RESTRICT</code>/<code class="literal">CASCADE</code> to <a class="link" href="sql-altertype.html" title="ALTER TYPE"><code class="command">ALTER TYPE</code></a> operations
         on typed tables (Peter Eisentraut)
        </p><p>        This controls
         <code class="literal">ADD</code>/<code class="literal">DROP</code>/<code class="literal">ALTER</code>/<code class="literal">RENAME
@@ -391,7 +391,7 @@
        </p><p>        This command is now supported for conversions, operators, operator
         classes, operator families, text search configurations, text search
         dictionaries, text search parsers, and text search templates.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.6.4"><div class="titlepage"><div><div><h5 class="title">E.122.3.4.2. <a class="link" href="sql-createtable.html" title="CREATE TABLE"><code class="command">CREATE/ALTER TABLE</code></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add <code class="command">ALTER TABLE ...
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.6.4"><div class="titlepage"><div><div><h5 class="title">E.127.3.4.2. <a class="link" href="sql-createtable.html" title="CREATE TABLE"><code class="command">CREATE/ALTER TABLE</code></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add <code class="command">ALTER TABLE ...
         ADD UNIQUE/PRIMARY KEY USING INDEX</code>
         (Gurjeet Singh)
        </p><p>        This allows a primary key or unique constraint to be defined using an
@@ -419,10 +419,10 @@
        </p><p>        <a class="link" href="sql-altertable.html" title="ALTER TABLE"><code class="command">ALTER TABLE</code></a>
         now takes a stronger lock on the parent table, so that the sessions
         cannot try to update it simultaneously.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.6.5"><div class="titlepage"><div><div><h5 class="title">E.122.3.4.3. Object Permissions</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add a <a class="link" href="sql-security-label.html" title="SECURITY LABEL"><code class="command">SECURITY
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.6.5"><div class="titlepage"><div><div><h5 class="title">E.127.3.4.3. Object Permissions</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add a <a class="link" href="sql-security-label.html" title="SECURITY LABEL"><code class="command">SECURITY
         LABEL</code></a> command (KaiGai Kohei)
        </p><p>        This allows security labels to be assigned to objects.
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.126.5.7"><div class="titlepage"><div><div><h4 class="title">E.122.3.5. Utility Operations</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Add transaction-level <a class="link" href="explicit-locking.html#ADVISORY-LOCKS" title="13.3.5. Advisory Locks">advisory
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.131.5.7"><div class="titlepage"><div><div><h4 class="title">E.127.3.5. Utility Operations</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Add transaction-level <a class="link" href="explicit-locking.html#ADVISORY-LOCKS" title="13.3.5. Advisory Locks">advisory
        locks</a> (Marko Tiikkaja)
       </p><p>       These are similar to the existing session-level advisory locks,
        but such locks are automatically released at transaction end.
@@ -432,16 +432,16 @@
       </p><p>       Previously the counter could have been left out of sync if a
        backend crashed between the on-commit truncation activity and
        commit completion.
-      </p></li></ul></div><div class="sect4" id="id-1.11.6.126.5.7.3"><div class="titlepage"><div><div><h5 class="title">E.122.3.5.1. <a class="link" href="sql-copy.html" title="COPY"><code class="command">COPY</code></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add <code class="literal">ENCODING</code> option to <a class="link" href="sql-copy.html" title="COPY"><code class="command">COPY TO/FROM</code></a> (Hitoshi
+      </p></li></ul></div><div class="sect4" id="id-1.11.6.131.5.7.3"><div class="titlepage"><div><div><h5 class="title">E.127.3.5.1. <a class="link" href="sql-copy.html" title="COPY"><code class="command">COPY</code></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add <code class="literal">ENCODING</code> option to <a class="link" href="sql-copy.html" title="COPY"><code class="command">COPY TO/FROM</code></a> (Hitoshi
         Harada, Itagaki Takahiro)
        </p><p>        This allows the encoding of the <code class="command">COPY</code> file to be
         specified separately from client encoding.
        </p></li><li class="listitem"><p>        Add bidirectional <a class="link" href="sql-copy.html" title="COPY"><code class="command">COPY</code></a>
         protocol support (Fujii Masao)
        </p><p>        This is currently only used by streaming replication.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.7.4"><div class="titlepage"><div><div><h5 class="title">E.122.3.5.2. <a class="link" href="sql-explain.html" title="EXPLAIN"><code class="command">EXPLAIN</code></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Make <code class="command">EXPLAIN VERBOSE</code> show the function call expression
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.7.4"><div class="titlepage"><div><div><h5 class="title">E.127.3.5.2. <a class="link" href="sql-explain.html" title="EXPLAIN"><code class="command">EXPLAIN</code></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Make <code class="command">EXPLAIN VERBOSE</code> show the function call expression
         in a <code class="literal">FunctionScan</code> node (Tom Lane)
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.7.5"><div class="titlepage"><div><div><h5 class="title">E.122.3.5.3. <a class="link" href="sql-vacuum.html" title="VACUUM"><code class="command">VACUUM</code></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add additional details to the output of <a class="link" href="sql-vacuum.html" title="VACUUM"><code class="command">VACUUM FULL VERBOSE</code></a>
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.7.5"><div class="titlepage"><div><div><h5 class="title">E.127.3.5.3. <a class="link" href="sql-vacuum.html" title="VACUUM"><code class="command">VACUUM</code></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add additional details to the output of <a class="link" href="sql-vacuum.html" title="VACUUM"><code class="command">VACUUM FULL VERBOSE</code></a>
         and <a class="link" href="sql-cluster.html" title="CLUSTER"><code class="command">CLUSTER VERBOSE</code></a>
         (Itagaki Takahiro)
        </p><p>        New information includes the live and dead tuple count and
@@ -449,9 +449,9 @@
        </p></li><li class="listitem"><p>        Prevent <a class="link" href="routine-vacuuming.html#AUTOVACUUM" title="24.1.6. The Autovacuum Daemon">autovacuum</a> from
         waiting if it cannot acquire a table lock (Robert Haas)
        </p><p>        It will try to vacuum that table later.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.7.6"><div class="titlepage"><div><div><h5 class="title">E.122.3.5.4. <a class="link" href="sql-cluster.html" title="CLUSTER"><code class="command">CLUSTER</code></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Allow <code class="command">CLUSTER</code> to sort the table rather than scanning
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.7.6"><div class="titlepage"><div><div><h5 class="title">E.127.3.5.4. <a class="link" href="sql-cluster.html" title="CLUSTER"><code class="command">CLUSTER</code></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Allow <code class="command">CLUSTER</code> to sort the table rather than scanning
         the index when it seems likely to be cheaper (Leonardo Francalanci)
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.7.7"><div class="titlepage"><div><div><h5 class="title">E.122.3.5.5. Indexes</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add nearest-neighbor (order-by-operator) searching to <a class="link" href="gist.html" title="Chapter 62. GiST Indexes"><acronym class="acronym">GiST</acronym> indexes</a> (Teodor Sigaev, Tom Lane)
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.7.7"><div class="titlepage"><div><div><h5 class="title">E.127.3.5.5. Indexes</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add nearest-neighbor (order-by-operator) searching to <a class="link" href="gist.html" title="Chapter 62. GiST Indexes"><acronym class="acronym">GiST</acronym> indexes</a> (Teodor Sigaev, Tom Lane)
        </p><p>        This allows <acronym class="acronym">GiST</acronym> indexes to quickly return the
         <em class="replaceable"><code>N</code></em> closest values in a query with <code class="literal">LIMIT</code>.
         For example
@@ -469,7 +469,7 @@
         crash-safe (Heikki Linnakangas)
        </p><p>        Previously there were rare cases where a <code class="command">REINDEX</code>
         would be required (you would be informed).
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.126.5.8"><div class="titlepage"><div><div><h4 class="title">E.122.3.6. Data Types</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Allow <code class="type">numeric</code> to use a more compact, two-byte header
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.131.5.8"><div class="titlepage"><div><div><h4 class="title">E.127.3.6. Data Types</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Allow <code class="type">numeric</code> to use a more compact, two-byte header
        in common cases (Robert Haas)
       </p><p>       Previously all <code class="type">numeric</code> values had four-byte headers;
        this change saves on disk storage.
@@ -486,7 +486,7 @@
        failures at runtime, if it is possible to implement the query without
        sorting.  Also, <code class="command">ANALYZE</code> won't try to use inappropriate
        statistics-gathering methods for columns of such composite types.
-      </p></li></ul></div><div class="sect4" id="id-1.11.6.126.5.8.3"><div class="titlepage"><div><div><h5 class="title">E.122.3.6.1. Casting</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add support for casting between <code class="type">money</code> and <code class="type">numeric</code>
+      </p></li></ul></div><div class="sect4" id="id-1.11.6.131.5.8.3"><div class="titlepage"><div><div><h5 class="title">E.127.3.6.1. Casting</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add support for casting between <code class="type">money</code> and <code class="type">numeric</code>
         (Andy Balholm)
       </p></li><li class="listitem"><p>       Add support for casting from <code class="type">int4</code> and <code class="type">int8</code>
        to <code class="type">money</code> (Joey Adams)
@@ -494,7 +494,7 @@
         it's a typed table (Peter Eisentraut)
        </p><p>        This is analogous to the existing facility that allows casting a row
         type to a supertable's row type.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.8.4"><div class="titlepage"><div><div><h5 class="title">E.122.3.6.2. <a class="link" href="functions-xml.html" title="9.14. XML Functions"><acronym class="acronym">XML</acronym></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add <acronym class="acronym">XML</acronym> function <a class="link" href="functions-xml.html#XML-EXISTS" title="9.14.2.3. XMLEXISTS"><code class="literal">XMLEXISTS</code></a> and <a class="link" href="functions-xml.html#XML-EXISTS" title="9.14.2.3. XMLEXISTS"><code class="function">xpath_exists()</code></a>
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.8.4"><div class="titlepage"><div><div><h5 class="title">E.127.3.6.2. <a class="link" href="functions-xml.html" title="9.14. XML Functions"><acronym class="acronym">XML</acronym></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add <acronym class="acronym">XML</acronym> function <a class="link" href="functions-xml.html#XML-EXISTS" title="9.14.2.3. XMLEXISTS"><code class="literal">XMLEXISTS</code></a> and <a class="link" href="functions-xml.html#XML-EXISTS" title="9.14.2.3. XMLEXISTS"><code class="function">xpath_exists()</code></a>
         functions (Mike Fowler)
        </p><p>        These are used for XPath matching.
        </p></li><li class="listitem"><p>        Add <acronym class="acronym">XML</acronym> functions <a class="link" href="functions-xml.html#XML-IS-WELL-FORMED" title="9.14.2.4. xml_is_well_formed"><code class="function">xml_is_well_formed()</code></a>,
@@ -504,7 +504,7 @@
        </p><p>        These check whether the input is properly-formed <acronym class="acronym">XML</acronym>.
         They provide functionality that was previously available only in
         the deprecated <code class="filename">contrib/xml2</code> module.
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.126.5.9"><div class="titlepage"><div><div><h4 class="title">E.122.3.7. Functions</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add SQL function <a class="link" href="functions-string.html#FORMAT"><code class="function">format(text, ...)</code></a>, which
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.131.5.9"><div class="titlepage"><div><div><h4 class="title">E.127.3.7. Functions</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add SQL function <a class="link" href="functions-string.html#FORMAT"><code class="function">format(text, ...)</code></a>, which
         behaves analogously to C's <code class="function">printf()</code> (Pavel Stehule,
         Robert Haas)
        </p><p>        It currently supports formats for strings, SQL literals, and
@@ -523,7 +523,7 @@
        </p></li><li class="listitem"><p>         Add three-parameter forms of <a class="link" href="functions-array.html#ARRAY-FUNCTIONS-TABLE" title="Table 9.49. Array Functions"><code class="function">array_to_string()</code></a>
          and <a class="link" href="functions-array.html#ARRAY-FUNCTIONS-TABLE" title="Table 9.49. Array Functions"><code class="function">string_to_array()</code></a>
          for null value processing control (Pavel Stehule)
-       </p></li></ul></div><div class="sect4" id="id-1.11.6.126.5.9.3"><div class="titlepage"><div><div><h5 class="title">E.122.3.7.1. Object Information Functions</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add the <a class="link" href="functions-info.html#FUNCTIONS-INFO-CATALOG-TABLE" title="Table 9.63. System Catalog Information Functions"><code class="function">pg_describe_object()</code></a>
+       </p></li></ul></div><div class="sect4" id="id-1.11.6.131.5.9.3"><div class="titlepage"><div><div><h5 class="title">E.127.3.7.1. Object Information Functions</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add the <a class="link" href="functions-info.html#FUNCTIONS-INFO-CATALOG-TABLE" title="Table 9.63. System Catalog Information Functions"><code class="function">pg_describe_object()</code></a>
         function (Alvaro Herrera)
        </p><p>        This function is used to obtain a human-readable string describing
         an object, based on the <a class="link" href="catalog-pg-class.html" title="51.11. pg_class"><code class="structname">pg_class</code></a>
@@ -546,10 +546,10 @@
        </p></li><li class="listitem"><p>        Allow <code class="literal">public</code> as a pseudo-role name in <a class="link" href="functions-info.html#FUNCTIONS-INFO-ACCESS-TABLE" title="Table 9.61. Access Privilege Inquiry Functions"><code class="function">has_table_privilege()</code></a>
         and related functions (Alvaro Herrera)
        </p><p>        This allows checking for public permissions.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.9.4"><div class="titlepage"><div><div><h5 class="title">E.122.3.7.2. Function and Trigger Creation</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Support <a class="link" href="sql-createtrigger.html" title="CREATE TRIGGER"><code class="literal">INSTEAD
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.9.4"><div class="titlepage"><div><div><h5 class="title">E.127.3.7.2. Function and Trigger Creation</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Support <a class="link" href="sql-createtrigger.html" title="CREATE TRIGGER"><code class="literal">INSTEAD
         OF</code></a> triggers on views (Dean Rasheed)
        </p><p>        This feature can be used to implement fully updatable views.
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.126.5.10"><div class="titlepage"><div><div><h4 class="title">E.122.3.8. Server-Side Languages</h4></div></div></div><div class="sect4" id="id-1.11.6.126.5.10.2"><div class="titlepage"><div><div><h5 class="title">E.122.3.8.1. <a class="link" href="plpgsql.html" title="Chapter 42. PL/pgSQL - SQL Procedural Language">PL/pgSQL</a> Server-Side Language</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add <a class="link" href="plpgsql-control-structures.html#PLPGSQL-FOREACH-ARRAY" title="42.6.5. Looping Through Arrays"><code class="command">FOREACH IN
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.131.5.10"><div class="titlepage"><div><div><h4 class="title">E.127.3.8. Server-Side Languages</h4></div></div></div><div class="sect4" id="id-1.11.6.131.5.10.2"><div class="titlepage"><div><div><h5 class="title">E.127.3.8.1. <a class="link" href="plpgsql.html" title="Chapter 42. PL/pgSQL - SQL Procedural Language">PL/pgSQL</a> Server-Side Language</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add <a class="link" href="plpgsql-control-structures.html#PLPGSQL-FOREACH-ARRAY" title="42.6.5. Looping Through Arrays"><code class="command">FOREACH IN
         ARRAY</code></a> to PL/pgSQL
         (Pavel Stehule)
        </p><p>        This is more efficient and readable than previous methods of
@@ -560,7 +560,7 @@
        </p><p>        The previous coding threw the error
         from the block containing the active exception handler.
         The new behavior is more consistent with other DBMS products.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.10.3"><div class="titlepage"><div><div><h5 class="title">E.122.3.8.2. <a class="link" href="plperl.html" title="Chapter 44. PL/Perl - Perl Procedural Language">PL/Perl</a> Server-Side Language</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Allow generic record arguments to PL/Perl functions (Andrew
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.10.3"><div class="titlepage"><div><div><h5 class="title">E.127.3.8.2. <a class="link" href="plperl.html" title="Chapter 44. PL/Perl - Perl Procedural Language">PL/Perl</a> Server-Side Language</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Allow generic record arguments to PL/Perl functions (Andrew
         Dunstan)
        </p><p>        PL/Perl functions can now be declared to accept type <code class="type">record</code>.
         The behavior is the same as for any named composite type.
@@ -570,7 +570,7 @@
        </p></li><li class="listitem"><p>        Convert PL/Perl composite-type arguments to Perl hashes
         (Alexey Klyukin, Alex Hunsaker)
        </p><p>        String representations are still available.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.10.4"><div class="titlepage"><div><div><h5 class="title">E.122.3.8.3. <a class="link" href="plpython.html" title="Chapter 45. PL/Python - Python Procedural Language">PL/Python</a> Server-Side Language</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add table function support for PL/Python (Jan Urbanski)
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.10.4"><div class="titlepage"><div><div><h5 class="title">E.127.3.8.3. <a class="link" href="plpython.html" title="Chapter 45. PL/Python - Python Procedural Language">PL/Python</a> Server-Side Language</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add table function support for PL/Python (Jan Urbanski)
        </p><p>        PL/Python can now return multiple <code class="literal">OUT</code> parameters
         and record sets.
        </p></li><li class="listitem"><p>        Add a validator to PL/Python (Jan Urbanski)
@@ -590,10 +590,10 @@
        </p></li><li class="listitem"><p>        Fix exception handling with Python 3 (Jan Urbanski)
        </p><p>        Exception classes were previously not available in
         <code class="literal">plpy</code> under Python 3.
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.126.5.11"><div class="titlepage"><div><div><h4 class="title">E.122.3.9. Client Applications</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Mark <span class="application">createlang</span> and <span class="application">droplang</span>
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.131.5.11"><div class="titlepage"><div><div><h4 class="title">E.127.3.9. Client Applications</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Mark <span class="application">createlang</span> and <span class="application">droplang</span>
         as deprecated now that they just invoke extension commands (Tom
         Lane)
-      </p></li></ul></div><div class="sect4" id="id-1.11.6.126.5.11.3"><div class="titlepage"><div><div><h5 class="title">E.122.3.9.1. <a class="link" href="app-psql.html" title="psql"><span class="application">psql</span></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>         Add <span class="application">psql</span> command <code class="literal">\conninfo</code>
+      </p></li></ul></div><div class="sect4" id="id-1.11.6.131.5.11.3"><div class="titlepage"><div><div><h5 class="title">E.127.3.9.1. <a class="link" href="app-psql.html" title="psql"><span class="application">psql</span></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>         Add <span class="application">psql</span> command <code class="literal">\conninfo</code>
          to show current connection information (David Christensen)
        </p></li><li class="listitem"><p>         Add <span class="application">psql</span> command <code class="literal">\sf</code> to
          show a function's definition (Pavel Stehule)
@@ -621,7 +621,7 @@
         not identical to what was previously reported in the same display.
        </p></li><li class="listitem"><p>        Additional tab completion support (Itagaki Takahiro, Pavel Stehule,
         Andrey Popp, Christoph Berg, David Fetter, Josh Kupershmidt)
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.11.4"><div class="titlepage"><div><div><h5 class="title">E.122.3.9.2. <a class="link" href="app-pgdump.html" title="pg_dump"><span class="application">pg_dump</span></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>         Add <a class="link" href="app-pgdump.html" title="pg_dump"><span class="application">pg_dump</span></a>
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.11.4"><div class="titlepage"><div><div><h5 class="title">E.127.3.9.2. <a class="link" href="app-pgdump.html" title="pg_dump"><span class="application">pg_dump</span></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>         Add <a class="link" href="app-pgdump.html" title="pg_dump"><span class="application">pg_dump</span></a>
          and <a class="link" href="app-pg-dumpall.html" title="pg_dumpall"><span class="application">pg_dumpall</span></a>
          option <code class="option">--quote-all-identifiers</code> to force quoting
          of all identifiers (Robert Haas)
@@ -629,7 +629,7 @@
         (Joachim Wieland, Heikki Linnakangas)
        </p><p>        This is internally similar to the <code class="literal">tar</code>
         <span class="application">pg_dump</span> format.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.11.5"><div class="titlepage"><div><div><h5 class="title">E.122.3.9.3. <a class="link" href="app-pg-ctl.html" title="pg_ctl"><span class="application">pg_ctl</span></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Fix <span class="application">pg_ctl</span>
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.11.5"><div class="titlepage"><div><div><h5 class="title">E.127.3.9.3. <a class="link" href="app-pg-ctl.html" title="pg_ctl"><span class="application">pg_ctl</span></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Fix <span class="application">pg_ctl</span>
         so it no longer incorrectly reports that the server is not
         running (Bruce Momjian)
        </p><p>        Previously this could happen if the server was running but
@@ -642,7 +642,7 @@
         postmaster lock files.
        </p></li><li class="listitem"><p>         Add <code class="literal">promote</code> option to <span class="application">pg_ctl</span> to
          switch a standby server to primary (Fujii Masao)
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.126.5.12"><div class="titlepage"><div><div><h4 class="title">E.122.3.10. <span class="application">Development Tools</span></h4></div></div></div><div class="sect4" id="id-1.11.6.126.5.12.2"><div class="titlepage"><div><div><h5 class="title">E.122.3.10.1. <a class="link" href="libpq.html" title="Chapter 33. libpq - C Library"><span class="application">libpq</span></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add a libpq connection option <a class="link" href="libpq-connect.html#LIBPQ-CONNECT-CLIENT-ENCODING"><code class="literal">client_encoding</code></a>
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.131.5.12"><div class="titlepage"><div><div><h4 class="title">E.127.3.10. <span class="application">Development Tools</span></h4></div></div></div><div class="sect4" id="id-1.11.6.131.5.12.2"><div class="titlepage"><div><div><h5 class="title">E.127.3.10.1. <a class="link" href="libpq.html" title="Chapter 33. libpq - C Library"><span class="application">libpq</span></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add a libpq connection option <a class="link" href="libpq-connect.html#LIBPQ-CONNECT-CLIENT-ENCODING"><code class="literal">client_encoding</code></a>
         which behaves like the <code class="envar">PGCLIENTENCODING</code> environment
         variable (Heikki Linnakangas)
        </p><p>        The value <code class="literal">auto</code> sets the client encoding based on
@@ -664,16 +664,16 @@
         to libpq (Bruce Momjian, Tom Lane)
        </p><p>        These functions allow detection of the server's status without
         trying to open a new session.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.12.3"><div class="titlepage"><div><div><h5 class="title">E.122.3.10.2. <a class="link" href="ecpg.html" title="Chapter 35. ECPG - Embedded SQL in C"><span class="application">ECPG</span></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Allow ECPG to accept dynamic cursor names even in
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.12.3"><div class="titlepage"><div><div><h5 class="title">E.127.3.10.2. <a class="link" href="ecpg.html" title="Chapter 35. ECPG - Embedded SQL in C"><span class="application">ECPG</span></a></h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Allow ECPG to accept dynamic cursor names even in
         <code class="literal">WHERE CURRENT OF</code> clauses
         (Zoltan Boszormenyi)
        </p></li><li class="listitem"><p>        Make <span class="application">ecpglib</span> write <code class="type">double</code> values with a
         precision of 15 digits, not 14 as formerly (Akira Kurosawa)
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.126.5.13"><div class="titlepage"><div><div><h4 class="title">E.122.3.11. Build Options</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Use <code class="literal">+Olibmerrno</code> compile flag with HP-UX C compilers
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.131.5.13"><div class="titlepage"><div><div><h4 class="title">E.127.3.11. Build Options</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Use <code class="literal">+Olibmerrno</code> compile flag with HP-UX C compilers
         that accept it (Ibrar Ahmed)
        </p><p>        This avoids possible misbehavior of math library calls on recent
         HP platforms.
-       </p></li></ul></div><div class="sect4" id="id-1.11.6.126.5.13.3"><div class="titlepage"><div><div><h5 class="title">E.122.3.11.1. Makefiles</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Improved parallel make support (Peter Eisentraut)
+       </p></li></ul></div><div class="sect4" id="id-1.11.6.131.5.13.3"><div class="titlepage"><div><div><h5 class="title">E.127.3.11.1. Makefiles</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Improved parallel make support (Peter Eisentraut)
        </p><p>        This allows for faster compiles.  Also, <code class="literal">make -k</code>
         now works more consistently.
        </p></li><li class="listitem"><p>         Require <acronym class="acronym">GNU</acronym> <a class="link" href="install-requirements.html" title="16.2. Requirements"><span class="application">make</span></a>
@@ -690,7 +690,7 @@
         there is support for testing in a temporary installation.
         The top-level <code class="literal">make check-world</code> target now includes
         testing <code class="filename">contrib</code> this way.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.13.4"><div class="titlepage"><div><div><h5 class="title">E.122.3.11.2. Windows</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>         On Windows, allow <a class="link" href="app-pg-ctl.html" title="pg_ctl"><span class="application">pg_ctl</span></a> to register
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.13.4"><div class="titlepage"><div><div><h5 class="title">E.127.3.11.2. Windows</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>         On Windows, allow <a class="link" href="app-pg-ctl.html" title="pg_ctl"><span class="application">pg_ctl</span></a> to register
          the service as auto-start or start-on-demand (Quan Zongliang)
        </p></li><li class="listitem"><p>        Add support for collecting <a class="link" href="installation-platform-notes.html#WINDOWS-CRASH-DUMPS" title="16.7.4.1. Collecting Crash Dumps on Windows">crash
         dumps</a> on Windows (Craig Ringer, Magnus Hagander)
@@ -699,7 +699,7 @@
        </p></li><li class="listitem"><p>        Enable building with the MinGW64 compiler (Andrew Dunstan)
        </p><p>        This allows building 64-bit Windows binaries even on non-Windows
         platforms via cross-compiling.
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.126.5.14"><div class="titlepage"><div><div><h4 class="title">E.122.3.12. Source Code</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Revise the API for GUC variable assign hooks (Tom Lane)
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.131.5.14"><div class="titlepage"><div><div><h4 class="title">E.127.3.12. Source Code</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Revise the API for GUC variable assign hooks (Tom Lane)
        </p><p>        The previous functions of assign hooks are now split between check
         hooks and assign hooks, where the former can fail but the latter
         shouldn't.  This change will impact add-on modules that define custom
@@ -727,12 +727,12 @@
        </p><p>        This is used to generate context diffs from git.
        </p></li><li class="listitem"><p>         Improve support for building with
          <span class="application">Clang</span> (Peter Eisentraut)
-       </p></li></ul></div><div class="sect4" id="id-1.11.6.126.5.14.3"><div class="titlepage"><div><div><h5 class="title">E.122.3.12.1. Server Hooks</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>         Add source code hooks to check permissions (Robert Haas,
+       </p></li></ul></div><div class="sect4" id="id-1.11.6.131.5.14.3"><div class="titlepage"><div><div><h5 class="title">E.127.3.12.1. Server Hooks</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>         Add source code hooks to check permissions (Robert Haas,
          Stephen Frost)
        </p></li><li class="listitem"><p>         Add post-object-creation function hooks for use by security
          frameworks (KaiGai Kohei)
        </p></li><li class="listitem"><p>         Add a client authentication hook (KaiGai Kohei)
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.126.5.15"><div class="titlepage"><div><div><h4 class="title">E.122.3.13. Contrib</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Modify <code class="filename">contrib</code> modules and procedural
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.131.5.15"><div class="titlepage"><div><div><h4 class="title">E.127.3.13. Contrib</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Modify <code class="filename">contrib</code> modules and procedural
        languages to install via the new <a class="link" href="extend-extensions.html" title="37.15. Packaging Related Objects into an Extension">extension</a> mechanism (Tom Lane,
        Dimitri Fontaine)
       </p></li><li class="listitem"><p>       Add <a class="link" href="file-fdw.html" title="F.15. file_fdw"><code class="filename">contrib/file_fdw</code></a>
@@ -775,7 +775,7 @@
        fix heap_page_item to return infomasks as 32-bit values (Alvaro Herrera)
       </p><p>       This avoids returning negative values, which was confusing.  The
        underlying value is a 16-bit unsigned integer.
-      </p></li></ul></div><div class="sect4" id="id-1.11.6.126.5.15.3"><div class="titlepage"><div><div><h5 class="title">E.122.3.13.1. Security</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add <a class="link" href="sepgsql.html" title="F.36. sepgsql"><code class="filename">contrib/sepgsql</code></a>
+      </p></li></ul></div><div class="sect4" id="id-1.11.6.131.5.15.3"><div class="titlepage"><div><div><h5 class="title">E.127.3.13.1. Security</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Add <a class="link" href="sepgsql.html" title="F.36. sepgsql"><code class="filename">contrib/sepgsql</code></a>
         to interface permission checks with <acronym class="acronym">SELinux</acronym> (KaiGai Kohei)
        </p><p>        This uses the new <a class="link" href="sql-security-label.html" title="SECURITY LABEL"><code class="command">SECURITY LABEL</code></a>
         facility.
@@ -787,7 +787,7 @@
        </p></li><li class="listitem"><p>        Add <code class="filename">dummy_seclabel</code>
         contrib module (KaiGai Kohei)
        </p><p>        This is used for permission regression testing.
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.15.4"><div class="titlepage"><div><div><h5 class="title">E.122.3.13.2. Performance</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>         Add support for <code class="literal">LIKE</code> and <code class="literal">ILIKE</code> index
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.15.4"><div class="titlepage"><div><div><h5 class="title">E.127.3.13.2. Performance</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>         Add support for <code class="literal">LIKE</code> and <code class="literal">ILIKE</code> index
          searches to <a class="link" href="pgtrgm.html" title="F.32. pg_trgm"><code class="filename">contrib/pg_trgm</code></a> (Alexander
          Korotkov)
        </p></li><li class="listitem"><p>         Add <code class="function">levenshtein_less_equal()</code> function to <a class="link" href="fuzzystrmatch.html" title="F.16. fuzzystrmatch"><code class="filename">contrib/fuzzystrmatch</code></a>,
@@ -798,14 +798,14 @@
          databases with many relations (Bruce Momjian)
        </p></li><li class="listitem"><p>         Add flag to <a class="link" href="pgbench.html" title="pgbench"><code class="filename">contrib/pgbench</code></a> to
          report per-statement latencies (Florian Pflug)
-       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.126.5.15.5"><div class="titlepage"><div><div><h5 class="title">E.122.3.13.3. Fsync Testing</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>         Move <code class="filename">src/tools/test_fsync</code> to <a class="link" href="pgtestfsync.html" title="pg_test_fsync"><code class="filename">contrib/pg_test_fsync</code></a>
+       </p></li></ul></div></div><div class="sect4" id="id-1.11.6.131.5.15.5"><div class="titlepage"><div><div><h5 class="title">E.127.3.13.3. Fsync Testing</h5></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>         Move <code class="filename">src/tools/test_fsync</code> to <a class="link" href="pgtestfsync.html" title="pg_test_fsync"><code class="filename">contrib/pg_test_fsync</code></a>
          (Bruce Momjian, Tom Lane)
        </p></li><li class="listitem"><p>        Add <code class="literal">O_DIRECT</code> support to <a class="link" href="pgtestfsync.html" title="pg_test_fsync"><code class="filename">contrib/pg_test_fsync</code></a>
         (Bruce Momjian)
        </p><p>        This matches the use of <code class="literal">O_DIRECT</code> by <a class="link" href="runtime-config-wal.html#GUC-WAL-SYNC-METHOD"><code class="varname">wal_sync_method</code></a>.
        </p></li><li class="listitem"><p>         Add new tests to <a class="link" href="pgtestfsync.html" title="pg_test_fsync"><code class="filename">contrib/pg_test_fsync</code></a>
          (Bruce Momjian)
-       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.126.5.16"><div class="titlepage"><div><div><h4 class="title">E.122.3.14. Documentation</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Extensive <a class="link" href="ecpg.html" title="Chapter 35. ECPG - Embedded SQL in C"><span class="application">ECPG</span></a>
+       </p></li></ul></div></div></div><div class="sect3" id="id-1.11.6.131.5.16"><div class="titlepage"><div><div><h4 class="title">E.127.3.14. Documentation</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        Extensive <a class="link" href="ecpg.html" title="Chapter 35. ECPG - Embedded SQL in C"><span class="application">ECPG</span></a>
         documentation improvements (Satoshi Nagayasu)
       </p></li><li class="listitem"><p>        Extensive proofreading and documentation improvements
         (Thom Brown, Josh Kupershmidt, Susanne Ebrecht)
@@ -833,4 +833,4 @@
        with non-ASCII letters in contributor names.  These are now
        transliterated so that they are reasonably legible without assumptions
        about character set.
-      </p></li></ul></div></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="release-9-1-1.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="release.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="release-9-0-23.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">E.121. Release 9.1.1 </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> E.123. Release 9.0.23</td></tr></table></div></body></html>
+      </p></li></ul></div></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="release-9-1-1.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="release.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="release-9-0-23.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">E.126. Release 9.1.1 </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> E.128. Release 9.0.23</td></tr></table></div></body></html>

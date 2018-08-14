@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>33.1. Database Connection Control Functions</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="libpq.html" title="Chapter 33. libpq - C Library" /><link rel="next" href="libpq-status.html" title="33.2. Connection Status Functions" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">33.1. Database Connection Control Functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="libpq.html" title="Chapter 33. libpq - C Library">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="libpq.html" title="Chapter 33. libpq - C Library">Up</a></td><th width="60%" align="center">Chapter 33. <span xmlns="http://www.w3.org/1999/xhtml" class="application">libpq</span> - C Library</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.4 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="libpq-status.html" title="33.2. Connection Status Functions">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="LIBPQ-CONNECT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">33.1. Database Connection Control Functions</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="libpq-connect.html#LIBPQ-CONNSTRING">33.1.1. Connection Strings</a></span></dt><dt><span class="sect2"><a href="libpq-connect.html#LIBPQ-PARAMKEYWORDS">33.1.2. Parameter Key Words</a></span></dt></dl></div><p>   The following functions deal with making a connection to a
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>33.1. Database Connection Control Functions</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="libpq.html" title="Chapter 33. libpq - C Library" /><link rel="next" href="libpq-status.html" title="33.2. Connection Status Functions" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">33.1. Database Connection Control Functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="libpq.html" title="Chapter 33. libpq - C Library">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="libpq.html" title="Chapter 33. libpq - C Library">Up</a></td><th width="60%" align="center">Chapter 33. <span xmlns="http://www.w3.org/1999/xhtml" class="application">libpq</span> - C Library</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.5 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="libpq-status.html" title="33.2. Connection Status Functions">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="LIBPQ-CONNECT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">33.1. Database Connection Control Functions</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="libpq-connect.html#LIBPQ-CONNSTRING">33.1.1. Connection Strings</a></span></dt><dt><span class="sect2"><a href="libpq-connect.html#LIBPQ-PARAMKEYWORDS">33.1.2. Parameter Key Words</a></span></dt></dl></div><p>   The following functions deal with making a connection to a
    <span class="productname">PostgreSQL</span> backend server.  An
    application program can have several backend connections open at
    one time.  (One reason to do that is to access more than one
@@ -438,8 +438,8 @@ postgresql://%2Fvar%2Flib%2Fpostgresql/dbname</pre><p>
        authentication fails, the remaining hosts in the list are not tried.
      </p><p>       If a password file is used, you can have different passwords for
        different hosts. All the other connection options are the same for every
-       host, it is not possible to e.g. specify a different username for
-       different hosts.
+       host in the list; it is not possible to e.g. specify different
+       usernames for different hosts.
      </p></div></div><div class="sect2" id="LIBPQ-PARAMKEYWORDS"><div class="titlepage"><div><div><h3 class="title">33.1.2. Parameter Key Words</h3></div></div></div><p>    The currently recognized parameter key words are:
 
     </p><div class="variablelist"><dl class="variablelist"><dt id="LIBPQ-CONNECT-HOST"><span class="term"><code class="literal">host</code></span></dt><dd><p>        Name of host to connect to.<a id="id-1.7.3.8.4.2.1.1.2.1.1" class="indexterm"></a>
@@ -448,13 +448,14 @@ postgresql://%2Fvar%2Flib%2Fpostgresql/dbname</pre><p>
         name of the directory in which the socket file is stored.  If
         multiple host names are specified, each will be tried in turn in
         the order given.  The default behavior when <code class="literal">host</code> is
-        not specified is to connect to a Unix-domain
+        not specified, or is empty, is to connect to a Unix-domain
         socket<a id="id-1.7.3.8.4.2.1.1.2.1.3" class="indexterm"></a> in
         <code class="filename">/tmp</code> (or whatever socket directory was specified
         when <span class="productname">PostgreSQL</span> was built). On machines without
         Unix-domain sockets, the default is to connect to <code class="literal">localhost</code>.
        </p><p>        A comma-separated list of host names is also accepted, in which case
-        each host name in the list is tried in order. See
+        each host name in the list is tried in order; an empty item in the
+        list selects the default behavior as explained above. See
         <a class="xref" href="libpq-connect.html#LIBPQ-MULTIPLE-HOSTS" title="33.1.1.3. Specifying Multiple Hosts">Section 33.1.1.3</a> for details.
        </p></dd><dt id="LIBPQ-CONNECT-HOSTADDR"><span class="term"><code class="literal">hostaddr</code></span></dt><dd><p>        Numeric IP address of host to connect to.  This should be in the
         standard IPv4 address format, e.g., <code class="literal">172.28.40.9</code>.  If
@@ -481,11 +482,14 @@ postgresql://%2Fvar%2Flib%2Fpostgresql/dbname</pre><p>
           </p></li></ul></div><p>
         Note that authentication is likely to fail if <code class="literal">host</code>
         is not the name of the server at network address <code class="literal">hostaddr</code>.
-        Also, note that <code class="literal">host</code> rather than <code class="literal">hostaddr</code>
+        Also, when both <code class="literal">host</code> and <code class="literal">hostaddr</code>
+        are specified, <code class="literal">host</code>
         is used to identify the connection in a password file (see
         <a class="xref" href="libpq-pgpass.html" title="33.15. The Password File">Section 33.15</a>).
        </p><p>        A comma-separated list of <code class="literal">hostaddr</code> values is also
-        accepted, in which case each host in the list is tried in order. See
+        accepted, in which case each host in the list is tried in order.
+        An empty item in the list causes the corresponding host name to be
+        used, or the default host name if that is empty as well. See
         <a class="xref" href="libpq-connect.html#LIBPQ-MULTIPLE-HOSTS" title="33.1.1.3. Specifying Multiple Hosts">Section 33.1.1.3</a> for details.
        </p><p>        Without either a host name or host address,
         <span class="application">libpq</span> will connect using a
@@ -495,9 +499,12 @@ postgresql://%2Fvar%2Flib%2Fpostgresql/dbname</pre><p>
         name extension for Unix-domain
         connections.<a id="id-1.7.3.8.4.2.1.3.2.1.1" class="indexterm"></a>
         If multiple hosts were given in the <code class="literal">host</code> or
-        <code class="literal">hostaddr</code> parameters, this parameter may specify a list
-        of ports of equal length, or it may specify a single port number to
-        be used for all hosts.
+        <code class="literal">hostaddr</code> parameters, this parameter may specify a
+        comma-separated list of ports of the same length as the host list, or
+        it may specify a single port number to be used for all hosts.
+        An empty string, or an empty item in a comma-separated list,
+        specifies the default port number established
+        when <span class="productname">PostgreSQL</span> was built.
        </p></dd><dt id="LIBPQ-CONNECT-DBNAME"><span class="term"><code class="literal">dbname</code></span></dt><dd><p>       The database name.  Defaults to be the same as the user name.
        In certain contexts, the value is checked for extended
        formats; see <a class="xref" href="libpq-connect.html#LIBPQ-CONNSTRING" title="33.1.1. Connection Strings">Section 33.1.1</a> for more details on

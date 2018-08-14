@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>5.7. Row Security Policies</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="ddl-priv.html" title="5.6. Privileges" /><link rel="next" href="ddl-schemas.html" title="5.8. Schemas" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">5.7. Row Security Policies</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="ddl-priv.html" title="5.6. Privileges">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="ddl.html" title="Chapter 5. Data Definition">Up</a></td><th width="60%" align="center">Chapter 5. Data Definition</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.4 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="ddl-schemas.html" title="5.8. Schemas">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="DDL-ROWSECURITY"><div class="titlepage"><div><div><h2 class="title" style="clear: both">5.7. Row Security Policies</h2></div></div></div><a id="id-1.5.4.9.2" class="indexterm"></a><a id="id-1.5.4.9.3" class="indexterm"></a><p>   In addition to the SQL-standard <a class="link" href="ddl-priv.html" title="5.6. Privileges">privilege
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>5.7. Row Security Policies</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="ddl-priv.html" title="5.6. Privileges" /><link rel="next" href="ddl-schemas.html" title="5.8. Schemas" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">5.7. Row Security Policies</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="ddl-priv.html" title="5.6. Privileges">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="ddl.html" title="Chapter 5. Data Definition">Up</a></td><th width="60%" align="center">Chapter 5. Data Definition</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.5 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="ddl-schemas.html" title="5.8. Schemas">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="DDL-ROWSECURITY"><div class="titlepage"><div><div><h2 class="title" style="clear: both">5.7. Row Security Policies</h2></div></div></div><a id="id-1.5.4.9.2" class="indexterm"></a><a id="id-1.5.4.9.3" class="indexterm"></a><p>   In addition to the SQL-standard <a class="link" href="ddl-priv.html" title="5.6. Privileges">privilege
    system</a> available through <a class="xref" href="sql-grant.html" title="GRANT"><span class="refentrytitle">GRANT</span></a>,
    tables can have <em class="firstterm">row security policies</em> that restrict,
    on a per-user basis, which rows can be returned by normal queries
@@ -66,18 +66,33 @@
 ALTER TABLE accounts ENABLE ROW LEVEL SECURITY;
 
 CREATE POLICY account_managers ON accounts TO managers
-    USING (manager = current_user);</pre><p>   If no role is specified, or the special user name
+    USING (manager = current_user);</pre><p>   The policy above implicitly provides a <code class="literal">WITH CHECK</code>
+   clause identical to its <code class="literal">USING</code> clause, so that the
+   constraint applies both to rows selected by a command (so a manager
+   cannot <code class="command">SELECT</code>, <code class="command">UPDATE</code>,
+   or <code class="command">DELETE</code> existing rows belonging to a different
+   manager) and to rows modified by a command (so rows belonging to a
+   different manager cannot be created via <code class="command">INSERT</code>
+   or <code class="command">UPDATE</code>).
+  </p><p>   If no role is specified, or the special user name
    <code class="literal">PUBLIC</code> is used, then the policy applies to all
-   users on the system.  To allow all users to access their own row in
+   users on the system.  To allow all users to access only their own row in
    a <code class="literal">users</code> table, a simple policy can be used:
   </p><pre class="programlisting">CREATE POLICY user_policy ON users
-    USING (user_name = current_user);</pre><p>   To use a different policy for rows that are being added to the table
-   compared to those rows that are visible, the <code class="literal">WITH CHECK</code>
-   clause can be used.  This policy would allow all users to view all rows
+    USING (user_name = current_user);</pre><p>   This works similarly to the previous example.
+  </p><p>   To use a different policy for rows that are being added to the table
+   compared to those rows that are visible, multiple policies can be
+   combined.  This pair of policies would allow all users to view all rows
    in the <code class="literal">users</code> table, but only modify their own:
-  </p><pre class="programlisting">CREATE POLICY user_policy ON users
-    USING (true)
-    WITH CHECK (user_name = current_user);</pre><p>   Row security can also be disabled with the <code class="command">ALTER TABLE</code>
+  </p><pre class="programlisting">CREATE POLICY user_sel_policy ON users
+    FOR SELECT
+    USING (true);
+CREATE POLICY user_mod_policy ON users
+    USING (user_name = current_user);</pre><p>   In a <code class="command">SELECT</code> command, these two policies are combined
+   using <code class="literal">OR</code>, with the net effect being that all rows
+   can be selected.  In other command types, only the second policy applies,
+   so that the effects are the same as before.
+  </p><p>   Row security can also be disabled with the <code class="command">ALTER TABLE</code>
    command.  Disabling row security does not remove any policies that are
    defined on the table; they are simply ignored.  Then all rows in the
    table are visible and modifiable, subject to the standard SQL privileges
