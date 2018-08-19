@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>33.2. Connection Status Functions</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="libpq-connect.html" title="33.1. Database Connection Control Functions" /><link rel="next" href="libpq-exec.html" title="33.3. Command Execution Functions" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">33.2. Connection Status Functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="libpq-connect.html" title="33.1. Database Connection Control Functions">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="libpq.html" title="Chapter 33. libpq - C Library">Up</a></td><th width="60%" align="center">Chapter 33. <span xmlns="http://www.w3.org/1999/xhtml" class="application">libpq</span> - C Library</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.4 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="libpq-exec.html" title="33.3. Command Execution Functions">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="LIBPQ-STATUS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">33.2. Connection Status Functions</h2></div></div></div><p>   These functions can be used to interrogate the status
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>33.2. Connection Status Functions</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="libpq-connect.html" title="33.1. Database Connection Control Functions" /><link rel="next" href="libpq-exec.html" title="33.3. Command Execution Functions" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">33.2. Connection Status Functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="libpq-connect.html" title="33.1. Database Connection Control Functions">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="libpq.html" title="Chapter 33. libpq - C Library">Up</a></td><th width="60%" align="center">Chapter 33. <span xmlns="http://www.w3.org/1999/xhtml" class="application">libpq</span> - C Library</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.5 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="libpq-exec.html" title="33.3. Command Execution Functions">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="LIBPQ-STATUS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">33.2. Connection Status Functions</h2></div></div></div><p>   These functions can be used to interrogate the status
    of an existing database connection object.
   </p><div class="tip"><h3 class="title">Tip</h3><p>    <a id="id-1.7.3.9.3.1.1" class="indexterm"></a>
     <a id="id-1.7.3.9.3.1.2" class="indexterm"></a>
@@ -28,19 +28,53 @@
       <a id="id-1.7.3.9.4.6.3.1.2" class="indexterm"></a>
      </span></dt><dd><p>       Returns the password of the connection.
 </p><pre class="synopsis">char *PQpass(const PGconn *conn);</pre><p>
+      </p><p>       <code class="function">PQpass</code> will return either the password specified
+       in the connection parameters, or if there was none and the password
+       was obtained from the <a class="link" href="libpq-pgpass.html" title="33.15. The Password File">password
+       file</a>, it will return that.  In the latter case,
+       if multiple hosts were specified in the connection parameters, it is
+       not possible to rely on the result of <code class="function">PQpass</code> until
+       the connection is established.  The status of the connection can be
+       checked using the function <code class="function">PQstatus</code>.
       </p></dd><dt id="LIBPQ-PQHOST"><span class="term">      <code class="function">PQhost</code>
       <a id="id-1.7.3.9.4.6.4.1.2" class="indexterm"></a>
-     </span></dt><dd><p>       Returns the server host name of the connection.
+     </span></dt><dd><p>       Returns the server host name of the active connection.
        This can be a host name, an IP address, or a directory path if the
        connection is via Unix socket.  (The path case can be distinguished
        because it will always be an absolute path, beginning
        with <code class="literal">/</code>.)
 </p><pre class="synopsis">char *PQhost(const PGconn *conn);</pre><p>
+      </p><p>       If the connection parameters specified both <code class="literal">host</code> and
+       <code class="literal">hostaddr</code>, then <code class="function">PQhost</code> will
+       return the <code class="literal">host</code> information.  If only
+       <code class="literal">hostaddr</code> was specified, then that is returned.
+       If multiple hosts were specified in the connection parameters,
+       <code class="function">PQhost</code> returns the host actually connected to.
+      </p><p>       <code class="function">PQhost</code> returns <code class="symbol">NULL</code> if the
+       <em class="parameter"><code>conn</code></em> argument is <code class="symbol">NULL</code>.
+       Otherwise, if there is an error producing the host information (perhaps
+       if the connection has not been fully established or there was an
+       error), it returns an empty string.
+      </p><p>       If multiple hosts were specified in the connection parameters, it is
+       not possible to rely on the result of <code class="function">PQhost</code> until
+       the connection is established.  The status of the connection can be
+       checked using the function <code class="function">PQstatus</code>.
       </p></dd><dt id="LIBPQ-PQPORT"><span class="term">      <code class="function">PQport</code>
       <a id="id-1.7.3.9.4.6.5.1.2" class="indexterm"></a>
-     </span></dt><dd><p>       Returns the port of the connection.
+     </span></dt><dd><p>       Returns the port of the active connection.
 
 </p><pre class="synopsis">char *PQport(const PGconn *conn);</pre><p>
+      </p><p>       If multiple ports were specified in the connection parameters,
+       <code class="function">PQport</code> returns the port actually connected to.
+      </p><p>       <code class="function">PQport</code> returns <code class="symbol">NULL</code> if the
+       <em class="parameter"><code>conn</code></em> argument is <code class="symbol">NULL</code>.
+       Otherwise, if there is an error producing the port information (perhaps
+       if the connection has not been fully established or there was an
+       error), it returns an empty string.
+      </p><p>       If multiple ports were specified in the connection parameters, it is
+       not possible to rely on the result of <code class="function">PQport</code> until
+       the connection is established.  The status of the connection can be
+       checked using the function <code class="function">PQstatus</code>.
       </p></dd><dt id="LIBPQ-PQTTY"><span class="term">      <code class="function">PQtty</code>
       <a id="id-1.7.3.9.4.6.6.1.2" class="indexterm"></a>
      </span></dt><dd><p>       Returns the debug <acronym class="acronym">TTY</acronym> of the connection.

@@ -1,3 +1,41 @@
+postgresql-10 (10.5-0ubuntu0.18.04) bionic-security; urgency=medium
+
+  * New upstream release (LP: #1786938)
+    - Fix failure to reset libpq's state fully between connection attempts
+      .
+      An unprivileged user of dblink or postgres_fdw could bypass the checks
+      intended to prevent use of server-side credentials, such as a ~/.pgpass
+      file owned by the operating-system user running the server.  Servers
+      allowing peer authentication on local connections are particularly
+      vulnerable.  Other attacks such as SQL injection into a postgres_fdw
+      session are also possible. Attacking postgres_fdw in this way requires
+      the ability to create a foreign server object with selected connection
+      parameters, but any user with access to dblink could exploit the
+      problem. In general, an attacker with the ability to select the
+      connection parameters for a libpq-using application could cause
+      mischief, though other plausible attack scenarios are harder to think
+      of. Our thanks to Andrew Krasichkov for reporting this issue.
+      (CVE-2018-10915)
+    - Fix INSERT ... ON CONFLICT UPDATE through a view that isn't just SELECT
+      FROM ...
+      .
+      Erroneous expansion of an updatable view could lead to crashes or
+      attribute ... has the wrong type errors, if the view's SELECT list
+      doesn't match one-to-one with the underlying table's columns.
+      Furthermore, this bug could be leveraged to allow updates of columns
+      that an attacking user lacks UPDATE privilege for, if that user has
+      INSERT and UPDATE privileges for some other column(s) of the table. Any
+      user could also use it for disclosure of server memory.
+      (CVE-2018-10925)
+    - d/libecpg-dev.install: Add new pgtypes header.
+    - d/libpgtypes3.symbols: Add new pgtypes symbol.
+    - d/p/filter-debug-prefix-map: update to match 10.5
+    - update maintainers
+    - Details about these and other changes can be found at
+      https://www.postgresql.org/docs/10/static/release-10-5.html
+
+ -- Christian Ehrhardt <christian.ehrhardt@canonical.com>  Tue, 14 Aug 2018 14:49:18 +0200
+
 postgresql-10 (10.4-0ubuntu0.18.04bb1) bionic; urgency=medium
 
   * Balabit patched version
