@@ -1,3 +1,12 @@
+postgresql-10 (10.6-0ubuntu0.18.04.1) bionic-security; urgency=medium
+
+  * SECURITY UPDATE: Updated to 10.6 to fix security issue.
+    - Details about the new release can be found at
+      https://www.postgresql.org/docs/10/release-10-6.html
+    - CVE-2018-16850
+
+ -- Marc Deslauriers <marc.deslauriers@ubuntu.com>  Tue, 13 Nov 2018 15:18:23 -0500
+
 postgresql-10 (10.5-0ubuntu0.18.04) bionic-security; urgency=medium
 
   * New upstream release (LP: #1786938)

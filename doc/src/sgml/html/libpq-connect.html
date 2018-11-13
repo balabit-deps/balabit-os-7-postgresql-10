@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>33.1. Database Connection Control Functions</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="libpq.html" title="Chapter 33. libpq - C Library" /><link rel="next" href="libpq-status.html" title="33.2. Connection Status Functions" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">33.1. Database Connection Control Functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="libpq.html" title="Chapter 33. libpq - C Library">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="libpq.html" title="Chapter 33. libpq - C Library">Up</a></td><th width="60%" align="center">Chapter 33. <span xmlns="http://www.w3.org/1999/xhtml" class="application">libpq</span> - C Library</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.5 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="libpq-status.html" title="33.2. Connection Status Functions">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="LIBPQ-CONNECT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">33.1. Database Connection Control Functions</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="libpq-connect.html#LIBPQ-CONNSTRING">33.1.1. Connection Strings</a></span></dt><dt><span class="sect2"><a href="libpq-connect.html#LIBPQ-PARAMKEYWORDS">33.1.2. Parameter Key Words</a></span></dt></dl></div><p>   The following functions deal with making a connection to a
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>33.1. Database Connection Control Functions</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="libpq.html" title="Chapter 33. libpq - C Library" /><link rel="next" href="libpq-status.html" title="33.2. Connection Status Functions" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">33.1. Database Connection Control Functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="libpq.html" title="Chapter 33. libpq - C Library">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="libpq.html" title="Chapter 33. libpq - C Library">Up</a></td><th width="60%" align="center">Chapter 33. <span xmlns="http://www.w3.org/1999/xhtml" class="application">libpq</span> - C Library</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.6 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="libpq-status.html" title="33.2. Connection Status Functions">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="LIBPQ-CONNECT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">33.1. Database Connection Control Functions</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="libpq-connect.html#LIBPQ-CONNSTRING">33.1.1. Connection Strings</a></span></dt><dt><span class="sect2"><a href="libpq-connect.html#LIBPQ-PARAMKEYWORDS">33.1.2. Parameter Key Words</a></span></dt></dl></div><p>   The following functions deal with making a connection to a
    <span class="productname">PostgreSQL</span> backend server.  An
    application program can have several backend connections open at
    one time.  (One reason to do that is to access more than one
@@ -143,26 +143,32 @@ PostgresPollingStatusType PQconnectPoll(PGconn *conn);</pre><p>
       </p><p>       Neither <code class="function">PQconnectStartParams</code> nor <code class="function">PQconnectStart</code>
        nor <code class="function">PQconnectPoll</code> will block, so long as a number of
        restrictions are met:
-       </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>          The <code class="literal">hostaddr</code> and <code class="literal">host</code> parameters are used appropriately to ensure that
-          name and reverse name queries are not made. See the documentation of
-          these parameters in <a class="xref" href="libpq-connect.html#LIBPQ-PARAMKEYWORDS" title="33.1.2. Parameter Key Words">Section 33.1.2</a> for details.
+       </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>          The <code class="literal">hostaddr</code> parameter must be used appropriately
+          to prevent DNS queries from being made.  See the documentation of
+          this parameter in <a class="xref" href="libpq-connect.html#LIBPQ-PARAMKEYWORDS" title="33.1.2. Parameter Key Words">Section 33.1.2</a> for details.
          </p></li><li class="listitem"><p>          If you call <code class="function">PQtrace</code>, ensure that the stream object
           into which you trace will not block.
-         </p></li><li class="listitem"><p>          You ensure that the socket is in the appropriate state
+         </p></li><li class="listitem"><p>          You must ensure that the socket is in the appropriate state
           before calling <code class="function">PQconnectPoll</code>, as described below.
          </p></li></ul></div><p>
-      </p><p>       Note: use of <code class="function">PQconnectStartParams</code> is analogous to
-       <code class="function">PQconnectStart</code> shown below.
-      </p><p>       To begin a nonblocking connection request, call <code class="literal">conn = PQconnectStart("<em class="replaceable"><code>connection_info_string</code></em>")</code>.
-       If <code class="varname">conn</code> is null, then <span class="application">libpq</span> has been unable to allocate a new <code class="structname">PGconn</code>
-       structure. Otherwise, a valid <code class="structname">PGconn</code> pointer is returned (though not yet
-       representing a valid connection to the database). On return from
-       <code class="function">PQconnectStart</code>, call <code class="literal">status = PQstatus(conn)</code>. If <code class="varname">status</code> equals
-       <code class="symbol">CONNECTION_BAD</code>, <code class="function">PQconnectStart</code> has failed.
-      </p><p>       If <code class="function">PQconnectStart</code> succeeds, the next stage is to poll
-       <span class="application">libpq</span> so that it can proceed with the connection sequence.
+      </p><p>       To begin a nonblocking connection request,
+       call <code class="function">PQconnectStart</code>
+       or <code class="function">PQconnectStartParams</code>.  If the result is null,
+       then <span class="application">libpq</span> has been unable to allocate a
+       new <code class="structname">PGconn</code> structure.  Otherwise, a
+       valid <code class="structname">PGconn</code> pointer is returned (though not
+       yet representing a valid connection to the database).  Next
+       call <code class="literal">PQstatus(conn)</code>.  If the result
+       is <code class="symbol">CONNECTION_BAD</code>, the connection attempt has already
+       failed, typically because of invalid connection parameters.
+      </p><p>       If <code class="function">PQconnectStart</code>
+       or <code class="function">PQconnectStartParams</code> succeeds, the next stage
+       is to poll <span class="application">libpq</span> so that it can proceed with
+       the connection sequence.
        Use <code class="function">PQsocket(conn)</code> to obtain the descriptor of the
        socket underlying the database connection.
+       (Caution: do not assume that the socket remains the same
+       across <code class="function">PQconnectPoll</code> calls.)
        Loop thus: If <code class="function">PQconnectPoll(conn)</code> last returned
        <code class="symbol">PGRES_POLLING_READING</code>, wait until the socket is ready to
        read (as indicated by <code class="function">select()</code>, <code class="function">poll()</code>, or
@@ -171,9 +177,8 @@ PostgresPollingStatusType PQconnectPoll(PGconn *conn);</pre><p>
        Conversely, if <code class="function">PQconnectPoll(conn)</code> last returned
        <code class="symbol">PGRES_POLLING_WRITING</code>, wait until the socket is ready
        to write, then call <code class="function">PQconnectPoll(conn)</code> again.
-       If you have yet to call
-       <code class="function">PQconnectPoll</code>, i.e., just after the call to
-       <code class="function">PQconnectStart</code>, behave as if it last returned
+       On the first iteration, i.e. if you have yet to call
+       <code class="function">PQconnectPoll</code>, behave as if it last returned
        <code class="symbol">PGRES_POLLING_WRITING</code>.  Continue this loop until
        <code class="function">PQconnectPoll(conn)</code> returns
        <code class="symbol">PGRES_POLLING_FAILED</code>, indicating the connection procedure
@@ -223,10 +228,12 @@ PostgresPollingStatusType PQconnectPoll(PGconn *conn);</pre><p>
        Otherwise, <code class="function">PQconnectStart</code> followed by a
        <code class="function">PQconnectPoll</code> loop is equivalent to
        <code class="function">PQconnectdb</code>.
-      </p><p>       Note that if <code class="function">PQconnectStart</code> returns a non-null pointer, you must call
-       <code class="function">PQfinish</code> when you are finished with it, in order to dispose of
-       the structure and any associated memory blocks. This must be done even if
-       the connection attempt fails or is abandoned.
+      </p><p>       Note that when <code class="function">PQconnectStart</code>
+       or <code class="function">PQconnectStartParams</code> returns a non-null
+       pointer, you must call <code class="function">PQfinish</code> when you are
+       finished with it, in order to dispose of the structure and any
+       associated memory blocks.  This must be done even if the connection
+       attempt fails or is abandoned.
       </p></dd><dt id="LIBPQ-PQCONNDEFAULTS"><span class="term"><code class="function">PQconndefaults</code><a id="id-1.7.3.8.2.12.6.1.2" class="indexterm"></a></span></dt><dd><p>       Returns the default connection options.
 </p><pre class="synopsis">PQconninfoOption *PQconndefaults(void);
 
@@ -422,15 +429,17 @@ postgresql://%2Fvar%2Flib%2Fpostgresql/dbname</pre><p>
    </p></div><div class="sect3" id="LIBPQ-MULTIPLE-HOSTS"><div class="titlepage"><div><div><h4 class="title">33.1.1.3. Specifying Multiple Hosts</h4></div></div></div><p>       It is possible to specify multiple hosts to connect to, so that they are
        tried in the given order. In the Keyword/Value format, the <code class="literal">host</code>,
        <code class="literal">hostaddr</code>, and <code class="literal">port</code> options accept a comma-separated
-       list of values. The same number of elements must be given in each option, such
+       list of values. The same number of elements must be given in each
+       option that is specified, such
        that e.g. the first <code class="literal">hostaddr</code> corresponds to the first host name,
        the second <code class="literal">hostaddr</code> corresponds to the second host name, and so
        forth. As an exception, if only one <code class="literal">port</code> is specified, it
        applies to all the hosts.
      </p><p>       In the connection URI format, you can list multiple <code class="literal">host:port</code> pairs
-       separated by commas, in the <code class="literal">host</code> component of the URI. In either
-       format, a single hostname can also translate to multiple network addresses. A
-       common example of this is a host that has both an IPv4 and an IPv6 address.
+       separated by commas, in the <code class="literal">host</code> component of the URI.
+     </p><p>       In either format, a single host name can translate to multiple network
+       addresses. A common example of this is a host that has both an IPv4 and
+       an IPv6 address.
      </p><p>       When multiple hosts are specified, or when a single hostname is
        translated to multiple addresses,  all the hosts and addresses will be
        tried in order, until one succeeds. If none of the hosts can be reached,
@@ -445,9 +454,8 @@ postgresql://%2Fvar%2Flib%2Fpostgresql/dbname</pre><p>
     </p><div class="variablelist"><dl class="variablelist"><dt id="LIBPQ-CONNECT-HOST"><span class="term"><code class="literal">host</code></span></dt><dd><p>        Name of host to connect to.<a id="id-1.7.3.8.4.2.1.1.2.1.1" class="indexterm"></a>
         If a host name begins with a slash, it specifies Unix-domain
         communication rather than TCP/IP communication; the value is the
-        name of the directory in which the socket file is stored.  If
-        multiple host names are specified, each will be tried in turn in
-        the order given.  The default behavior when <code class="literal">host</code> is
+        name of the directory in which the socket file is stored.
+        The default behavior when <code class="literal">host</code> is
         not specified, or is empty, is to connect to a Unix-domain
         socket<a id="id-1.7.3.8.4.2.1.1.2.1.3" class="indexterm"></a> in
         <code class="filename">/tmp</code> (or whatever socket directory was specified
@@ -468,8 +476,12 @@ postgresql://%2Fvar%2Flib%2Fpostgresql/dbname</pre><p>
         required for GSSAPI or SSPI authentication
         methods, as well as for <code class="literal">verify-full</code> SSL
         certificate verification.  The following rules are used:
-        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>           If <code class="literal">host</code> is specified without <code class="literal">hostaddr</code>,
-           a host name lookup occurs.
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>           If <code class="literal">host</code> is specified
+           without <code class="literal">hostaddr</code>, a host name lookup occurs.
+           (When using <code class="function">PQconnectPoll</code>, the lookup occurs
+           when <code class="function">PQconnectPoll</code> first considers this host
+           name, and it may cause <code class="function">PQconnectPoll</code> to block
+           for a significant amount of time.)
           </p></li><li class="listitem"><p>           If <code class="literal">hostaddr</code> is specified without <code class="literal">host</code>,
            the value for <code class="literal">hostaddr</code> gives the server network address.
            The connection attempt will fail if the authentication
@@ -518,10 +530,11 @@ postgresql://%2Fvar%2Flib%2Fpostgresql/dbname</pre><p>
        Defaults to <code class="filename">~/.pgpass</code>, or
        <code class="filename">%APPDATA%\postgresql\pgpass.conf</code> on Microsoft Windows.
        (No error is reported if this file does not exist.)
-      </p></dd><dt id="LIBPQ-CONNECT-CONNECT-TIMEOUT"><span class="term"><code class="literal">connect_timeout</code></span></dt><dd><p>       Maximum wait for connection, in seconds (write as a decimal integer
-       string). Zero or not specified means wait indefinitely.  It is not
-       recommended to use a timeout of less than 2 seconds.
-       This timeout applies separately to each connection attempt.
+      </p></dd><dt id="LIBPQ-CONNECT-CONNECT-TIMEOUT"><span class="term"><code class="literal">connect_timeout</code></span></dt><dd><p>       Maximum wait for connection, in seconds (write as a decimal integer,
+       e.g. <code class="literal">10</code>).  Zero, negative, or not specified means
+       wait indefinitely.  The minimum allowed timeout is 2 seconds, therefore
+       a value of <code class="literal">1</code> is interpreted as <code class="literal">2</code>.
+       This timeout applies separately to each host name or IP address.
        For example, if you specify two hosts and <code class="literal">connect_timeout</code>
        is 5, each host will time out if no connection is made within 5
        seconds, so the total time spent waiting for a connection might be
