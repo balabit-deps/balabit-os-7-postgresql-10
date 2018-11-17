@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
 .\"      Date: 2018
-.\"    Manual: PostgreSQL 10.5 Documentation
-.\"    Source: PostgreSQL 10.5
+.\"    Manual: PostgreSQL 10.6 Documentation
+.\"    Source: PostgreSQL 10.6
 .\"  Language: English
 .\"
-.TH "REFRESH MATERIALIZED VIEW" "7" "2018" "PostgreSQL 10.5" "PostgreSQL 10.5 Documentation"
+.TH "REFRESH MATERIALIZED VIEW" "7" "2018" "PostgreSQL 10.6" "PostgreSQL 10.6 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -38,7 +38,7 @@ REFRESH MATERIALIZED VIEW [ CONCURRENTLY ] \fIname\fR
 .SH "DESCRIPTION"
 .PP
 \fBREFRESH MATERIALIZED VIEW\fR
-completely replaces the contents of a materialized view\&. The old contents are discarded\&. If
+completely replaces the contents of a materialized view\&. To execute this command you must be the owner of the materialized view\&. The old contents are discarded\&. If
 WITH DATA
 is specified (or defaults) the backing query is executed to provide the new data, and the materialized view is left in a scannable state\&. If
 WITH NO DATA

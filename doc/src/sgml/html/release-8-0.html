@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>E.273. Release 8.0</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="release-8-0-1.html" title="E.272. Release 8.0.1" /><link rel="next" href="release-7-4-30.html" title="E.274. Release 7.4.30" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">E.273. Release 8.0</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="release-8-0-1.html" title="E.272. Release 8.0.1">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="release.html" title="Appendix E. Release Notes">Up</a></td><th width="60%" align="center">Appendix E. Release Notes</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.5 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="release-7-4-30.html" title="E.274. Release 7.4.30">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="RELEASE-8-0"><div class="titlepage"><div><div><h2 class="title" style="clear: both">E.273. Release 8.0</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="release-8-0.html#id-1.11.6.277.3">E.273.1. Overview</a></span></dt><dt><span class="sect2"><a href="release-8-0.html#id-1.11.6.277.4">E.273.2. Migration to Version 8.0</a></span></dt><dt><span class="sect2"><a href="release-8-0.html#id-1.11.6.277.5">E.273.3. Deprecated Features</a></span></dt><dt><span class="sect2"><a href="release-8-0.html#id-1.11.6.277.6">E.273.4. Changes</a></span></dt></dl></div><p><strong>Release date: </strong>2005-01-19</p><div class="sect2" id="id-1.11.6.277.3"><div class="titlepage"><div><div><h3 class="title">E.273.1. Overview</h3></div></div></div><p>    Major changes in this release:
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>E.278. Release 8.0</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="release-8-0-1.html" title="E.277. Release 8.0.1" /><link rel="next" href="release-7-4-30.html" title="E.279. Release 7.4.30" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">E.278. Release 8.0</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="release-8-0-1.html" title="E.277. Release 8.0.1">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="release.html" title="Appendix E. Release Notes">Up</a></td><th width="60%" align="center">Appendix E. Release Notes</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.6 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="release-7-4-30.html" title="E.279. Release 7.4.30">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="RELEASE-8-0"><div class="titlepage"><div><div><h2 class="title" style="clear: both">E.278. Release 8.0</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="release-8-0.html#id-1.11.6.282.3">E.278.1. Overview</a></span></dt><dt><span class="sect2"><a href="release-8-0.html#id-1.11.6.282.4">E.278.2. Migration to Version 8.0</a></span></dt><dt><span class="sect2"><a href="release-8-0.html#id-1.11.6.282.5">E.278.3. Deprecated Features</a></span></dt><dt><span class="sect2"><a href="release-8-0.html#id-1.11.6.282.6">E.278.4. Changes</a></span></dt></dl></div><p><strong>Release date: </strong>2005-01-19</p><div class="sect2" id="id-1.11.6.282.3"><div class="titlepage"><div><div><h3 class="title">E.278.1. Overview</h3></div></div></div><p>    Major changes in this release:
    </p><div class="variablelist"><dl class="variablelist"><dt><span class="term">      Microsoft Windows Native Server
      </span></dt><dd><p>       This is the first <span class="productname">PostgreSQL</span> release
        to run natively on <span class="trademark">Microsoft Windows</span>® as
@@ -59,7 +59,7 @@
      </span></dt><dd><p>       <code class="command">COPY</code> can now read and write
        comma-separated-value files. It has the flexibility to
        interpret nonstandard quoting and separation characters too.
-      </p></dd></dl></div></div><div class="sect2" id="id-1.11.6.277.4"><div class="titlepage"><div><div><h3 class="title">E.273.2. Migration to Version 8.0</h3></div></div></div><p>    A dump/restore using <span class="application">pg_dump</span> is
+      </p></dd></dl></div></div><div class="sect2" id="id-1.11.6.282.4"><div class="titlepage"><div><div><h3 class="title">E.278.2. Migration to Version 8.0</h3></div></div></div><p>    A dump/restore using <span class="application">pg_dump</span> is
     required for those wishing to migrate data from any previous
     release.
    </p><p>    Observe the following incompatibilities:
@@ -159,7 +159,7 @@
       Union and PickSplit methods are now passed a pointer to a
       special <code class="structname">GistEntryVector</code> structure,
       rather than a <code class="type">bytea</code>.
-     </p></li></ul></div></div><div class="sect2" id="id-1.11.6.277.5"><div class="titlepage"><div><div><h3 class="title">E.273.3. Deprecated Features</h3></div></div></div><p>    Some aspects of <span class="productname">PostgreSQL</span>'s behavior
+     </p></li></ul></div></div><div class="sect2" id="id-1.11.6.282.5"><div class="titlepage"><div><div><h3 class="title">E.278.3. Deprecated Features</h3></div></div></div><p>    Some aspects of <span class="productname">PostgreSQL</span>'s behavior
     have been determined to be suboptimal. For the sake of backward
     compatibility these have not been removed in 8.0, but they are
     considered deprecated and will be removed in the next major
@@ -180,9 +180,9 @@
       explicitly specify <code class="option">WITH OIDS</code> if their tables
       require OIDs for compatibility with future releases of
       <span class="productname">PostgreSQL</span>.
-     </p></li></ul></div></div><div class="sect2" id="id-1.11.6.277.6"><div class="titlepage"><div><div><h3 class="title">E.273.4. Changes</h3></div></div></div><p>    Below you will find a detailed account of the changes between
+     </p></li></ul></div></div><div class="sect2" id="id-1.11.6.282.6"><div class="titlepage"><div><div><h3 class="title">E.278.4. Changes</h3></div></div></div><p>    Below you will find a detailed account of the changes between
     release 8.0 and the previous major release.
-   </p><div class="sect3" id="id-1.11.6.277.6.3"><div class="titlepage"><div><div><h4 class="title">E.273.4.1. Performance Improvements</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Support cross-data-type index usage (Tom)
+   </p><div class="sect3" id="id-1.11.6.282.6.3"><div class="titlepage"><div><div><h4 class="title">E.278.4.1. Performance Improvements</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Support cross-data-type index usage (Tom)
       </p><p>       Before this change, many queries would not use an index if the data
        types did not match exactly. This improvement makes index usage more
        intuitive and consistent.
@@ -266,7 +266,7 @@
       </p></li><li class="listitem"><p>       Speed up <code class="command">TRUNCATE</code> (Tom)
       </p><p>       This buys back some of the performance loss observed in 7.4, while still
        keeping <code class="command">TRUNCATE</code> transaction-safe.
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.277.6.4"><div class="titlepage"><div><div><h4 class="title">E.273.4.2. Server Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Add WAL file archiving and point-in-time recovery (Simon Riggs)
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.282.6.4"><div class="titlepage"><div><div><h4 class="title">E.278.4.2. Server Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Add WAL file archiving and point-in-time recovery (Simon Riggs)
       </p></li><li class="listitem"><p>       Add tablespaces so admins can control disk layout (Gavin)
       </p></li><li class="listitem"><p>       Add a built-in log rotation program (Andreas Pflug)
       </p><p>       It is now possible to log server messages conveniently without
@@ -352,7 +352,7 @@
        data type.)
       </p></li><li class="listitem"><p>       Make <code class="varname">log_duration</code> print only when <code class="varname">log_statement</code>
        prints the query (Ed L.)
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.277.6.5"><div class="titlepage"><div><div><h4 class="title">E.273.4.3. Query Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Add savepoints (nested transactions) (Alvaro)
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.282.6.5"><div class="titlepage"><div><div><h4 class="title">E.278.4.3. Query Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Add savepoints (nested transactions) (Alvaro)
       </p></li><li class="listitem"><p>       Unsupported isolation levels are now accepted and promoted to the
        nearest supported level (Peter)
       </p><p>       The SQL specification states that if a database doesn't support a
@@ -409,7 +409,7 @@
       </p></li><li class="listitem"><p>       Avoid emitting <code class="option">NATURAL CROSS JOIN</code> in rule listings (Tom)
       </p><p>       Such a clause makes no logical sense, but in some cases the rule
        decompiler formerly produced this syntax.
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.277.6.6"><div class="titlepage"><div><div><h4 class="title">E.273.4.4. Object Manipulation Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Add <code class="command">COMMENT ON</code> for casts, conversions, languages,
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.282.6.6"><div class="titlepage"><div><div><h4 class="title">E.278.4.4. Object Manipulation Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Add <code class="command">COMMENT ON</code> for casts, conversions, languages,
        operator classes, and large objects (Christopher)
       </p></li><li class="listitem"><p>       Add new server configuration parameter <code class="varname">default_with_oids</code> to
        control whether tables are created with <code class="type">OID</code>s by default (Neil)
@@ -467,7 +467,7 @@
        between tablespaces (Gavin)
       </p></li><li class="listitem"><p>       Make <code class="command">ALTER TABLE OWNER</code> change dependent sequence
        ownership too (Alvaro)
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.277.6.7"><div class="titlepage"><div><div><h4 class="title">E.273.4.5. Utility Command Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Allow <code class="command">CREATE SCHEMA</code> to create triggers,
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.282.6.7"><div class="titlepage"><div><div><h4 class="title">E.278.4.5. Utility Command Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Allow <code class="command">CREATE SCHEMA</code> to create triggers,
        indexes, and sequences (Neil)
       </p></li><li class="listitem"><p>       Add <code class="option">ALSO</code> keyword to <code class="command">CREATE RULE</code> (Fabien
        Coelho)
@@ -518,7 +518,7 @@
        <span class="application">initdb</span> (Peter)
       </p></li><li class="listitem"><p>       Add <code class="option">register</code> command to <span class="application">pg_ctl</span> to
        register Windows operating system service (Dave Page)
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.277.6.8"><div class="titlepage"><div><div><h4 class="title">E.273.4.6. Data Type and Function Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       More complete support for composite types (row types)  (Tom)
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.282.6.8"><div class="titlepage"><div><div><h4 class="title">E.278.4.6. Data Type and Function Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       More complete support for composite types (row types)  (Tom)
       </p><p>       Composite values can be used in many places where only scalar values
        worked before.
       </p></li><li class="listitem"><p>       Reject nonrectangular array values as erroneous (Joe)
@@ -611,7 +611,7 @@
        to int.
       </p></li><li class="listitem"><p>       Require <code class="type">CIDR</code> values to have all nonmasked bits be zero
        (Kevin Brintnall)
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.277.6.9"><div class="titlepage"><div><div><h4 class="title">E.273.4.7. Server-Side Language Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       In <code class="literal">READ COMMITTED</code> serialization mode, volatile functions
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.282.6.9"><div class="titlepage"><div><div><h4 class="title">E.278.4.7. Server-Side Language Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       In <code class="literal">READ COMMITTED</code> serialization mode, volatile functions
        now see the results of concurrent transactions committed up to the
        beginning of each statement within the function, rather than up to the
        beginning of the interactive command that called the function.
@@ -657,7 +657,7 @@
       </p></li><li class="listitem"><p>       Accept <code class="command">ELSEIF</code> in PL/pgSQL (Neil)
       </p><p>       Previously PL/pgSQL only allowed <code class="command">ELSIF</code>, but many people
        are accustomed to spelling this keyword <code class="command">ELSEIF</code>.
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.277.6.10"><div class="titlepage"><div><div><h4 class="title">E.273.4.8. <span class="application">psql</span> Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Improve <span class="application">psql</span> information display about database
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.282.6.10"><div class="titlepage"><div><div><h4 class="title">E.278.4.8. <span class="application">psql</span> Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Improve <span class="application">psql</span> information display about database
        objects (Christopher)
       </p></li><li class="listitem"><p>       Allow <span class="application">psql</span> to display group membership in
        <code class="command">\du</code> and <code class="command">\dg</code> (Markus Bertheau)
@@ -690,7 +690,7 @@
        Björklund)
       </p></li><li class="listitem"><p>       Improve tab completion support (Stefan Kaltenbrunn, Greg Sabino Mullane)
       </p></li><li class="listitem"><p>       Allow boolean settings to be set using upper or lower case (Michael Paesold)
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.277.6.11"><div class="titlepage"><div><div><h4 class="title">E.273.4.9. <span class="application">pg_dump</span> Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Use dependency information to improve the reliability of
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.282.6.11"><div class="titlepage"><div><div><h4 class="title">E.278.4.9. <span class="application">pg_dump</span> Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Use dependency information to improve the reliability of
        <span class="application">pg_dump</span> (Tom)
       </p><p>       This should solve the longstanding problems with related objects
        sometimes being dumped in the wrong order.
@@ -714,7 +714,7 @@
       </p></li><li class="listitem"><p>       Have <span class="application">pg_dump</span> use <code class="command">ALTER OWNER</code> rather
        than <code class="command">SET SESSION AUTHORIZATION</code> by default
        (Christopher)
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.277.6.12"><div class="titlepage"><div><div><h4 class="title">E.273.4.10. libpq Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Make libpq's <code class="option">SIGPIPE</code> handling thread-safe (Bruce)
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.282.6.12"><div class="titlepage"><div><div><h4 class="title">E.278.4.10. libpq Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Make libpq's <code class="option">SIGPIPE</code> handling thread-safe (Bruce)
       </p></li><li class="listitem"><p>       Add <code class="function">PQmbdsplen()</code> which returns the display length
        of a character (Tatsuo)
       </p></li><li class="listitem"><p>       Add thread locking to <span class="application">SSL</span> and
@@ -728,7 +728,7 @@
        preparing statements without necessarily specifying the data types
        of their parameters (Abhijit Menon-Sen)
       </p></li><li class="listitem"><p>       Many ECPG improvements, including <code class="command">SET DESCRIPTOR</code> (Michael)
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.277.6.13"><div class="titlepage"><div><div><h4 class="title">E.273.4.11. Source Code Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Allow the database server to run natively on Windows (Claudio, Magnus, Andrew)
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.282.6.13"><div class="titlepage"><div><div><h4 class="title">E.278.4.11. Source Code Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Allow the database server to run natively on Windows (Claudio, Magnus, Andrew)
       </p></li><li class="listitem"><p>       Shell script commands converted to C versions for Windows support (Andrew)
       </p></li><li class="listitem"><p>       Create an extension makefile framework (Fabien Coelho, Peter)
       </p><p>       This simplifies the task of building extensions outside the original
@@ -786,7 +786,7 @@
       </p></li><li class="listitem"><p>       Add French FAQ (Guillaume Lelarge)
       </p></li><li class="listitem"><p>       New <span class="application">pgevent</span> for Windows logging
       </p></li><li class="listitem"><p>       Make libpq and ECPG build as proper shared libraries on macOS (Tom)
-      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.277.6.14"><div class="titlepage"><div><div><h4 class="title">E.273.4.12. Contrib Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Overhaul of <code class="filename">contrib/dblink</code> (Joe)
+      </p></li></ul></div></div><div class="sect3" id="id-1.11.6.282.6.14"><div class="titlepage"><div><div><h4 class="title">E.278.4.12. Contrib Changes</h4></div></div></div><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>       Overhaul of <code class="filename">contrib/dblink</code> (Joe)
       </p></li><li class="listitem"><p>       <code class="filename">contrib/dbmirror</code> improvements (Steven Singer)
       </p></li><li class="listitem"><p>       New <code class="filename">contrib/xml2</code> (John Gray, Torchbox)
       </p></li><li class="listitem"><p>       Updated <code class="filename">contrib/mysql</code>
@@ -800,4 +800,4 @@
       </p></li><li class="listitem"><p>       Removed <code class="filename">contrib/pg_logger</code>: obsoleted by integrated logging
        subprocess
       </p></li><li class="listitem"><p>       Removed <code class="filename">contrib/rserv</code>: obsoleted by various separate projects
-      </p></li></ul></div></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="release-8-0-1.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="release.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="release-7-4-30.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">E.272. Release 8.0.1 </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> E.274. Release 7.4.30</td></tr></table></div></body></html>
+      </p></li></ul></div></div></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="release-8-0-1.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="release.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="release-7-4-30.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">E.277. Release 8.0.1 </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> E.279. Release 7.4.30</td></tr></table></div></body></html>
