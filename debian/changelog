@@ -1,3 +1,9 @@
+postgresql-10 (10.6-0ubuntu0.18.04.1bb1) bionic; urgency=medium
+
+  * Balabit patched version
+
+ -- Balabit Platform Team <devnull@dev.null>  Sat, 17 Nov 2018 04:26:01 +0100
+
 postgresql-10 (10.6-0ubuntu0.18.04.1) bionic-security; urgency=medium
 
   * SECURITY UPDATE: Updated to 10.6 to fix security issue.
