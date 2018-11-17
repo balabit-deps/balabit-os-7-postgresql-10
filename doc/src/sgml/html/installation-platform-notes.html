@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>16.7. Platform-specific Notes</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="supported-platforms.html" title="16.6. Supported Platforms" /><link rel="next" href="install-windows.html" title="Chapter 17. Installation from Source Code on Windows" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">16.7. Platform-specific Notes</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="supported-platforms.html" title="16.6. Supported Platforms">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="installation.html" title="Chapter 16.   Installation from Source Code">Up</a></td><th width="60%" align="center">Chapter 16.   Installation from Source Code</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.5 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="install-windows.html" title="Chapter 17. Installation from Source Code on Windows">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="INSTALLATION-PLATFORM-NOTES"><div class="titlepage"><div><div><h2 class="title" style="clear: both">16.7. Platform-specific Notes</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="installation-platform-notes.html#INSTALLATION-NOTES-AIX">16.7.1. AIX</a></span></dt><dt><span class="sect2"><a href="installation-platform-notes.html#INSTALLATION-NOTES-CYGWIN">16.7.2. Cygwin</a></span></dt><dt><span class="sect2"><a href="installation-platform-notes.html#INSTALLATION-NOTES-HPUX">16.7.3. HP-UX</a></span></dt><dt><span class="sect2"><a href="installation-platform-notes.html#INSTALLATION-NOTES-MINGW">16.7.4. MinGW/Native Windows</a></span></dt><dt><span class="sect2"><a href="installation-platform-notes.html#INSTALLATION-NOTES-SOLARIS">16.7.5. Solaris</a></span></dt></dl></div><p>   This section documents additional platform-specific issues
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>16.7. Platform-specific Notes</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="supported-platforms.html" title="16.6. Supported Platforms" /><link rel="next" href="install-windows.html" title="Chapter 17. Installation from Source Code on Windows" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">16.7. Platform-specific Notes</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="supported-platforms.html" title="16.6. Supported Platforms">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="installation.html" title="Chapter 16.   Installation from Source Code">Up</a></td><th width="60%" align="center">Chapter 16.   Installation from Source Code</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.6 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="install-windows.html" title="Chapter 17. Installation from Source Code on Windows">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="INSTALLATION-PLATFORM-NOTES"><div class="titlepage"><div><div><h2 class="title" style="clear: both">16.7. Platform-specific Notes</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="installation-platform-notes.html#INSTALLATION-NOTES-AIX">16.7.1. AIX</a></span></dt><dt><span class="sect2"><a href="installation-platform-notes.html#INSTALLATION-NOTES-CYGWIN">16.7.2. Cygwin</a></span></dt><dt><span class="sect2"><a href="installation-platform-notes.html#INSTALLATION-NOTES-HPUX">16.7.3. HP-UX</a></span></dt><dt><span class="sect2"><a href="installation-platform-notes.html#INSTALLATION-NOTES-MACOS">16.7.4. macOS</a></span></dt><dt><span class="sect2"><a href="installation-platform-notes.html#INSTALLATION-NOTES-MINGW">16.7.5. MinGW/Native Windows</a></span></dt><dt><span class="sect2"><a href="installation-platform-notes.html#INSTALLATION-NOTES-SOLARIS">16.7.6. Solaris</a></span></dt></dl></div><p>   This section documents additional platform-specific issues
    regarding the installation and setup of PostgreSQL.  Be sure to
    read the installation instructions, and in
    particular <a class="xref" href="install-requirements.html" title="16.2. Requirements">Section 16.2</a> as well.  Also,
@@ -240,7 +240,34 @@ PHSS_30849  s700_800 u2comp/be/plugin library Patch</p></div><p>
     differences in the geometry tests, which vary depending on which
     compiler and math library versions you use.  Any other error is
     cause for suspicion.
-   </p></div><div class="sect2" id="INSTALLATION-NOTES-MINGW"><div class="titlepage"><div><div><h3 class="title">16.7.4. MinGW/Native Windows</h3></div></div></div><a id="id-1.6.3.10.7.2" class="indexterm"></a><p>    PostgreSQL for Windows can be built using MinGW, a Unix-like build
+   </p></div><div class="sect2" id="INSTALLATION-NOTES-MACOS"><div class="titlepage"><div><div><h3 class="title">16.7.4. macOS</h3></div></div></div><a id="id-1.6.3.10.7.2" class="indexterm"></a><p>    On recent <span class="productname">macOS</span> releases, it's necessary to
+    embed the <span class="quote">“<span class="quote">sysroot</span>”</span> path in the include switches used to
+    find some system header files.  This results in the outputs of
+    the <span class="application">configure</span> script varying depending on
+    which SDK version was used during <span class="application">configure</span>.
+    That shouldn't pose any problem in simple scenarios, but if you are
+    trying to do something like building an extension on a different machine
+    than the server code was built on, you may need to force use of a
+    different sysroot path.  To do that, set <code class="varname">PG_SYSROOT</code>,
+    for example
+</p><pre class="programlisting">make PG_SYSROOT=<em class="replaceable"><code>/desired/path</code></em> all</pre><p>
+    To find out the appropriate path on your machine, run
+</p><pre class="programlisting">xcodebuild -version -sdk macosx Path</pre><p>
+    Note that building an extension using a different sysroot version than
+    was used to build the core server is not really recommended; in the
+    worst case it could result in hard-to-debug ABI inconsistencies.
+   </p><p>    You can also select a non-default sysroot path when configuring, by
+    specifying <code class="varname">PG_SYSROOT</code>
+    to <span class="application">configure</span>:
+</p><pre class="programlisting">./configure ... PG_SYSROOT=<em class="replaceable"><code>/desired/path</code></em></pre><p>
+   </p><p>    <span class="productname">macOS</span>'s <span class="quote">“<span class="quote">System Integrity
+    Protection</span>”</span> (SIP) feature breaks <code class="literal">make check</code>,
+    because it prevents passing the needed setting
+    of <code class="literal">DYLD_LIBRARY_PATH</code> down to the executables being
+    tested.  You can work around that by doing <code class="literal">make
+    install</code> before <code class="literal">make check</code>.
+    Most Postgres developers just turn off SIP, though.
+   </p></div><div class="sect2" id="INSTALLATION-NOTES-MINGW"><div class="titlepage"><div><div><h3 class="title">16.7.5. MinGW/Native Windows</h3></div></div></div><a id="id-1.6.3.10.8.2" class="indexterm"></a><p>    PostgreSQL for Windows can be built using MinGW, a Unix-like build
     environment for Microsoft operating systems, or using
     Microsoft's <span class="productname">Visual C++</span> compiler suite.
     The MinGW build variant uses the normal build system described in
@@ -267,7 +294,7 @@ PHSS_30849  s700_800 u2comp/be/plugin library Patch</p></div><p>
     run <span class="application">psql</span>
     under <code class="command">CMD.EXE</code>, as the MSYS console has
     buffering issues.
-   </p><div class="sect3" id="WINDOWS-CRASH-DUMPS"><div class="titlepage"><div><div><h4 class="title">16.7.4.1. Collecting Crash Dumps on Windows</h4></div></div></div><p>     If PostgreSQL on Windows crashes, it has the ability to generate
+   </p><div class="sect3" id="WINDOWS-CRASH-DUMPS"><div class="titlepage"><div><div><h4 class="title">16.7.5.1. Collecting Crash Dumps on Windows</h4></div></div></div><p>     If PostgreSQL on Windows crashes, it has the ability to generate
      <span class="productname">minidumps</span> that can be used to track down the cause
      for the crash, similar to core dumps on Unix. These dumps can be
      read using the <span class="productname">Windows Debugger Tools</span> or using
@@ -276,10 +303,10 @@ PHSS_30849  s700_800 u2comp/be/plugin library Patch</p></div><p>
      inside the cluster data directory. The dumps will then be written
      into this directory with a unique name based on the identifier of
      the crashing process and the current time of the crash.
-    </p></div></div><div class="sect2" id="INSTALLATION-NOTES-SOLARIS"><div class="titlepage"><div><div><h3 class="title">16.7.5. Solaris</h3></div></div></div><a id="id-1.6.3.10.8.2" class="indexterm"></a><p>    PostgreSQL is well-supported on Solaris.  The more up to date your
+    </p></div></div><div class="sect2" id="INSTALLATION-NOTES-SOLARIS"><div class="titlepage"><div><div><h3 class="title">16.7.6. Solaris</h3></div></div></div><a id="id-1.6.3.10.9.2" class="indexterm"></a><p>    PostgreSQL is well-supported on Solaris.  The more up to date your
     operating system, the fewer issues you will experience; details
     below.
-   </p><div class="sect3" id="id-1.6.3.10.8.4"><div class="titlepage"><div><div><h4 class="title">16.7.5.1. Required Tools</h4></div></div></div><p>     You can build with either GCC or Sun's compiler suite.  For
+   </p><div class="sect3" id="id-1.6.3.10.9.4"><div class="titlepage"><div><div><h4 class="title">16.7.6.1. Required Tools</h4></div></div></div><p>     You can build with either GCC or Sun's compiler suite.  For
      better code optimization, Sun's compiler is strongly recommended
      on the SPARC architecture.  We have heard reports of problems
      when using GCC 2.95.1; GCC 2.95.3 or later is recommended.  If
@@ -295,7 +322,7 @@ PHSS_30849  s700_800 u2comp/be/plugin library Patch</p></div><p>
      If you prefer
      sources, look
      at <a class="ulink" href="http://www.gnu.org/order/ftp.html" target="_top">http://www.gnu.org/order/ftp.html</a>.
-    </p></div><div class="sect3" id="id-1.6.3.10.8.5"><div class="titlepage"><div><div><h4 class="title">16.7.5.2. configure Complains About a Failed Test Program</h4></div></div></div><p>     If <code class="command">configure</code> complains about a failed test
+    </p></div><div class="sect3" id="id-1.6.3.10.9.5"><div class="titlepage"><div><div><h4 class="title">16.7.6.2. configure Complains About a Failed Test Program</h4></div></div></div><p>     If <code class="command">configure</code> complains about a failed test
      program, this is probably a case of the run-time linker being
      unable to find some library, probably libz, libreadline or some
      other non-standard library such as libssl.  To point it to the
@@ -305,7 +332,7 @@ PHSS_30849  s700_800 u2comp/be/plugin library Patch</p></div><p>
      See
      the <span class="citerefentry"><span class="refentrytitle">ld</span></span>
      man page for more information.
-    </p></div><div class="sect3" id="id-1.6.3.10.8.6"><div class="titlepage"><div><div><h4 class="title">16.7.5.3. 64-bit Build Sometimes Crashes</h4></div></div></div><p>     On Solaris 7 and older, the 64-bit version of libc has a buggy
+    </p></div><div class="sect3" id="id-1.6.3.10.9.6"><div class="titlepage"><div><div><h4 class="title">16.7.6.3. 64-bit Build Sometimes Crashes</h4></div></div></div><p>     On Solaris 7 and older, the 64-bit version of libc has a buggy
      <code class="function">vsnprintf</code> routine, which leads to erratic
      core dumps in PostgreSQL.  The simplest known workaround is to
      force PostgreSQL to use its own version of <code class="function">vsnprintf</code> rather than
@@ -318,7 +345,7 @@ PHSS_30849  s700_800 u2comp/be/plugin library Patch</p></div><p>
 </p><pre class="programlisting">LIBOBJS = snprintf.o</pre><p>
      (There might be other files already listed in this variable.
      Order does not matter.)  Then build as usual.
-    </p></div><div class="sect3" id="id-1.6.3.10.8.7"><div class="titlepage"><div><div><h4 class="title">16.7.5.4. Compiling for Optimal Performance</h4></div></div></div><p>     On the SPARC architecture, Sun Studio is strongly recommended for
+    </p></div><div class="sect3" id="id-1.6.3.10.9.7"><div class="titlepage"><div><div><h4 class="title">16.7.6.4. Compiling for Optimal Performance</h4></div></div></div><p>     On the SPARC architecture, Sun Studio is strongly recommended for
      compilation.  Try using the <code class="option">-xO5</code> optimization
      flag to generate significantly faster binaries.  Do not use any
      flags that modify behavior of floating-point operations
@@ -332,7 +359,7 @@ PHSS_30849  s700_800 u2comp/be/plugin library Patch</p></div><p>
      other hand, 32-bit code on the AMD64 CPU family is not native,
      and that is why 32-bit code is significant slower on this CPU
      family.
-    </p></div><div class="sect3" id="id-1.6.3.10.8.8"><div class="titlepage"><div><div><h4 class="title">16.7.5.5. Using DTrace for Tracing PostgreSQL</h4></div></div></div><p>     Yes, using DTrace is possible.  See 
+    </p></div><div class="sect3" id="id-1.6.3.10.9.8"><div class="titlepage"><div><div><h4 class="title">16.7.6.5. Using DTrace for Tracing PostgreSQL</h4></div></div></div><p>     Yes, using DTrace is possible.  See 
      <a class="xref" href="dynamic-trace.html" title="28.5. Dynamic Tracing">Section 28.5</a> for further
      information.
     </p><p>     If you see the linking of the <code class="command">postgres</code> executable abort with an

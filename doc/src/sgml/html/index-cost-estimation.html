@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>60.6. Index Cost Estimation Functions</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="index-unique-checks.html" title="60.5. Index Uniqueness Checks" /><link rel="next" href="generic-wal.html" title="Chapter 61. Generic WAL Records" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">60.6. Index Cost Estimation Functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="index-unique-checks.html" title="60.5. Index Uniqueness Checks">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="indexam.html" title="Chapter 60. Index Access Method Interface Definition">Up</a></td><th width="60%" align="center">Chapter 60. Index Access Method Interface Definition</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.5 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="generic-wal.html" title="Chapter 61. Generic WAL Records">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="INDEX-COST-ESTIMATION"><div class="titlepage"><div><div><h2 class="title" style="clear: both">60.6. Index Cost Estimation Functions</h2></div></div></div><p>   The <code class="function">amcostestimate</code> function is given information describing
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>60.6. Index Cost Estimation Functions</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="index-unique-checks.html" title="60.5. Index Uniqueness Checks" /><link rel="next" href="generic-wal.html" title="Chapter 61. Generic WAL Records" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">60.6. Index Cost Estimation Functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="index-unique-checks.html" title="60.5. Index Uniqueness Checks">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="indexam.html" title="Chapter 60. Index Access Method Interface Definition">Up</a></td><th width="60%" align="center">Chapter 60. Index Access Method Interface Definition</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.6 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="generic-wal.html" title="Chapter 61. Generic WAL Records">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="INDEX-COST-ESTIMATION"><div class="titlepage"><div><div><h2 class="title" style="clear: both">60.6. Index Cost Estimation Functions</h2></div></div></div><p>   The <code class="function">amcostestimate</code> function is given information describing
    a possible index scan, including lists of WHERE and ORDER BY clauses that
    have been determined to be usable with the index.  It must return estimates
    of the cost of accessing the index and the selectivity of the WHERE
@@ -18,7 +18,8 @@ amcostestimate (PlannerInfo *root,
                 Cost *indexStartupCost,
                 Cost *indexTotalCost,
                 Selectivity *indexSelectivity,
-                double *indexCorrelation);</pre><p>
+                double *indexCorrelation,
+                double *indexPages);</pre><p>
 
    The first three parameters are inputs:
 
@@ -32,13 +33,14 @@ amcostestimate (PlannerInfo *root,
        a larger <em class="parameter"><code>loop_count</code></em> means that it may be appropriate
        to allow for some caching effects across multiple scans.
       </p></dd></dl></div><p>
-  </p><p>   The last four parameters are pass-by-reference outputs:
+  </p><p>   The last five parameters are pass-by-reference outputs:
 
    </p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><em class="parameter"><code>*indexStartupCost</code></em></span></dt><dd><p>       Set to cost of index start-up processing
       </p></dd><dt><span class="term"><em class="parameter"><code>*indexTotalCost</code></em></span></dt><dd><p>       Set to total cost of index processing
       </p></dd><dt><span class="term"><em class="parameter"><code>*indexSelectivity</code></em></span></dt><dd><p>       Set to index selectivity
       </p></dd><dt><span class="term"><em class="parameter"><code>*indexCorrelation</code></em></span></dt><dd><p>       Set to correlation coefficient between index scan order and
        underlying table's order
+      </p></dd><dt><span class="term"><em class="parameter"><code>*indexPages</code></em></span></dt><dd><p>       Set to number of index leaf pages
       </p></dd></dl></div><p>
   </p><p>   Note that cost estimate functions must be written in C, not in SQL or
    any available procedural language, because they must access internal
@@ -66,9 +68,11 @@ amcostestimate (PlannerInfo *root,
    -1.0 and 1.0) between the index order and the table order.  This is used
    to adjust the estimate for the cost of fetching rows from the parent
    table.
+  </p><p>   The <em class="parameter"><code>indexPages</code></em> should be set to the number of leaf pages.
+   This is used to estimate the number of workers for parallel index scan.
   </p><p>   When <em class="parameter"><code>loop_count</code></em> is greater than one, the returned numbers
    should be averages expected for any one scan of the index.
-  </p><div class="procedure" id="id-1.10.13.10.12"><p class="title"><strong>Cost Estimation</strong></p><p>    A typical cost estimator will proceed as follows:
+  </p><div class="procedure" id="id-1.10.13.10.13"><p class="title"><strong>Cost Estimation</strong></p><p>    A typical cost estimator will proceed as follows:
    </p><ol class="procedure" type="1"><li class="step"><p>     Estimate and return the fraction of parent-table rows that will be visited
      based on the given qual conditions.  In the absence of any index-type-specific
      knowledge, use the standard optimizer function <code class="function">clauselist_selectivity()</code>:

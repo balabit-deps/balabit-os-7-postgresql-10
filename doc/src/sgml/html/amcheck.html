@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>F.2. amcheck</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="adminpack.html" title="F.1. adminpack" /><link rel="next" href="auth-delay.html" title="F.3. auth_delay" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">F.2. amcheck</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="adminpack.html" title="F.1. adminpack">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="contrib.html" title="Appendix F. Additional Supplied Modules">Up</a></td><th width="60%" align="center">Appendix F. Additional Supplied Modules</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.5 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="auth-delay.html" title="F.3. auth_delay">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="AMCHECK"><div class="titlepage"><div><div><h2 class="title" style="clear: both">F.2. amcheck</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="amcheck.html#id-1.11.7.11.7">F.2.1. Functions</a></span></dt><dt><span class="sect2"><a href="amcheck.html#id-1.11.7.11.8">F.2.2. Using <code class="filename">amcheck</code> effectively</a></span></dt><dt><span class="sect2"><a href="amcheck.html#id-1.11.7.11.9">F.2.3. Repairing corruption</a></span></dt></dl></div><a id="id-1.11.7.11.2" class="indexterm"></a><p>  The <code class="filename">amcheck</code> module provides functions that allow you to
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>F.2. amcheck</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="adminpack.html" title="F.1. adminpack" /><link rel="next" href="auth-delay.html" title="F.3. auth_delay" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">F.2. amcheck</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="adminpack.html" title="F.1. adminpack">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="contrib.html" title="Appendix F. Additional Supplied Modules">Up</a></td><th width="60%" align="center">Appendix F. Additional Supplied Modules</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.6 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="auth-delay.html" title="F.3. auth_delay">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="AMCHECK"><div class="titlepage"><div><div><h2 class="title" style="clear: both">F.2. amcheck</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="amcheck.html#id-1.11.7.11.7">F.2.1. Functions</a></span></dt><dt><span class="sect2"><a href="amcheck.html#id-1.11.7.11.8">F.2.2. Using <code class="filename">amcheck</code> effectively</a></span></dt><dt><span class="sect2"><a href="amcheck.html#id-1.11.7.11.9">F.2.3. Repairing corruption</a></span></dt></dl></div><a id="id-1.11.7.11.2" class="indexterm"></a><p>  The <code class="filename">amcheck</code> module provides functions that allow you to
   verify the logical consistency of the structure of indexes.  If the
   structure appears to be valid, no error is raised.
  </p><p>  The functions verify various <span class="emphasis"><em>invariants</em></span> in the
@@ -18,7 +18,7 @@
   code.  For example, B-Tree index verification relies on comparisons
   made with one or more B-Tree support function 1 routines.  See <a class="xref" href="xindex.html#XINDEX-SUPPORT" title="37.14.3. Index Method Support Routines">Section 37.14.3</a> for details of operator class support
   functions.
- </p><p>  <code class="filename">amcheck</code> functions may be used only by superusers.
+ </p><p>  <code class="filename">amcheck</code> functions may only be used by superusers.
  </p><div class="sect2" id="id-1.11.7.11.7"><div class="titlepage"><div><div><h3 class="title">F.2.1. Functions</h3></div></div></div><div class="variablelist"><dl class="variablelist"><dt><span class="term">     <code class="function">bt_index_check(index regclass) returns void</code>
      <a id="id-1.11.7.11.7.2.1.1.2" class="indexterm"></a>
     </span></dt><dd><p>      <code class="function">bt_index_check</code> tests that its target, a
@@ -48,13 +48,12 @@ ORDER BY c.relpages DESC LIMIT 10;
                 | pg_amop_opr_fam_index           |        5
                 | pg_amop_fam_strat_index         |        5
 (10 rows)</pre><p>
-      This example shows a session that performs verification of every
-      catalog index in the database <span class="quote">“<span class="quote">test</span>”</span>.  Details of just
-      the 10 largest indexes verified are displayed.  Since no error
-      is raised, all indexes tested appear to be logically consistent.
-      Naturally, this query could easily be changed to call
-      <code class="function">bt_index_check</code> for every index in the
-      database where verification is supported.
+      This example shows a session that performs verification of the
+      10 largest catalog indexes in the database <span class="quote">“<span class="quote">test</span>”</span>.
+      Since no error is raised, all indexes tested appear to be
+      logically consistent.  Naturally, this query could easily be
+      changed to call <code class="function">bt_index_check</code> for every
+      index in the database where verification is supported.
      </p><p>      <code class="function">bt_index_check</code> acquires an <code class="literal">AccessShareLock</code>
       on the target index and the heap relation it belongs to. This lock mode
       is the same lock mode acquired on relations by simple
@@ -144,8 +143,7 @@ ORDER BY c.relpages DESC LIMIT 10;
      file system at the time of verification. Note that when checksums are
      enabled, <code class="filename">amcheck</code> may raise an error due to a checksum
      failure when a corrupt block is read into a buffer.
-    </p></li><li class="listitem"><p>     Corruption caused by faulty RAM, and the broader memory subsystem
-     and operating system.
+    </p></li><li class="listitem"><p>     Corruption caused by faulty RAM, or the broader memory subsystem.
     </p><p>     <span class="productname">PostgreSQL</span> does not protect against correctable
      memory errors and it is assumed you will operate using RAM that
      uses industry standard Error Correcting Codes (ECC) or better
