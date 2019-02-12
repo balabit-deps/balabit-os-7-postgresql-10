@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>19.8. Error Reporting and Logging</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="runtime-config-query.html" title="19.7. Query Planning" /><link rel="next" href="runtime-config-statistics.html" title="19.9. Run-time Statistics" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">19.8. Error Reporting and Logging</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="runtime-config-query.html" title="19.7. Query Planning">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="runtime-config.html" title="Chapter 19. Server Configuration">Up</a></td><th width="60%" align="center">Chapter 19. Server Configuration</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.6 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="runtime-config-statistics.html" title="19.9. Run-time Statistics">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="RUNTIME-CONFIG-LOGGING"><div class="titlepage"><div><div><h2 class="title" style="clear: both">19.8. Error Reporting and Logging</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHERE">19.8.1. Where To Log</a></span></dt><dt><span class="sect2"><a href="runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN">19.8.2. When To Log</a></span></dt><dt><span class="sect2"><a href="runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT">19.8.3. What To Log</a></span></dt><dt><span class="sect2"><a href="runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-CSVLOG">19.8.4. Using CSV-Format Log Output</a></span></dt><dt><span class="sect2"><a href="runtime-config-logging.html#id-1.6.6.11.7">19.8.5. Process Title</a></span></dt></dl></div><a id="id-1.6.6.11.2" class="indexterm"></a><div class="sect2" id="RUNTIME-CONFIG-LOGGING-WHERE"><div class="titlepage"><div><div><h3 class="title">19.8.1. Where To Log</h3></div></div></div><a id="id-1.6.6.11.3.2" class="indexterm"></a><a id="id-1.6.6.11.3.3" class="indexterm"></a><div class="variablelist"><dl class="variablelist"><dt id="GUC-LOG-DESTINATION"><span class="term"><code class="varname">log_destination</code> (<code class="type">string</code>)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>19.8. Error Reporting and Logging</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="runtime-config-query.html" title="19.7. Query Planning" /><link rel="next" href="runtime-config-statistics.html" title="19.9. Run-time Statistics" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">19.8. Error Reporting and Logging</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="runtime-config-query.html" title="19.7. Query Planning">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="runtime-config.html" title="Chapter 19. Server Configuration">Up</a></td><th width="60%" align="center">Chapter 19. Server Configuration</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.7 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="runtime-config-statistics.html" title="19.9. Run-time Statistics">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="RUNTIME-CONFIG-LOGGING"><div class="titlepage"><div><div><h2 class="title" style="clear: both">19.8. Error Reporting and Logging</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHERE">19.8.1. Where To Log</a></span></dt><dt><span class="sect2"><a href="runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHEN">19.8.2. When To Log</a></span></dt><dt><span class="sect2"><a href="runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-WHAT">19.8.3. What To Log</a></span></dt><dt><span class="sect2"><a href="runtime-config-logging.html#RUNTIME-CONFIG-LOGGING-CSVLOG">19.8.4. Using CSV-Format Log Output</a></span></dt><dt><span class="sect2"><a href="runtime-config-logging.html#id-1.6.6.11.7">19.8.5. Process Title</a></span></dt></dl></div><a id="id-1.6.6.11.2" class="indexterm"></a><div class="sect2" id="RUNTIME-CONFIG-LOGGING-WHERE"><div class="titlepage"><div><div><h3 class="title">19.8.1. Where To Log</h3></div></div></div><a id="id-1.6.6.11.3.2" class="indexterm"></a><a id="id-1.6.6.11.3.3" class="indexterm"></a><div class="variablelist"><dl class="variablelist"><dt id="GUC-LOG-DESTINATION"><span class="term"><code class="varname">log_destination</code> (<code class="type">string</code>)
       <a id="id-1.6.6.11.3.4.1.1.3" class="indexterm"></a>
       </span></dt><dd><p>        <span class="productname">PostgreSQL</span> supports several methods
          for logging server messages, including
@@ -245,21 +245,10 @@ csvlog log/postgresql.csv</pre><p>
         the log. The default is <code class="literal">PostgreSQL</code>.
         This parameter can only be set in the <code class="filename">postgresql.conf</code>
         file or on the server command line.
-       </p></dd></dl></div></div><div class="sect2" id="RUNTIME-CONFIG-LOGGING-WHEN"><div class="titlepage"><div><div><h3 class="title">19.8.2. When To Log</h3></div></div></div><div class="variablelist"><dl class="variablelist"><dt id="GUC-CLIENT-MIN-MESSAGES"><span class="term"><code class="varname">client_min_messages</code> (<code class="type">enum</code>)
+       </p></dd></dl></div></div><div class="sect2" id="RUNTIME-CONFIG-LOGGING-WHEN"><div class="titlepage"><div><div><h3 class="title">19.8.2. When To Log</h3></div></div></div><div class="variablelist"><dl class="variablelist"><dt id="GUC-LOG-MIN-MESSAGES"><span class="term"><code class="varname">log_min_messages</code> (<code class="type">enum</code>)
       <a id="id-1.6.6.11.4.2.1.1.3" class="indexterm"></a>
-      </span></dt><dd><p>        Controls which message levels are sent to the client.
-        Valid values are <code class="literal">DEBUG5</code>,
-        <code class="literal">DEBUG4</code>, <code class="literal">DEBUG3</code>, <code class="literal">DEBUG2</code>,
-        <code class="literal">DEBUG1</code>, <code class="literal">LOG</code>, <code class="literal">NOTICE</code>,
-        <code class="literal">WARNING</code>, <code class="literal">ERROR</code>, <code class="literal">FATAL</code>,
-        and <code class="literal">PANIC</code>.  Each level
-        includes all the levels that follow it.  The later the level,
-        the fewer messages are sent.  The default is
-        <code class="literal">NOTICE</code>.  Note that <code class="literal">LOG</code> has a different
-        rank here than in <code class="varname">log_min_messages</code>.
-       </p></dd><dt id="GUC-LOG-MIN-MESSAGES"><span class="term"><code class="varname">log_min_messages</code> (<code class="type">enum</code>)
-      <a id="id-1.6.6.11.4.2.2.1.3" class="indexterm"></a>
-      </span></dt><dd><p>        Controls which message levels are written to the server log.
+      </span></dt><dd><p>        Controls which <a class="link" href="runtime-config-logging.html#RUNTIME-CONFIG-SEVERITY-LEVELS" title="Table 19.1. Message Severity Levels">message
+        levels</a> are written to the server log.
         Valid values are <code class="literal">DEBUG5</code>, <code class="literal">DEBUG4</code>,
         <code class="literal">DEBUG3</code>, <code class="literal">DEBUG2</code>, <code class="literal">DEBUG1</code>,
         <code class="literal">INFO</code>, <code class="literal">NOTICE</code>, <code class="literal">WARNING</code>,
@@ -268,14 +257,16 @@ csvlog log/postgresql.csv</pre><p>
         follow it.  The later the level, the fewer messages are sent
         to the log.  The default is <code class="literal">WARNING</code>.  Note that
         <code class="literal">LOG</code> has a different rank here than in
-        <code class="varname">client_min_messages</code>.
+        <a class="xref" href="runtime-config-client.html#GUC-CLIENT-MIN-MESSAGES">client_min_messages</a>.
         Only superusers can change this setting.
        </p></dd><dt id="GUC-LOG-MIN-ERROR-STATEMENT"><span class="term"><code class="varname">log_min_error_statement</code> (<code class="type">enum</code>)
-      <a id="id-1.6.6.11.4.2.3.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.11.4.2.2.1.3" class="indexterm"></a>
       </span></dt><dd><p>        Controls which SQL statements that cause an error
         condition are recorded in the server log.  The current
         SQL statement is included in the log entry for any message of
-        the specified severity or higher.
+        the specified
+        <a class="link" href="runtime-config-logging.html#RUNTIME-CONFIG-SEVERITY-LEVELS" title="Table 19.1. Message Severity Levels">severity</a>
+        or higher.
         Valid values are <code class="literal">DEBUG5</code>,
         <code class="literal">DEBUG4</code>, <code class="literal">DEBUG3</code>,
         <code class="literal">DEBUG2</code>, <code class="literal">DEBUG1</code>,
@@ -289,7 +280,7 @@ csvlog log/postgresql.csv</pre><p>
         set this parameter to <code class="literal">PANIC</code>.
         Only superusers can change this setting.
        </p></dd><dt id="GUC-LOG-MIN-DURATION-STATEMENT"><span class="term"><code class="varname">log_min_duration_statement</code> (<code class="type">integer</code>)
-      <a id="id-1.6.6.11.4.2.4.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.11.4.2.3.1.3" class="indexterm"></a>
       </span></dt><dd><p>         Causes the duration of each completed statement to be logged
          if the statement ran for at least the specified number of
          milliseconds.  Setting this to zero prints all statement durations.
@@ -346,7 +337,7 @@ csvlog log/postgresql.csv</pre><p>
         These messages are emitted at <code class="literal">LOG</code> message level, so by
         default they will appear in the server log but will not be sent to the
         client.  You can change that by adjusting
-        <a class="xref" href="runtime-config-logging.html#GUC-CLIENT-MIN-MESSAGES">client_min_messages</a> and/or
+        <a class="xref" href="runtime-config-client.html#GUC-CLIENT-MIN-MESSAGES">client_min_messages</a> and/or
         <a class="xref" href="runtime-config-logging.html#GUC-LOG-MIN-MESSAGES">log_min_messages</a>.
         These parameters are off by default.
        </p></dd><dt><span class="term"><code class="varname">debug_pretty_print</code> (<code class="type">boolean</code>)

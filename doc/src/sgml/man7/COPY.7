@@ -2,12 +2,12 @@
 .\"     Title: COPY
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
-.\"      Date: 2018
-.\"    Manual: PostgreSQL 10.6 Documentation
-.\"    Source: PostgreSQL 10.6
+.\"      Date: 2019
+.\"    Manual: PostgreSQL 10.7 Documentation
+.\"    Source: PostgreSQL 10.7
 .\"  Language: English
 .\"
-.TH "COPY" "7" "2018" "PostgreSQL 10.6" "PostgreSQL 10.6 Documentation"
+.TH "COPY" "7" "2019" "PostgreSQL 10.7" "PostgreSQL 10.7 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -194,7 +194,9 @@ FREEZE
 .RS 4
 Requests copying the data with rows already frozen, just as they would be after running the
 \fBVACUUM FREEZE\fR
-command\&. This is intended as a performance option for initial data loading\&. Rows will be frozen only if the table being loaded has been created or truncated in the current subtransaction, there are no cursors open and there are no older snapshots held by this transaction\&.
+command\&. This is intended as a performance option for initial data loading\&. Rows will be frozen only if the table being loaded has been created or truncated in the current subtransaction, there are no cursors open and there are no older snapshots held by this transaction\&. It is currently not possible to perform a
+\fBCOPY FREEZE\fR
+on a partitioned table\&.
 .sp
 Note that all other sessions will immediately be able to see the data once it has been successfully loaded\&. This violates the normal rules of MVCC visibility and users specifying should be aware of the potential problems this might cause\&.
 .RE

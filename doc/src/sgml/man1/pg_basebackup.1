@@ -2,12 +2,12 @@
 .\"     Title: pg_basebackup
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
-.\"      Date: 2018
-.\"    Manual: PostgreSQL 10.6 Documentation
-.\"    Source: PostgreSQL 10.6
+.\"      Date: 2019
+.\"    Manual: PostgreSQL 10.7 Documentation
+.\"    Source: PostgreSQL 10.7
 .\"  Language: English
 .\"
-.TH "PG_BASEBACKUP" "1" "2018" "PostgreSQL 10.6" "PostgreSQL 10.6 Documentation"
+.TH "PG_BASEBACKUP" "1" "2019" "PostgreSQL 10.7" "PostgreSQL 10.7 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -281,7 +281,7 @@ The write\-ahead log files are collected at the end of the backup\&. Therefore, 
 wal_keep_segments
 parameter to be set high enough that the log is not removed before the end of the backup\&. If the log has been rotated when it\*(Aqs time to transfer it, the backup will fail and be unusable\&.
 .sp
-The write\-ahead log files will be written to the
+When tar format mode is used, the write\-ahead log files will be written to the
 base\&.tar
 file\&.
 .RE
@@ -294,7 +294,7 @@ Stream the write\-ahead log while the backup is created\&. This will open a seco
 max_wal_senders
 parameter\&. As long as the client can keep up with write\-ahead log received, using this mode requires no extra write\-ahead logs to be saved on the master\&.
 .sp
-The write\-ahead log files are written to a separate file named
+When tar format mode is used, the write\-ahead log files will be written to a separate file named
 pg_wal\&.tar
 (if the server is a version earlier than 10, the file will be named
 pg_xlog\&.tar)\&.

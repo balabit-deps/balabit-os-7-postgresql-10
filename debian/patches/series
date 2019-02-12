@@ -7,3 +7,5 @@
 70-history
 filter-debug-prefix-map
 reproducible-bki
+pg-10-Disallow-setting-client_min_messages-higher-than-ERR.patch
+pg-10-Rename-rbtree.c-functions-to-use-rbt-prefix-not-rb-p.patch
