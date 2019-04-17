@@ -2,12 +2,12 @@
 .\"     Title: pg_dump
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
-.\"      Date: 2018
-.\"    Manual: PostgreSQL 10.6 Documentation
-.\"    Source: PostgreSQL 10.6
+.\"      Date: 2019
+.\"    Manual: PostgreSQL 10.7 Documentation
+.\"    Source: PostgreSQL 10.7
 .\"  Language: English
 .\"
-.TH "PG_DUMP" "1" "2018" "PostgreSQL 10.6" "PostgreSQL 10.6 Documentation"
+.TH "PG_DUMP" "1" "2019" "PostgreSQL 10.7" "PostgreSQL 10.7 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -946,7 +946,7 @@ pg_dump
 will generate
 \fBCREATE SUBSCRIPTION\fR
 commands that use the
-NOCONNECT
+connect = false
 option, so that restoring the subscription does not make remote connections for creating a replication slot or for initial table copy\&. That way, the dump can be restored without requiring network access to the remote servers\&. It is then up to the user to reactivate the subscriptions in a suitable way\&. If the involved hosts have changed, the connection information might have to be changed\&. It might also be appropriate to truncate the target tables before initiating a new full table copy\&.
 .SH "EXAMPLES"
 .PP

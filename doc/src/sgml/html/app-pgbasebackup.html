@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>pg_basebackup</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="app-ecpg.html" title="ecpg" /><link rel="next" href="pgbench.html" title="pgbench" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">pg_basebackup</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="app-ecpg.html" title="ecpg">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="reference-client.html" title="PostgreSQL Client Applications">Up</a></td><th width="60%" align="center">PostgreSQL Client Applications</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.6 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="pgbench.html" title="pgbench">Next</a></td></tr></table><hr></hr></div><div class="refentry" id="APP-PGBASEBACKUP"><div class="titlepage"></div><a id="id-1.9.4.9.1" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle">pg_basebackup</span></h2><p>pg_basebackup — take a base backup of a <span class="productname">PostgreSQL</span> cluster</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p id="id-1.9.4.9.4.1"><code class="command">pg_basebackup</code> [<em class="replaceable"><code>option</code></em>...]</p></div></div><div class="refsect1" id="id-1.9.4.9.5"><h2>   Description
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>pg_basebackup</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="app-ecpg.html" title="ecpg" /><link rel="next" href="pgbench.html" title="pgbench" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">pg_basebackup</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="app-ecpg.html" title="ecpg">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="reference-client.html" title="PostgreSQL Client Applications">Up</a></td><th width="60%" align="center">PostgreSQL Client Applications</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.7 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="pgbench.html" title="pgbench">Next</a></td></tr></table><hr></hr></div><div class="refentry" id="APP-PGBASEBACKUP"><div class="titlepage"></div><a id="id-1.9.4.9.1" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle">pg_basebackup</span></h2><p>pg_basebackup — take a base backup of a <span class="productname">PostgreSQL</span> cluster</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p id="id-1.9.4.9.4.1"><code class="command">pg_basebackup</code> [<em class="replaceable"><code>option</code></em>...]</p></div></div><div class="refsect1" id="id-1.9.4.9.5"><h2>   Description
   </h2><p>   <span class="application">pg_basebackup</span> is used to take base backups of
    a running <span class="productname">PostgreSQL</span> database cluster. These
    are taken without affecting other clients to the database, and can be used
@@ -141,8 +141,8 @@
              enough that the log is not removed before the end of the backup.
              If the log has been rotated when it's time to transfer it, the
              backup will fail and be unusable.
-           </p><p>            The write-ahead log files will be written to
-            the <code class="filename">base.tar</code> file.
+           </p><p>            When tar format mode is used, the write-ahead log files will be
+            written to the <code class="filename">base.tar</code> file.
            </p></dd><dt><span class="term"><code class="literal">s</code><br /></span><span class="term"><code class="literal">stream</code></span></dt><dd><p>            Stream the write-ahead log while the backup is created. This will
             open a second connection to the server and start streaming the
             write-ahead log in parallel while running the backup. Therefore,
@@ -150,9 +150,10 @@
             <a class="xref" href="runtime-config-replication.html#GUC-MAX-WAL-SENDERS">max_wal_senders</a> parameter. As long as the
              client can keep up with write-ahead log received, using this mode
              requires no extra write-ahead logs to be saved on the master.
-           </p><p>            The write-ahead log files are written to a separate file
-            named <code class="filename">pg_wal.tar</code> (if the server is a version
-            earlier than 10, the file will be named <code class="filename">pg_xlog.tar</code>).
+           </p><p>            When tar format mode is used, the write-ahead log files will be
+            written to a separate file named <code class="filename">pg_wal.tar</code> 
+            (if the server is a version earlier than 10, the file will be named
+            <code class="filename">pg_xlog.tar</code>).
            </p><p>            This value is the default.
            </p></dd></dl></div><p>
        </p></dd><dt><span class="term"><code class="option">-z</code><br /></span><span class="term"><code class="option">--gzip</code></span></dt><dd><p>        Enables gzip compression of tar file output, with the default

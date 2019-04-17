@@ -1,7 +1,21 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>19.11. Client Connection Defaults</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="runtime-config-autovacuum.html" title="19.10. Automatic Vacuuming" /><link rel="next" href="runtime-config-locks.html" title="19.12. Lock Management" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">19.11. Client Connection Defaults</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="runtime-config-autovacuum.html" title="19.10. Automatic Vacuuming">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="runtime-config.html" title="Chapter 19. Server Configuration">Up</a></td><th width="60%" align="center">Chapter 19. Server Configuration</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.6 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="runtime-config-locks.html" title="19.12. Lock Management">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="RUNTIME-CONFIG-CLIENT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">19.11. Client Connection Defaults</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT">19.11.1. Statement Behavior</a></span></dt><dt><span class="sect2"><a href="runtime-config-client.html#RUNTIME-CONFIG-CLIENT-FORMAT">19.11.2. Locale and Formatting</a></span></dt><dt><span class="sect2"><a href="runtime-config-client.html#RUNTIME-CONFIG-CLIENT-PRELOAD">19.11.3. Shared Library Preloading</a></span></dt><dt><span class="sect2"><a href="runtime-config-client.html#RUNTIME-CONFIG-CLIENT-OTHER">19.11.4. Other Defaults</a></span></dt></dl></div><div class="sect2" id="RUNTIME-CONFIG-CLIENT-STATEMENT"><div class="titlepage"><div><div><h3 class="title">19.11.1. Statement Behavior</h3></div></div></div><div class="variablelist"><dl class="variablelist"><dt id="GUC-SEARCH-PATH"><span class="term"><code class="varname">search_path</code> (<code class="type">string</code>)
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>19.11. Client Connection Defaults</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="runtime-config-autovacuum.html" title="19.10. Automatic Vacuuming" /><link rel="next" href="runtime-config-locks.html" title="19.12. Lock Management" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">19.11. Client Connection Defaults</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="runtime-config-autovacuum.html" title="19.10. Automatic Vacuuming">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="runtime-config.html" title="Chapter 19. Server Configuration">Up</a></td><th width="60%" align="center">Chapter 19. Server Configuration</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.7 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="runtime-config-locks.html" title="19.12. Lock Management">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="RUNTIME-CONFIG-CLIENT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">19.11. Client Connection Defaults</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="runtime-config-client.html#RUNTIME-CONFIG-CLIENT-STATEMENT">19.11.1. Statement Behavior</a></span></dt><dt><span class="sect2"><a href="runtime-config-client.html#RUNTIME-CONFIG-CLIENT-FORMAT">19.11.2. Locale and Formatting</a></span></dt><dt><span class="sect2"><a href="runtime-config-client.html#RUNTIME-CONFIG-CLIENT-PRELOAD">19.11.3. Shared Library Preloading</a></span></dt><dt><span class="sect2"><a href="runtime-config-client.html#RUNTIME-CONFIG-CLIENT-OTHER">19.11.4. Other Defaults</a></span></dt></dl></div><div class="sect2" id="RUNTIME-CONFIG-CLIENT-STATEMENT"><div class="titlepage"><div><div><h3 class="title">19.11.1. Statement Behavior</h3></div></div></div><div class="variablelist"><dl class="variablelist"><dt id="GUC-CLIENT-MIN-MESSAGES"><span class="term"><code class="varname">client_min_messages</code> (<code class="type">enum</code>)
       <a id="id-1.6.6.14.2.2.1.1.3" class="indexterm"></a>
-      <a id="id-1.6.6.14.2.2.1.1.4" class="indexterm"></a>
+      </span></dt><dd><p>        Controls which
+        <a class="link" href="runtime-config-logging.html#RUNTIME-CONFIG-SEVERITY-LEVELS" title="Table 19.1. Message Severity Levels">message levels</a>
+        are sent to the client.
+        Valid values are <code class="literal">DEBUG5</code>,
+        <code class="literal">DEBUG4</code>, <code class="literal">DEBUG3</code>, <code class="literal">DEBUG2</code>,
+        <code class="literal">DEBUG1</code>, <code class="literal">LOG</code>, <code class="literal">NOTICE</code>,
+        <code class="literal">WARNING</code>, and <code class="literal">ERROR</code>.
+        Each level includes all the levels that follow it.  The later the level,
+        the fewer messages are sent.  The default is
+        <code class="literal">NOTICE</code>.  Note that <code class="literal">LOG</code> has a different
+        rank here than in <a class="xref" href="runtime-config-logging.html#GUC-LOG-MIN-MESSAGES">log_min_messages</a>.
+       </p><p>        <code class="literal">INFO</code> level messages are always sent to the client.
+       </p></dd><dt id="GUC-SEARCH-PATH"><span class="term"><code class="varname">search_path</code> (<code class="type">string</code>)
+      <a id="id-1.6.6.14.2.2.2.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.2.1.4" class="indexterm"></a>
       </span></dt><dd><p>        This variable specifies the order in which schemas are searched
         when an object (table, data type, function, etc.) is referenced by a
         simple name with no schema specified.  When there are objects of
@@ -15,7 +29,7 @@
         permission, is silently ignored.
        </p><p>        If one of the list items is the special name
         <code class="literal">$user</code>, then the schema having the name returned by
-        <code class="function">SESSION_USER</code> is substituted, if there is such a schema
+        <code class="function">CURRENT_USER</code> is substituted, if there is such a schema
         and the user has <code class="literal">USAGE</code> permission for it.
         (If not, <code class="literal">$user</code> is ignored.)
        </p><p>        The system catalog schema, <code class="literal">pg_catalog</code>, is always
@@ -26,7 +40,7 @@
        </p><p>        Likewise, the current session's temporary-table schema,
         <code class="literal">pg_temp_<em class="replaceable"><code>nnn</code></em></code>, is always searched if it
         exists.  It can be explicitly listed in the path by using the
-        alias <code class="literal">pg_temp</code><a id="id-1.6.6.14.2.2.1.2.5.3" class="indexterm"></a>.  If it is not listed in the path then
+        alias <code class="literal">pg_temp</code><a id="id-1.6.6.14.2.2.2.2.5.3" class="indexterm"></a>.  If it is not listed in the path then
         it is searched first (even before <code class="literal">pg_catalog</code>).  However,
         the temporary schema is only searched for relation (table, view,
         sequence, etc) and data type names.  It is never searched for
@@ -55,7 +69,7 @@
         <code class="function">current_schemas</code> shows how the items
         appearing in <code class="varname">search_path</code> were resolved.
        </p></dd><dt id="GUC-ROW-SECURITY"><span class="term"><code class="varname">row_security</code> (<code class="type">boolean</code>)
-      <a id="id-1.6.6.14.2.2.2.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.3.1.3" class="indexterm"></a>
       </span></dt><dd><p>        This variable controls whether to raise an error in lieu of applying a
         row security policy.  When set to <code class="literal">on</code>, policies apply
         normally.  When set to <code class="literal">off</code>, queries fail which would
@@ -68,8 +82,8 @@
        </p><p>        For more information on row security policies,
         see <a class="xref" href="sql-createpolicy.html" title="CREATE POLICY"><span class="refentrytitle">CREATE POLICY</span></a>.
        </p></dd><dt id="GUC-DEFAULT-TABLESPACE"><span class="term"><code class="varname">default_tablespace</code> (<code class="type">string</code>)
-      <a id="id-1.6.6.14.2.2.3.1.3" class="indexterm"></a>
-      <a id="id-1.6.6.14.2.2.3.1.4" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.4.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.4.1.4" class="indexterm"></a>
       </span></dt><dd><p>        This variable specifies the default tablespace in which to create
         objects (tables and indexes) when a <code class="command">CREATE</code> command does
         not explicitly specify a tablespace.
@@ -88,8 +102,8 @@
        </p><p>        For more information on tablespaces,
         see <a class="xref" href="manage-ag-tablespaces.html" title="22.6. Tablespaces">Section 22.6</a>.
        </p></dd><dt id="GUC-TEMP-TABLESPACES"><span class="term"><code class="varname">temp_tablespaces</code> (<code class="type">string</code>)
-      <a id="id-1.6.6.14.2.2.4.1.3" class="indexterm"></a>
-      <a id="id-1.6.6.14.2.2.4.1.4" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.5.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.5.1.4" class="indexterm"></a>
       </span></dt><dd><p>        This variable specifies tablespaces in which to create temporary
         objects (temp tables and indexes on temp tables) when a
         <code class="command">CREATE</code> command does not explicitly specify a tablespace.
@@ -115,7 +129,7 @@
         database.
        </p><p>        See also <a class="xref" href="runtime-config-client.html#GUC-DEFAULT-TABLESPACE">default_tablespace</a>.
        </p></dd><dt id="GUC-CHECK-FUNCTION-BODIES"><span class="term"><code class="varname">check_function_bodies</code> (<code class="type">boolean</code>)
-      <a id="id-1.6.6.14.2.2.5.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.6.1.3" class="indexterm"></a>
       </span></dt><dd><p>        This parameter is normally on. When set to <code class="literal">off</code>, it
         disables validation of the function body string during <a class="xref" href="sql-createfunction.html" title="CREATE FUNCTION"><span class="refentrytitle">CREATE FUNCTION</span></a>.  Disabling validation avoids side
         effects of the validation process and avoids false positives due
@@ -123,8 +137,8 @@
         to <code class="literal">off</code> before loading functions on behalf of other
         users; <span class="application">pg_dump</span> does so automatically.
        </p></dd><dt id="GUC-DEFAULT-TRANSACTION-ISOLATION"><span class="term"><code class="varname">default_transaction_isolation</code> (<code class="type">enum</code>)
-      <a id="id-1.6.6.14.2.2.6.1.3" class="indexterm"></a>
-      <a id="id-1.6.6.14.2.2.6.1.4" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.7.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.7.1.4" class="indexterm"></a>
       </span></dt><dd><p>        Each SQL transaction has an isolation level, which can be
         either <span class="quote">“<span class="quote">read uncommitted</span>”</span>, <span class="quote">“<span class="quote">read
         committed</span>”</span>, <span class="quote">“<span class="quote">repeatable read</span>”</span>, or
@@ -133,15 +147,15 @@
         is <span class="quote">“<span class="quote">read committed</span>”</span>.
        </p><p>        Consult <a class="xref" href="mvcc.html" title="Chapter 13. Concurrency Control">Chapter 13</a> and <a class="xref" href="sql-set-transaction.html" title="SET TRANSACTION"><span class="refentrytitle">SET TRANSACTION</span></a> for more information.
        </p></dd><dt id="GUC-DEFAULT-TRANSACTION-READ-ONLY"><span class="term"><code class="varname">default_transaction_read_only</code> (<code class="type">boolean</code>)
-      <a id="id-1.6.6.14.2.2.7.1.3" class="indexterm"></a>
-      <a id="id-1.6.6.14.2.2.7.1.4" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.8.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.8.1.4" class="indexterm"></a>
       </span></dt><dd><p>        A read-only SQL transaction cannot alter non-temporary tables.
         This parameter controls the default read-only status of each new
         transaction. The default is <code class="literal">off</code> (read/write).
        </p><p>        Consult <a class="xref" href="sql-set-transaction.html" title="SET TRANSACTION"><span class="refentrytitle">SET TRANSACTION</span></a> for more information.
        </p></dd><dt id="GUC-DEFAULT-TRANSACTION-DEFERRABLE"><span class="term"><code class="varname">default_transaction_deferrable</code> (<code class="type">boolean</code>)
-      <a id="id-1.6.6.14.2.2.8.1.3" class="indexterm"></a>
-      <a id="id-1.6.6.14.2.2.8.1.4" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.9.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.9.1.4" class="indexterm"></a>
       </span></dt><dd><p>        When running at the <code class="literal">serializable</code> isolation level,
         a deferrable read-only SQL transaction may be delayed before
         it is allowed to proceed.  However, once it begins executing
@@ -155,7 +169,7 @@
         than <code class="literal">serializable</code>. The default is <code class="literal">off</code>.
        </p><p>        Consult <a class="xref" href="sql-set-transaction.html" title="SET TRANSACTION"><span class="refentrytitle">SET TRANSACTION</span></a> for more information.
        </p></dd><dt id="GUC-SESSION-REPLICATION-ROLE"><span class="term"><code class="varname">session_replication_role</code> (<code class="type">enum</code>)
-      <a id="id-1.6.6.14.2.2.9.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.10.1.3" class="indexterm"></a>
       </span></dt><dd><p>        Controls firing of replication-related triggers and rules for the
         current session.  Setting this variable requires
         superuser privilege and results in discarding any previously cached
@@ -164,7 +178,7 @@
         See <a class="xref" href="sql-altertable.html" title="ALTER TABLE"><span class="refentrytitle">ALTER TABLE</span></a> for
         more information.
        </p></dd><dt id="GUC-STATEMENT-TIMEOUT"><span class="term"><code class="varname">statement_timeout</code> (<code class="type">integer</code>)
-      <a id="id-1.6.6.14.2.2.10.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.11.1.3" class="indexterm"></a>
       </span></dt><dd><p>        Abort any statement that takes more than the specified number of
         milliseconds, starting from the time the command arrives at the server
         from the client.  If <code class="varname">log_min_error_statement</code> is set to
@@ -174,7 +188,7 @@
         <code class="filename">postgresql.conf</code> is not recommended because it would
         affect all sessions.
        </p></dd><dt id="GUC-LOCK-TIMEOUT"><span class="term"><code class="varname">lock_timeout</code> (<code class="type">integer</code>)
-      <a id="id-1.6.6.14.2.2.11.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.12.1.3" class="indexterm"></a>
       </span></dt><dd><p>        Abort any statement that waits longer than the specified number of
         milliseconds while attempting to acquire a lock on a table, index,
         row, or other database object.  The time limit applies separately to
@@ -193,7 +207,7 @@
         <code class="filename">postgresql.conf</code> is not recommended because it would
         affect all sessions.
        </p></dd><dt id="GUC-IDLE-IN-TRANSACTION-SESSION-TIMEOUT"><span class="term"><code class="varname">idle_in_transaction_session_timeout</code> (<code class="type">integer</code>)
-      <a id="id-1.6.6.14.2.2.12.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.13.1.3" class="indexterm"></a>
       </span></dt><dd><p>       Terminate any session with an open transaction that has been idle for
        longer than the specified duration in milliseconds. This allows any
        locks held by that session to be released and the connection slot to be reused;
@@ -201,7 +215,7 @@
        <a class="xref" href="routine-vacuuming.html" title="24.1. Routine Vacuuming">Section 24.1</a> for more details about this.
        </p><p>       The default value of 0 disables this feature.
        </p></dd><dt id="GUC-VACUUM-FREEZE-TABLE-AGE"><span class="term"><code class="varname">vacuum_freeze_table_age</code> (<code class="type">integer</code>)
-      <a id="id-1.6.6.14.2.2.13.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.14.1.3" class="indexterm"></a>
       </span></dt><dd><p>        <code class="command">VACUUM</code> performs an aggressive scan if the table's
         <code class="structname">pg_class</code>.<code class="structfield">relfrozenxid</code> field has reached
         the age specified by this setting.  An aggressive scan differs from
@@ -216,7 +230,7 @@
         information see
         <a class="xref" href="routine-vacuuming.html#VACUUM-FOR-WRAPAROUND" title="24.1.5. Preventing Transaction ID Wraparound Failures">Section 24.1.5</a>.
        </p></dd><dt id="GUC-VACUUM-FREEZE-MIN-AGE"><span class="term"><code class="varname">vacuum_freeze_min_age</code> (<code class="type">integer</code>)
-      <a id="id-1.6.6.14.2.2.14.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.15.1.3" class="indexterm"></a>
       </span></dt><dd><p>        Specifies the cutoff age (in transactions) that <code class="command">VACUUM</code>
         should use to decide whether to freeze row versions
         while scanning a table.
@@ -227,7 +241,7 @@
         that there is not an unreasonably short time between forced
         autovacuums.  For more information see <a class="xref" href="routine-vacuuming.html#VACUUM-FOR-WRAPAROUND" title="24.1.5. Preventing Transaction ID Wraparound Failures">Section 24.1.5</a>.
        </p></dd><dt id="GUC-VACUUM-MULTIXACT-FREEZE-TABLE-AGE"><span class="term"><code class="varname">vacuum_multixact_freeze_table_age</code> (<code class="type">integer</code>)
-      <a id="id-1.6.6.14.2.2.15.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.16.1.3" class="indexterm"></a>
       </span></dt><dd><p>        <code class="command">VACUUM</code> performs an aggressive scan if the table's
         <code class="structname">pg_class</code>.<code class="structfield">relminmxid</code> field has reached
         the age specified by this setting.  An aggressive scan differs from
@@ -241,7 +255,7 @@
         anti-wraparound is launched for the table.
         For more information see <a class="xref" href="routine-vacuuming.html#VACUUM-FOR-MULTIXACT-WRAPAROUND" title="24.1.5.1. Multixacts and Wraparound">Section 24.1.5.1</a>.
        </p></dd><dt id="GUC-VACUUM-MULTIXACT-FREEZE-MIN-AGE"><span class="term"><code class="varname">vacuum_multixact_freeze_min_age</code> (<code class="type">integer</code>)
-      <a id="id-1.6.6.14.2.2.16.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.17.1.3" class="indexterm"></a>
       </span></dt><dd><p>        Specifies the cutoff age (in multixacts) that <code class="command">VACUUM</code>
         should use to decide whether to replace multixact IDs with a newer
         transaction ID or multixact ID while scanning a table.  The default
@@ -253,7 +267,7 @@
         autovacuums.
         For more information see <a class="xref" href="routine-vacuuming.html#VACUUM-FOR-MULTIXACT-WRAPAROUND" title="24.1.5.1. Multixacts and Wraparound">Section 24.1.5.1</a>.
        </p></dd><dt id="GUC-BYTEA-OUTPUT"><span class="term"><code class="varname">bytea_output</code> (<code class="type">enum</code>)
-      <a id="id-1.6.6.14.2.2.17.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.18.1.3" class="indexterm"></a>
       </span></dt><dd><p>        Sets the output format for values of type <code class="type">bytea</code>.
         Valid values are <code class="literal">hex</code> (the default)
         and <code class="literal">escape</code> (the traditional PostgreSQL
@@ -261,7 +275,7 @@
         information.  The <code class="type">bytea</code> type always
         accepts both formats on input, regardless of this setting.
        </p></dd><dt id="GUC-XMLBINARY"><span class="term"><code class="varname">xmlbinary</code> (<code class="type">enum</code>)
-      <a id="id-1.6.6.14.2.2.18.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.19.1.3" class="indexterm"></a>
       </span></dt><dd><p>        Sets how binary values are to be encoded in XML.  This applies
         for example when <code class="type">bytea</code> values are converted to
         XML by the functions <code class="function">xmlelement</code> or
@@ -276,9 +290,9 @@
         although the hex encoding will be somewhat larger than the
         base64 encoding.
        </p></dd><dt id="GUC-XMLOPTION"><span class="term"><code class="varname">xmloption</code> (<code class="type">enum</code>)
-      <a id="id-1.6.6.14.2.2.19.1.3" class="indexterm"></a>
-      <a id="id-1.6.6.14.2.2.19.1.4" class="indexterm"></a>
-      <a id="id-1.6.6.14.2.2.19.1.5" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.20.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.20.1.4" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.20.1.5" class="indexterm"></a>
       </span></dt><dd><p>        Sets whether <code class="literal">DOCUMENT</code> or
         <code class="literal">CONTENT</code> is implicit when converting between
         XML and character string values.  See <a class="xref" href="datatype-xml.html" title="8.13. XML Type">Section 8.13</a> for a description of this.  Valid
@@ -289,7 +303,7 @@
 </p><pre class="synopsis">SET XML OPTION { DOCUMENT | CONTENT };</pre><p>
         This syntax is also available in PostgreSQL.
        </p></dd><dt id="GUC-GIN-PENDING-LIST-LIMIT"><span class="term"><code class="varname">gin_pending_list_limit</code> (<code class="type">integer</code>)
-      <a id="id-1.6.6.14.2.2.20.1.3" class="indexterm"></a>
+      <a id="id-1.6.6.14.2.2.21.1.3" class="indexterm"></a>
       </span></dt><dd><p>        Sets the maximum size of the GIN pending list which is used
         when <code class="literal">fastupdate</code> is enabled. If the list grows
         larger than this maximum size, it is cleaned up by moving
@@ -352,7 +366,7 @@
         which is a collection that works in most of the world; there are
         also <code class="literal">'Australia'</code> and <code class="literal">'India'</code>,
         and other collections can be defined for a particular installation.
-        See <a class="xref" href="datetime-config-files.html" title="B.3. Date/Time Configuration Files">Section B.3</a> for more information.
+        See <a class="xref" href="datetime-config-files.html" title="B.4. Date/Time Configuration Files">Section B.4</a> for more information.
        </p></dd><dt id="GUC-EXTRA-FLOAT-DIGITS"><span class="term"><code class="varname">extra_float_digits</code> (<code class="type">integer</code>)
       <a id="id-1.6.6.14.3.2.5.1.3" class="indexterm"></a>
       <a id="id-1.6.6.14.3.2.5.1.4" class="indexterm"></a>

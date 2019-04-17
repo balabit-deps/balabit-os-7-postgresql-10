@@ -8,3 +8,5 @@
 filter-debug-prefix-map
 reproducible-bki
 99-pg_ctl-should-not-wait-for-timestamp-update.patch
+pg-10-Disallow-setting-client_min_messages-higher-than-ERR.patch
+pg-10-Rename-rbtree.c-functions-to-use-rbt-prefix-not-rb-p.patch

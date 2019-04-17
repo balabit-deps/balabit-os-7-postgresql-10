@@ -1,3 +1,25 @@
+postgresql-10 (10.7-0ubuntu0.18.04.1) bionic; urgency=medium
+
+  * New upstream release (LP: #1815665)
+    - By default, panic instead of retrying after fsync() failure, to avoid
+      possible data corruption. A new server parameter "guc-data-sync-retry"
+      has been added to control this;
+    - d/p/pg-10-Disallow-setting-client_min_messages-higher-than-ERR.patch:
+      to retain SRU stability this patch reverts one of the changes which
+      disabled the error suppression by setting client_min_messages to
+      fatal or panic. Overall that means no change to the handling of
+      client_min_messages due to this upload.
+    - d/p/pg-10-Rename-rbtree.c-functions-to-use-rbt-prefix-not-rb-p.patch:
+      this change of 10.7 would break an external ABI/API exposed to
+      extensions. To avoid breaking those (especially those not in the Ubuntu
+      Archive that we can't control) this change of upstreams stable release
+      is reverted. Thereby the ABI/API is unchanged in regard to the rb_
+      function prefix by this new package upload to Ubuntu.
+    - Details about these and many further changes can be found at:
+      https://www.postgresql.org/docs/10/static/release-10-7.html
+
+ -- Christian Ehrhardt <christian.ehrhardt@canonical.com>  Tue, 12 Feb 2019 21:25:34 +0100
+
 postgresql-10 (10.6-0ubuntu0.18.04.1bb1) bionic; urgency=medium
 
   * Balabit patched version

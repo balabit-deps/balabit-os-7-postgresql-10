@@ -687,21 +687,23 @@ AGS='-64' ...
                 "msgfmt" program for native language support
 
         PERL
-                Full path name of the Perl interpreter. This will be used
-                to determine the dependencies for building PL/Perl.
+                Perl interpreter program. This will be used to determine
+                the dependencies for building PL/Perl. The default is
+                "perl".
 
         PYTHON
-                Full path name of the Python interpreter. This will be
-                used to determine the dependencies for building PL/Python.
-                Also, whether Python 2 or 3 is specified here (or
-                otherwise implicitly chosen) determines which variant of
-                the PL/Python language becomes available. See the
-                PL/Python documentation for more information.
+                Python interpreter program. This will be used to determine
+                the dependencies for building PL/Python. Also, whether
+                Python 2 or 3 is specified here (or otherwise implicitly
+                chosen) determines which variant of the PL/Python language
+                becomes available. See the PL/Python documentation for
+                more information. If this is not set, the following are
+                probed in this order: python python3 python2.
 
         TCLSH
-                Full path name of the Tcl interpreter. This will be used
-                to determine the dependencies for building PL/Tcl, and it
-                will be substituted into Tcl scripts.
+                Tcl interpreter program. This will be used to determine
+                the dependencies for building PL/Tcl, and it will be
+                substituted into Tcl scripts.
 
         XML2_CONFIG
                 "xml2-config" program used to locate the libxml
@@ -1010,9 +1012,9 @@ psql testdb
 
    If you have installation problems on a platform that is known to be
    supported according to recent build farm results, please report it to
-   <pgsql-bugs@postgresql.org>. If you are interested in porting
-   PostgreSQL to a new platform, <pgsql-hackers@postgresql.org> is the
-   appropriate place to discuss that.
+   <pgsql-bugs@lists.postgresql.org>. If you are interested in porting
+   PostgreSQL to a new platform, <pgsql-hackers@lists.postgresql.org> is
+   the appropriate place to discuss that.
      __________________________________________________________________
 
                            Platform-specific Notes
