@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>psql</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="app-pgrestore.html" title="pg_restore" /><link rel="next" href="app-reindexdb.html" title="reindexdb" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center"><span xmlns="http://www.w3.org/1999/xhtml" class="application">psql</span></th></tr><tr><td width="10%" align="left"><a accesskey="p" href="app-pgrestore.html" title="pg_restore">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="reference-client.html" title="PostgreSQL Client Applications">Up</a></td><th width="60%" align="center">PostgreSQL Client Applications</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.6 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="app-reindexdb.html" title="reindexdb">Next</a></td></tr></table><hr></hr></div><div class="refentry" id="APP-PSQL"><div class="titlepage"></div><a id="id-1.9.4.18.1" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle"><span class="application">psql</span></span></h2><p><span class="application">psql</span> —       <span class="productname">PostgreSQL</span> interactive terminal
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>psql</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="app-pgrestore.html" title="pg_restore" /><link rel="next" href="app-reindexdb.html" title="reindexdb" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center"><span xmlns="http://www.w3.org/1999/xhtml" class="application">psql</span></th></tr><tr><td width="10%" align="left"><a accesskey="p" href="app-pgrestore.html" title="pg_restore">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="reference-client.html" title="PostgreSQL Client Applications">Up</a></td><th width="60%" align="center">PostgreSQL Client Applications</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.7 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="app-reindexdb.html" title="reindexdb">Next</a></td></tr></table><hr></hr></div><div class="refentry" id="APP-PSQL"><div class="titlepage"></div><a id="id-1.9.4.18.1" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle"><span class="application">psql</span></span></h2><p><span class="application">psql</span> —       <span class="productname">PostgreSQL</span> interactive terminal
     </p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p id="id-1.9.4.18.4.1"><code class="command">psql</code> [<em class="replaceable"><code>option</code></em>...] [<em class="replaceable"><code>dbname</code></em>
     [<em class="replaceable"><code>username</code></em>]]</p></div></div><div class="refsect1" id="id-1.9.4.18.5"><h2>Description</h2><p>     <span class="application">psql</span> is a terminal-based front-end to
      <span class="productname">PostgreSQL</span>. It enables you to type in
@@ -282,7 +282,7 @@ $ <strong class="userinput"><code>psql postgresql://dbmaster:5433/mydb?sslmode=r
     <span class="application">psql</span> is currently connected, followed by
     the string <code class="literal">=&gt;</code>. For example:
 </p><pre class="programlisting">$ <strong class="userinput"><code>psql testdb</code></strong>
-psql (10.6)
+psql (10.7)
 Type "help" for help.
 
 testdb=&gt;</pre><p>
@@ -464,10 +464,19 @@ testdb=&gt;</pre><p>
         of the line is always taken to be the arguments of <code class="command">\copy</code>,
         and neither variable interpolation nor backquote expansion are
         performed in the arguments.
-        </p><div class="tip"><h3 class="title">Tip</h3><p>        This operation is not as efficient as the <acronym class="acronym">SQL</acronym>
-        <code class="command">COPY</code> command because all data must pass
-        through the client/server connection. For large
-        amounts of data the <acronym class="acronym">SQL</acronym> command might be preferable.
+        </p><div class="tip"><h3 class="title">Tip</h3><p>        Another way to obtain the same result as <code class="literal">\copy
+        ... to</code> is to use the <acronym class="acronym">SQL</acronym> <code class="literal">COPY
+        ... TO STDOUT</code> command and terminate it
+        with <code class="literal">\g <em class="replaceable"><code>filename</code></em></code>
+        or <code class="literal">\g |<em class="replaceable"><code>program</code></em></code>.
+        Unlike <code class="literal">\copy</code>, this method allows the command to
+        span multiple lines; also, variable interpolation and backquote
+        expansion can be used.
+        </p></div><div class="tip"><h3 class="title">Tip</h3><p>        These operations are not as efficient as the <acronym class="acronym">SQL</acronym>
+        <code class="command">COPY</code> command with a file or program data source or
+        destination, because all data must pass through the client/server
+        connection.  For large amounts of data the <acronym class="acronym">SQL</acronym>
+        command might be preferable.
         </p></div></dd><dt><span class="term"><code class="literal">\copyright</code></span></dt><dd><p>        Shows the copyright and distribution terms of
         <span class="productname">PostgreSQL</span>.
         </p></dd><dt id="APP-PSQL-META-COMMANDS-CROSSTABVIEW"><span class="term"><code class="literal">\crosstabview [
@@ -1197,8 +1206,7 @@ lo_import 152801</pre><p>
           <code class="literal">latex</code> (uses <code class="literal">tabular</code>),
           <code class="literal">latex-longtable</code>, or
           <code class="literal">troff-ms</code>.
-          Unique abbreviations are allowed.  (That would mean one letter
-          is enough.)
+          Unique abbreviations are allowed.
           </p><p><code class="literal">unaligned</code> format writes all columns of a row on one
           line, separated by the currently active field separator. This
           is useful for creating output that might be intended to be read
