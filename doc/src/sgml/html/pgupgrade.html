@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>pg_upgrade</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="pgtesttiming.html" title="pg_test_timing" /><link rel="next" href="pgwaldump.html" title="pg_waldump" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center"><span xmlns="http://www.w3.org/1999/xhtml" class="application">pg_upgrade</span></th></tr><tr><td width="10%" align="left"><a accesskey="p" href="pgtesttiming.html" title="pg_test_timing">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="reference-server.html" title="PostgreSQL Server Applications">Up</a></td><th width="60%" align="center">PostgreSQL Server Applications</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.7 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="pgwaldump.html" title="pg_waldump">Next</a></td></tr></table><hr></hr></div><div class="refentry" id="PGUPGRADE"><div class="titlepage"></div><a id="id-1.9.5.11.1" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle"><span class="application">pg_upgrade</span></span></h2><p>pg_upgrade — upgrade a <span class="productname">PostgreSQL</span> server instance</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p id="id-1.9.5.11.4.1"><code class="command">pg_upgrade</code>  <code class="option">-b</code>   <em class="replaceable"><code>oldbindir</code></em>   <code class="option">-B</code>   <em class="replaceable"><code>newbindir</code></em>   <code class="option">-d</code>   <em class="replaceable"><code>oldconfigdir</code></em>   <code class="option">-D</code>   <em class="replaceable"><code>newconfigdir</code></em>  [<em class="replaceable"><code>option</code></em>...]</p></div></div><div class="refsect1" id="id-1.9.5.11.5"><h2>Description</h2><p>  <span class="application">pg_upgrade</span> (formerly called <span class="application">pg_migrator</span>) allows data
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>pg_upgrade</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="pgtesttiming.html" title="pg_test_timing" /><link rel="next" href="pgwaldump.html" title="pg_waldump" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center"><span xmlns="http://www.w3.org/1999/xhtml" class="application">pg_upgrade</span></th></tr><tr><td width="10%" align="left"><a accesskey="p" href="pgtesttiming.html" title="pg_test_timing">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="reference-server.html" title="PostgreSQL Server Applications">Up</a></td><th width="60%" align="center">PostgreSQL Server Applications</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.8 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="pgwaldump.html" title="pg_waldump">Next</a></td></tr></table><hr></hr></div><div class="refentry" id="PGUPGRADE"><div class="titlepage"></div><a id="id-1.9.5.11.1" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle"><span class="application">pg_upgrade</span></span></h2><p>pg_upgrade — upgrade a <span class="productname">PostgreSQL</span> server instance</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p id="id-1.9.5.11.4.1"><code class="command">pg_upgrade</code>  <code class="option">-b</code>   <em class="replaceable"><code>oldbindir</code></em>   <code class="option">-B</code>   <em class="replaceable"><code>newbindir</code></em>   <code class="option">-d</code>   <em class="replaceable"><code>oldconfigdir</code></em>   <code class="option">-D</code>   <em class="replaceable"><code>newconfigdir</code></em>  [<em class="replaceable"><code>option</code></em>...]</p></div></div><div class="refsect1" id="id-1.9.5.11.5"><h2>Description</h2><p>  <span class="application">pg_upgrade</span> (formerly called <span class="application">pg_migrator</span>) allows data
   stored in <span class="productname">PostgreSQL</span> data files to be upgraded to a later <span class="productname">PostgreSQL</span>
   major version without the data dump/reload typically required for
   major version upgrades, e.g. from 9.5.8 to 9.6.4 or from 10.7 to 11.2.
@@ -255,22 +255,26 @@ SET PATH=%PATH%;C:\Program Files\PostgreSQL\10\bin;</pre><p>
     </p></li><li class="step" id="PGUPGRADE-STEP-REVERT"><p class="title"><strong>Reverting to old cluster</strong></p><p>     If, after running <code class="command">pg_upgrade</code>, you wish to revert to the old cluster,
      there are several options:
 
-     </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        If you ran <code class="command">pg_upgrade</code>
-        with <code class="option">--check</code>, no modifications were made to the old
-        cluster and you can re-use it anytime.
-       </p></li><li class="listitem"><p>        If you ran <code class="command">pg_upgrade</code>
-        with <code class="option">--link</code>, the data files are shared between the
-        old and new cluster. If you started the new cluster, the new
-        server has written to those shared files and it is unsafe to
-        use the old cluster.
-       </p></li><li class="listitem"><p>        If you ran <code class="command">pg_upgrade</code> <span class="emphasis"><em>without</em></span>
-        <code class="option">--link</code> or did not start the new server, the
-        old cluster was not modified except that, if linking
-        started, a <code class="literal">.old</code> suffix was appended to
-        <code class="filename">$PGDATA/global/pg_control</code>.  To reuse the old
-        cluster, possibly remove the <code class="filename">.old</code> suffix from
-        <code class="filename">$PGDATA/global/pg_control</code>; you can then restart the
-        old cluster.
+     </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: disc; "><li class="listitem"><p>        If the <code class="option">--check</code> option was used, the old cluster
+        was unmodified;  it can be restarted.
+       </p></li><li class="listitem"><p>        If the <code class="option">--link</code> option was <span class="emphasis"><em>not</em></span>
+        used, the old cluster was unmodified;  it can be restarted.
+       </p></li><li class="listitem"><p>        If the <code class="option">--link</code> option was used, the data
+        files might be shared between the old and new cluster:
+
+        </p><div class="itemizedlist"><ul class="itemizedlist" style="list-style-type: circle; "><li class="listitem"><p>           If <code class="command">pg_upgrade</code> aborted before linking started,
+           the old cluster was unmodified;  it can be restarted.
+          </p></li><li class="listitem"><p>           If you did <span class="emphasis"><em>not</em></span> start the new cluster, the old
+           cluster was unmodified except that, when linking started, a
+           <code class="literal">.old</code> suffix was appended to
+           <code class="filename">$PGDATA/global/pg_control</code>.  To reuse the old
+           cluster, remove the <code class="filename">.old</code> suffix from
+           <code class="filename">$PGDATA/global/pg_control</code>; you can then restart
+           the old cluster.
+          </p></li><li class="listitem"><p>           If you did start the new cluster, it has written to shared files
+           and it is unsafe to use the old cluster.  The old cluster will
+           need to be restored from backup in this case.
+          </p></li></ul></div><p>
        </p></li></ul></div><p>
     </p></li></ol></div></div><div class="refsect1" id="id-1.9.5.11.8"><h2>Notes</h2><p>   <span class="application">pg_upgrade</span> does not support upgrading of databases
    containing these <code class="type">reg*</code> OID-referencing system data types:
