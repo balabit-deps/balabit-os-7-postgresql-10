@@ -1,3 +1,18 @@
+postgresql-10 (10.9-0ubuntu0.18.04.1) bionic-security; urgency=medium
+
+  * New upstream release (LP: #1828012)
+    - Fix buffer-overflow hazards in SCRAM verifier parsing and libpq
+      CVE-2019-10164
+    - Fix failure of ALTER TABLE ... ALTER COLUMN TYPE when the table has
+      a partial exclusion constraint
+    - Fix failure of COMMENT command for comments on domain constraints
+    - Prevent possible memory clobber when there are duplicate columns in
+      a hash aggregate's hash key list
+    - Details about these and many further changes can be found at:
+      https://www.postgresql.org/docs/10/static/release-10-9.html
+
+ -- Christian Ehrhardt <christian.ehrhardt@canonical.com>  Tue, 18 Jun 2019 13:11:36 +0200
+
 postgresql-10 (10.8-0ubuntu0.18.04.1bb1) bionic; urgency=medium
 
   * Balabit patched version

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>5.10. Table Partitioning</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="ddl-inherit.html" title="5.9. Inheritance" /><link rel="next" href="ddl-foreign-data.html" title="5.11. Foreign Data" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">5.10. Table Partitioning</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="ddl-inherit.html" title="5.9. Inheritance">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="ddl.html" title="Chapter 5. Data Definition">Up</a></td><th width="60%" align="center">Chapter 5. Data Definition</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.8 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="ddl-foreign-data.html" title="5.11. Foreign Data">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="DDL-PARTITIONING"><div class="titlepage"><div><div><h2 class="title" style="clear: both">5.10. Table Partitioning</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="ddl-partitioning.html#DDL-PARTITIONING-OVERVIEW">5.10.1. Overview</a></span></dt><dt><span class="sect2"><a href="ddl-partitioning.html#DDL-PARTITIONING-DECLARATIVE">5.10.2. Declarative Partitioning</a></span></dt><dt><span class="sect2"><a href="ddl-partitioning.html#DDL-PARTITIONING-IMPLEMENTATION-INHERITANCE">5.10.3. Implementation Using Inheritance</a></span></dt><dt><span class="sect2"><a href="ddl-partitioning.html#DDL-PARTITIONING-CONSTRAINT-EXCLUSION">5.10.4. Partitioning and Constraint Exclusion</a></span></dt></dl></div><a id="id-1.5.4.12.2" class="indexterm"></a><a id="id-1.5.4.12.3" class="indexterm"></a><a id="id-1.5.4.12.4" class="indexterm"></a><p>    <span class="productname">PostgreSQL</span> supports basic table
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>5.10. Table Partitioning</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="ddl-inherit.html" title="5.9. Inheritance" /><link rel="next" href="ddl-foreign-data.html" title="5.11. Foreign Data" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">5.10. Table Partitioning</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="ddl-inherit.html" title="5.9. Inheritance">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="ddl.html" title="Chapter 5. Data Definition">Up</a></td><th width="60%" align="center">Chapter 5. Data Definition</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.9 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="ddl-foreign-data.html" title="5.11. Foreign Data">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="DDL-PARTITIONING"><div class="titlepage"><div><div><h2 class="title" style="clear: both">5.10. Table Partitioning</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="ddl-partitioning.html#DDL-PARTITIONING-OVERVIEW">5.10.1. Overview</a></span></dt><dt><span class="sect2"><a href="ddl-partitioning.html#DDL-PARTITIONING-DECLARATIVE">5.10.2. Declarative Partitioning</a></span></dt><dt><span class="sect2"><a href="ddl-partitioning.html#DDL-PARTITIONING-IMPLEMENTATION-INHERITANCE">5.10.3. Implementation Using Inheritance</a></span></dt><dt><span class="sect2"><a href="ddl-partitioning.html#DDL-PARTITIONING-CONSTRAINT-EXCLUSION">5.10.4. Partitioning and Constraint Exclusion</a></span></dt><dt><span class="sect2"><a href="ddl-partitioning.html#DDL-PARTITIONING-DECLARATIVE-BEST-PRACTICES">5.10.5. Declarative Partitioning Best Practices</a></span></dt></dl></div><a id="id-1.5.4.12.2" class="indexterm"></a><a id="id-1.5.4.12.3" class="indexterm"></a><a id="id-1.5.4.12.4" class="indexterm"></a><p>    <span class="productname">PostgreSQL</span> supports basic table
     partitioning. This section describes why and how to implement
     partitioning as part of your database design.
    </p><div class="sect2" id="DDL-PARTITIONING-OVERVIEW"><div class="titlepage"><div><div><h3 class="title">5.10.1. Overview</h3></div></div></div><p>     Partitioning refers to splitting what is logically one large table into
@@ -643,4 +643,59 @@ EXPLAIN SELECT count(*) FROM measurement WHERE logdate &gt;= DATE '2008-01-01';
       these techniques will work well with up to perhaps a hundred partitions;
       don't try to use many thousands of partitions.
      </p></li></ul></div><p>
+   </p></div><div class="sect2" id="DDL-PARTITIONING-DECLARATIVE-BEST-PRACTICES"><div class="titlepage"><div><div><h3 class="title">5.10.5. Declarative Partitioning Best Practices</h3></div></div></div><p>    The choice of how to partition a table should be made carefully as the
+    performance of query planning and execution can be negatively affected by
+    poor design.
+   </p><p>    One of the most critical design decisions will be the column or columns
+    by which you partition your data.  Often the best choice will be to
+    partition by the column or set of columns which most commonly appear in
+    <code class="literal">WHERE</code> clauses of queries being executed on the
+    partitioned table.  <code class="literal">WHERE</code> clause items that match and
+    are compatible with the partition key can be used to prune unneeded
+    partitions.  Removal of unwanted data is also a factor to consider when
+    planning your partitioning strategy.  An entire partition can be detached
+    fairly quickly, so it may be beneficial to design the partition strategy
+    in such a way that all data to be removed at once is located in a single
+    partition.
+   </p><p>    Choosing the target number of partitions that the table should be divided
+    into is also a critical decision to make.  Not having enough partitions
+    may mean that indexes remain too large and that data locality remains poor
+    which could result in low cache hit ratios.  However, dividing the table
+    into too many partitions can also cause issues.  Too many partitions can
+    mean longer query planning times and higher memory consumption during both
+    query planning and execution.  When choosing how to partition your table,
+    it's also important to consider what changes may occur in the future.  For
+    example, if you choose to have one partition per customer and you
+    currently have a small number of large customers, consider the
+    implications if in several years you instead find yourself with a large
+    number of small customers.  In this case, it may be better to choose to
+    partition by <code class="literal">RANGE</code> and choose a reasonable number of
+    partitions, each containing a fixed number of customers, rather than
+    trying to partition by <code class="literal">LIST</code> and hoping that the number
+    of customers does not increase beyond what it is practical to partition
+    the data by.
+   </p><p>    Sub-partitioning can be useful to further divide partitions that are
+    expected to become larger than other partitions, although excessive
+    sub-partitioning can easily lead to large numbers of partitions and can
+    cause the same problems mentioned in the preceding paragraph.
+   </p><p>    It is also important to consider the overhead of partitioning during
+    query planning and execution.  The query planner is generally able to
+    handle partition hierarchies with up to a few hundred partitions.
+    Planning times become longer and memory consumption becomes higher as more
+    partitions are added.  This is particularly true for the
+    <code class="command">UPDATE</code> and <code class="command">DELETE</code> commands.  Another
+    reason to be concerned about having a large number of partitions is that
+    the server's memory consumption may grow significantly over a period of
+    time, especially if many sessions touch large numbers of partitions.
+    That's because each partition requires its metadata to be loaded into the
+    local memory of each session that touches it.
+   </p><p>    With data warehouse type workloads, it can make sense to use a larger
+    number of partitions than with an <acronym class="acronym">OLTP</acronym> type workload.
+    Generally, in data warehouses, query planning time is less of a concern as
+    the majority of processing time is spent during query execution.  With
+    either of these two types of workload, it is important to make the right
+    decisions early, as re-partitioning large quantities of data can be
+    painfully slow.  Simulations of the intended workload are often beneficial
+    for optimizing the partitioning strategy.  Never assume that more
+    partitions are better than fewer partitions and vice-versa.
    </p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="ddl-inherit.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="ddl.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="ddl-foreign-data.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">5.9. Inheritance </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 5.11. Foreign Data</td></tr></table></div></body></html>
