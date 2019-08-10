@@ -1,3 +1,16 @@
+postgresql-10 (10.10-0ubuntu0.18.04.1) bionic-security; urgency=medium
+
+  * SECURITY UPDATE: New upstream release (LP: #1839058)
+    - Require schema qualification to cast to a temporary type when using
+      functional cast syntax (CVE-2019-10208)
+    - Fix failure of ALTER TABLE ... ALTER COLUMN TYPE when altering multiple
+      columns' types in one command. This fixes a regression introduced in the
+      most recent minor releases
+    - Details about these and many further changes can be found at:
+      https://www.postgresql.org/docs/10/static/release-10-10.html
+
+ -- Christian Ehrhardt <christian.ehrhardt@canonical.com>  Tue, 06 Aug 2019 08:55:10 +0200
+
 postgresql-10 (10.9-0ubuntu0.18.04.1bb1) bionic; urgency=medium
 
   * Balabit patched version
