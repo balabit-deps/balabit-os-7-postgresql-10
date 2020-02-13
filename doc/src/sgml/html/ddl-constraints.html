@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>5.3. Constraints</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="ddl-default.html" title="5.2. Default Values" /><link rel="next" href="ddl-system-columns.html" title="5.4. System Columns" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">5.3. Constraints</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="ddl-default.html" title="5.2. Default Values">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="ddl.html" title="Chapter 5. Data Definition">Up</a></td><th width="60%" align="center">Chapter 5. Data Definition</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.10 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="ddl-system-columns.html" title="5.4. System Columns">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="DDL-CONSTRAINTS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">5.3. Constraints</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="ddl-constraints.html#DDL-CONSTRAINTS-CHECK-CONSTRAINTS">5.3.1. Check Constraints</a></span></dt><dt><span class="sect2"><a href="ddl-constraints.html#id-1.5.4.5.6">5.3.2. Not-Null Constraints</a></span></dt><dt><span class="sect2"><a href="ddl-constraints.html#DDL-CONSTRAINTS-UNIQUE-CONSTRAINTS">5.3.3. Unique Constraints</a></span></dt><dt><span class="sect2"><a href="ddl-constraints.html#DDL-CONSTRAINTS-PRIMARY-KEYS">5.3.4. Primary Keys</a></span></dt><dt><span class="sect2"><a href="ddl-constraints.html#DDL-CONSTRAINTS-FK">5.3.5. Foreign Keys</a></span></dt><dt><span class="sect2"><a href="ddl-constraints.html#DDL-CONSTRAINTS-EXCLUSION">5.3.6. Exclusion Constraints</a></span></dt></dl></div><a id="id-1.5.4.5.2" class="indexterm"></a><p>   Data types are a way to limit the kind of data that can be stored
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>5.3. Constraints</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="ddl-default.html" title="5.2. Default Values" /><link rel="next" href="ddl-system-columns.html" title="5.4. System Columns" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">5.3. Constraints</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="ddl-default.html" title="5.2. Default Values">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="ddl.html" title="Chapter 5. Data Definition">Up</a></td><th width="60%" align="center">Chapter 5. Data Definition</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.12 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="ddl-system-columns.html" title="5.4. System Columns">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="DDL-CONSTRAINTS"><div class="titlepage"><div><div><h2 class="title" style="clear: both">5.3. Constraints</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="ddl-constraints.html#DDL-CONSTRAINTS-CHECK-CONSTRAINTS">5.3.1. Check Constraints</a></span></dt><dt><span class="sect2"><a href="ddl-constraints.html#id-1.5.4.5.6">5.3.2. Not-Null Constraints</a></span></dt><dt><span class="sect2"><a href="ddl-constraints.html#DDL-CONSTRAINTS-UNIQUE-CONSTRAINTS">5.3.3. Unique Constraints</a></span></dt><dt><span class="sect2"><a href="ddl-constraints.html#DDL-CONSTRAINTS-PRIMARY-KEYS">5.3.4. Primary Keys</a></span></dt><dt><span class="sect2"><a href="ddl-constraints.html#DDL-CONSTRAINTS-FK">5.3.5. Foreign Keys</a></span></dt><dt><span class="sect2"><a href="ddl-constraints.html#DDL-CONSTRAINTS-EXCLUSION">5.3.6. Exclusion Constraints</a></span></dt></dl></div><a id="id-1.5.4.5.2" class="indexterm"></a><p>   Data types are a way to limit the kind of data that can be stored
    in a table.  For many applications, however, the constraint they
    provide is too coarse.  For example, a column containing a product
    price should probably only accept positive values.  But there is no
@@ -99,7 +99,44 @@
     they will not prevent null values in the constrained columns.  To
     ensure that a column does not contain null values, the not-null
     constraint described in the next section can be used.
-   </p></div><div class="sect2" id="id-1.5.4.5.6"><div class="titlepage"><div><div><h3 class="title">5.3.2. Not-Null Constraints</h3></div></div></div><a id="id-1.5.4.5.6.2" class="indexterm"></a><a id="id-1.5.4.5.6.3" class="indexterm"></a><p>    A not-null constraint simply specifies that a column must not
+   </p><div class="note"><h3 class="title">Note</h3><p>     <span class="productname">PostgreSQL</span> does not support
+     <code class="literal">CHECK</code> constraints that reference table data other than
+     the new or updated row being checked.  While a <code class="literal">CHECK</code>
+     constraint that violates this rule may appear to work in simple
+     tests, it cannot guarantee that the database will not reach a state
+     in which the constraint condition is false (due to subsequent changes
+     of the other row(s) involved).  This would cause a database dump and
+     reload to fail.  The reload could fail even when the complete
+     database state is consistent with the constraint, due to rows not
+     being loaded in an order that will satisfy the constraint.  If
+     possible, use <code class="literal">UNIQUE</code>, <code class="literal">EXCLUDE</code>,
+     or <code class="literal">FOREIGN KEY</code> constraints to express
+     cross-row and cross-table restrictions.
+    </p><p>     If what you desire is a one-time check against other rows at row
+     insertion, rather than a continuously-maintained consistency
+     guarantee, a custom <a class="link" href="triggers.html" title="Chapter 38. Triggers">trigger</a> can be used
+     to implement that.  (This approach avoids the dump/reload problem because
+     <span class="application">pg_dump</span> does not reinstall triggers until after
+     reloading data, so that the check will not be enforced during a
+     dump/reload.)
+    </p></div><div class="note"><h3 class="title">Note</h3><p>     <span class="productname">PostgreSQL</span> assumes that
+     <code class="literal">CHECK</code> constraints' conditions are immutable, that
+     is, they will always give the same result for the same input row.
+     This assumption is what justifies examining <code class="literal">CHECK</code>
+     constraints only when rows are inserted or updated, and not at other
+     times.  (The warning above about not referencing other table data is
+     really a special case of this restriction.)
+    </p><p>     An example of a common way to break this assumption is to reference a
+     user-defined function in a <code class="literal">CHECK</code> expression, and
+     then change the behavior of that
+     function.  <span class="productname">PostgreSQL</span> does not disallow
+     that, but it will not notice if there are rows in the table that now
+     violate the <code class="literal">CHECK</code> constraint. That would cause a
+     subsequent database dump and reload to fail.
+     The recommended way to handle such a change is to drop the constraint
+     (using <code class="command">ALTER TABLE</code>), adjust the function definition,
+     and re-add the constraint, thereby rechecking it against all table rows.
+    </p></div></div><div class="sect2" id="id-1.5.4.5.6"><div class="titlepage"><div><div><h3 class="title">5.3.2. Not-Null Constraints</h3></div></div></div><a id="id-1.5.4.5.6.2" class="indexterm"></a><a id="id-1.5.4.5.6.3" class="indexterm"></a><p>    A not-null constraint simply specifies that a column must not
     assume the null value.  A syntax example:
 </p><pre class="programlisting">CREATE TABLE products (
     product_no integer <span class="emphasis"><strong>NOT NULL</strong></span>,

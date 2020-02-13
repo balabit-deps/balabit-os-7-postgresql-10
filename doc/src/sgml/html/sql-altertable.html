@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>ALTER TABLE</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="sql-altersystem.html" title="ALTER SYSTEM" /><link rel="next" href="sql-altertablespace.html" title="ALTER TABLESPACE" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">ALTER TABLE</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="sql-altersystem.html" title="ALTER SYSTEM">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="sql-commands.html" title="SQL Commands">Up</a></td><th width="60%" align="center">SQL Commands</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.10 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="sql-altertablespace.html" title="ALTER TABLESPACE">Next</a></td></tr></table><hr></hr></div><div class="refentry" id="SQL-ALTERTABLE"><div class="titlepage"></div><a id="id-1.9.3.33.1" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle">ALTER TABLE</span></h2><p>ALTER TABLE — change the definition of a table</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><pre class="synopsis">ALTER TABLE [ IF EXISTS ] [ ONLY ] <em class="replaceable"><code>name</code></em> [ * ]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>ALTER TABLE</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="sql-altersystem.html" title="ALTER SYSTEM" /><link rel="next" href="sql-altertablespace.html" title="ALTER TABLESPACE" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">ALTER TABLE</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="sql-altersystem.html" title="ALTER SYSTEM">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="sql-commands.html" title="SQL Commands">Up</a></td><th width="60%" align="center">SQL Commands</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.12 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="sql-altertablespace.html" title="ALTER TABLESPACE">Next</a></td></tr></table><hr></hr></div><div class="refentry" id="SQL-ALTERTABLE"><div class="titlepage"></div><a id="id-1.9.3.33.1" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle">ALTER TABLE</span></h2><p>ALTER TABLE — change the definition of a table</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><pre class="synopsis">ALTER TABLE [ IF EXISTS ] [ ONLY ] <em class="replaceable"><code>name</code></em> [ * ]
     <em class="replaceable"><code>action</code></em> [, ... ]
 ALTER TABLE [ IF EXISTS ] [ ONLY ] <em class="replaceable"><code>name</code></em> [ * ]
     RENAME [ COLUMN ] <em class="replaceable"><code>column_name</code></em> TO <em class="replaceable"><code>new_column_name</code></em>
@@ -184,16 +184,19 @@ ALTER TABLE [ IF EXISTS ] <em class="replaceable"><code>name</code></em>
       <a class="xref" href="sql-createtable.html" title="CREATE TABLE"><span class="refentrytitle">CREATE TABLE</span></a>, plus the option <code class="literal">NOT
       VALID</code>, which is currently only allowed for foreign key
       and CHECK constraints.
-      If the constraint is marked <code class="literal">NOT VALID</code>, the
-      potentially-lengthy initial check to verify that all rows in the table
-      satisfy the constraint is skipped.  The constraint will still be
+     </p><p>      Normally, this form will cause a scan of the table to verify that all
+      existing rows in the table satisfy the new constraint.  But if
+      the <code class="literal">NOT VALID</code> option is used, this
+      potentially-lengthy scan is skipped.  The constraint will still be
       enforced against subsequent inserts or updates (that is, they'll fail
       unless there is a matching row in the referenced table, in the case
-      of foreign keys; and they'll fail unless the new row matches the
-      specified check constraints).  But the
+      of foreign keys, or they'll fail unless the new row matches the
+      specified check condition).  But the
       database will not assume that the constraint holds for all rows in
       the table, until it is validated by using the <code class="literal">VALIDATE
       CONSTRAINT</code> option.
+      See <a class="xref" href="sql-altertable.html#SQL-ALTERTABLE-NOTES" title="Notes">Notes</a> below for more information
+      about using the <code class="literal">NOT VALID</code> option.
      </p></dd><dt><span class="term"><code class="literal">ADD <em class="replaceable"><code>table_constraint_using_index</code></em></code></span></dt><dd><p>      This form adds a new <code class="literal">PRIMARY KEY</code> or <code class="literal">UNIQUE</code>
       constraint to a table based on an existing unique index.  All the
       columns of the index will be included in the constraint.
@@ -222,19 +225,12 @@ ALTER TABLE [ IF EXISTS ] <em class="replaceable"><code>name</code></em>
        official constraint using this syntax.  See the example below.
       </p></div></dd><dt><span class="term"><code class="literal">ALTER CONSTRAINT</code></span></dt><dd><p>      This form alters the attributes of a constraint that was previously
       created. Currently only foreign key constraints may be altered.
-     </p></dd><dt><span class="term"><code class="literal">VALIDATE CONSTRAINT</code></span></dt><dd><p>      This form validates a foreign key or check constraint that was previously created
-      as <code class="literal">NOT VALID</code>, by scanning the table to ensure there
-      are no rows for which the constraint is not satisfied.
-      Nothing happens if the constraint is already marked valid.
-     </p><p>      Validation can be a long process on larger tables. The value of separating
-      validation from initial creation is that you can defer validation to less
-      busy times, or can be used to give additional time to correct pre-existing
-      errors while preventing new errors. Note also that validation on its own
-      does not prevent normal write commands against the table while it runs.
-     </p><p>      Validation acquires only a <code class="literal">SHARE UPDATE EXCLUSIVE</code> lock
-      on the table being altered. If the constraint is a foreign key then
-      a <code class="literal">ROW SHARE</code> lock is also required on
-      the table referenced by the constraint.
+     </p></dd><dt><span class="term"><code class="literal">VALIDATE CONSTRAINT</code></span></dt><dd><p>      This form validates a foreign key or check constraint that was
+      previously created as <code class="literal">NOT VALID</code>, by scanning the
+      table to ensure there are no rows for which the constraint is not
+      satisfied.  Nothing happens if the constraint is already marked valid.
+      (See <a class="xref" href="sql-altertable.html#SQL-ALTERTABLE-NOTES" title="Notes">Notes</a> below for an explanation of the
+      usefulness of this command.)
      </p></dd><dt><span class="term"><code class="literal">DROP CONSTRAINT [ IF EXISTS ]</code></span></dt><dd><p>      This form drops the specified constraint on a table.
       If <code class="literal">IF EXISTS</code> is specified and the constraint
       does not exist, no error is thrown. In this case a notice is issued instead.
@@ -332,9 +328,7 @@ ALTER TABLE [ IF EXISTS ] <em class="replaceable"><code>name</code></em>
       affected.
      </p><p>      <code class="literal">SHARE UPDATE EXCLUSIVE</code> lock will be taken for
       fillfactor and autovacuum storage parameters, as well as the
-      following planner related parameters:
-      <code class="varname">effective_io_concurrency</code>, <code class="varname">parallel_workers</code>, <code class="varname">seq_page_cost</code>,
-      <code class="varname">random_page_cost</code>, <code class="varname">n_distinct</code> and <code class="varname">n_distinct_inherited</code>.
+      planner parameter <code class="varname">parallel_workers</code>.
      </p><div class="note"><h3 class="title">Note</h3><p>       While <code class="command">CREATE TABLE</code> allows <code class="literal">OIDS</code> to be specified
        in the <code class="literal">WITH (<em class="replaceable"><code>storage_parameter</code></em>)</code> syntax,
        <code class="command">ALTER TABLE</code> does not treat <code class="literal">OIDS</code> as a
@@ -405,20 +399,21 @@ ALTER TABLE [ IF EXISTS ] <em class="replaceable"><code>name</code></em>
       <code class="literal">FOREIGN KEY</code> constraints are not considered.
       If any of the <code class="literal">CHECK</code> constraints of the table being
       attached is marked <code class="literal">NO INHERIT</code>, the command will fail;
-      such a constraint must be recreated without the <code class="literal">NO INHERIT</code>
-      clause.
+      such constraints must be recreated without the
+      <code class="literal">NO INHERIT</code> clause.
      </p><p>      If the new partition is a regular table, a full table scan is performed
-      to check that no existing row in the table violates the partition
-      constraint.  It is possible to avoid this scan by adding a valid
-      <code class="literal">CHECK</code> constraint to the table that would allow only
-      the rows satisfying the desired partition constraint before running this
-      command.  It will be determined using such a constraint that the table
-      need not be scanned to validate the partition constraint.  This does not
-      work, however, if any of the partition keys is an expression and the
-      partition does not accept <code class="literal">NULL</code> values.  If attaching
-      a list partition that will not accept <code class="literal">NULL</code> values,
-      also add <code class="literal">NOT NULL</code> constraint to the partition key
-      column, unless it's an expression.
+      to check that existing rows in the table do not violate the partition
+      constraint. It is possible to avoid this scan by adding a valid
+      <code class="literal">CHECK</code> constraint to the table that allows only
+      rows satisfying the desired partition constraint before running this
+      command. The <code class="literal">CHECK</code> constraint will be used to
+      determine that the table need not be scanned to validate the partition
+      constraint. This does not work, however, if any of the partition keys
+      is an expression and the partition does not accept
+      <code class="literal">NULL</code> values. If attaching a list partition that will
+      not accept <code class="literal">NULL</code> values, also add
+      <code class="literal">NOT NULL</code> constraint to the partition key column,
+      unless it's an expression.
      </p><p>      If the new partition is a foreign table, nothing is done to verify
       that all the rows in the foreign table obey the partition constraint.
       (See the discussion in <a class="xref" href="sql-createforeigntable.html" title="CREATE FOREIGN TABLE"><span class="refentrytitle">CREATE FOREIGN TABLE</span></a> about
@@ -491,7 +486,7 @@ ALTER TABLE [ IF EXISTS ] <em class="replaceable"><code>name</code></em>
        </p></dd><dt><span class="term"><em class="replaceable"><code>partition_name</code></em></span></dt><dd><p>        The name of the table to attach as a new partition or to detach from this table.
        </p></dd><dt><span class="term"><em class="replaceable"><code>partition_bound_spec</code></em></span></dt><dd><p>        The partition bound specification for a new partition.  Refer to
         <a class="xref" href="sql-createtable.html" title="CREATE TABLE"><span class="refentrytitle">CREATE TABLE</span></a> for more details on the syntax of the same.
-       </p></dd></dl></div></div><div class="refsect1" id="id-1.9.3.33.7"><h2>Notes</h2><p>    The key word <code class="literal">COLUMN</code> is noise and can be omitted.
+       </p></dd></dl></div></div><div class="refsect1" id="SQL-ALTERTABLE-NOTES"><h2>Notes</h2><p>    The key word <code class="literal">COLUMN</code> is noise and can be omitted.
    </p><p>    When a column is added with <code class="literal">ADD COLUMN</code>, all existing
     rows in the table are initialized with the column's default value
     (NULL if no <code class="literal">DEFAULT</code> clause is specified).
@@ -517,6 +512,29 @@ ALTER TABLE [ IF EXISTS ] <em class="replaceable"><code>name</code></em>
    </p><p>    The main reason for providing the option to specify multiple changes
     in a single <code class="command">ALTER TABLE</code> is that multiple table scans or
     rewrites can thereby be combined into a single pass over the table.
+   </p><p>    Scanning a large table to verify a new foreign key or check constraint
+    can take a long time, and other updates to the table are locked out
+    until the <code class="command">ALTER TABLE ADD CONSTRAINT</code> command is
+    committed.  The main purpose of the <code class="literal">NOT VALID</code>
+    constraint option is to reduce the impact of adding a constraint on
+    concurrent updates.  With <code class="literal">NOT VALID</code>,
+    the <code class="command">ADD CONSTRAINT</code> command does not scan the table
+    and can be committed immediately.  After that, a <code class="literal">VALIDATE
+    CONSTRAINT</code> command can be issued to verify that existing rows
+    satisfy the constraint.  The validation step does not need to lock out
+    concurrent updates, since it knows that other transactions will be
+    enforcing the constraint for rows that they insert or update; only
+    pre-existing rows need to be checked.  Hence, validation acquires only
+    a <code class="literal">SHARE UPDATE EXCLUSIVE</code> lock on the table being
+    altered.  (If the constraint is a foreign key then a <code class="literal">ROW
+    SHARE</code> lock is also required on the table referenced by the
+    constraint.)  In addition to improving concurrency, it can be useful to
+    use <code class="literal">NOT VALID</code> and <code class="literal">VALIDATE
+    CONSTRAINT</code> in cases where the table is known to contain
+    pre-existing violations.  Once the constraint is in place, no new
+    violations can be inserted, and the existing problems can be corrected
+    at leisure until <code class="literal">VALIDATE CONSTRAINT</code> finally
+    succeeds.
    </p><p>    The <code class="literal">DROP COLUMN</code> form does not physically remove
     the column, but simply makes it invisible to SQL operations.  Subsequent
     insert and update operations in the table will store a null value for the

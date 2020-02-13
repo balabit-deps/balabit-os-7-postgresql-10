@@ -3432,7 +3432,7 @@ sql_help_INSERT(PQExpBuffer buf)
 	appendPQExpBuffer(buf,
 					  "[ WITH [ RECURSIVE ] %s [, ...] ]\n"
 					  "INSERT INTO %s [ AS %s ] [ ( %s [, ...] ) ]\n"
-					  "    [ OVERRIDING { SYSTEM | USER} VALUE ]\n"
+					  "    [ OVERRIDING { SYSTEM | USER } VALUE ]\n"
 					  "    { DEFAULT VALUES | VALUES ( { %s | DEFAULT } [, ...] ) [, ...] | %s }\n"
 					  "    [ ON CONFLICT [ %s ] %s ]\n"
 					  "    [ RETURNING * | %s [ [ AS ] %s ] [, ...] ]\n"

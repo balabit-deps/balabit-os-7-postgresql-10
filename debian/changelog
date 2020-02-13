@@ -1,3 +1,21 @@
+postgresql-10 (10.12-0ubuntu0.18.04.1) bionic-security; urgency=medium
+
+  * New upstream release (LP: #1863108)
+    - A dump/restore is not required however, if you use the contrib/intarray
+      extension with a GiST index, and you rely on indexed searches for the <@
+      operator, see the release notes for details in regard to a related fix.
+    - Add missing permissions checks for ALTER ... DEPENDS ON EXTENSION.
+      Marking an object as dependent on an extension did not have any
+      privilege check whatsoever.  This oversight allowed any user to mark
+      routines, triggers, materialized views, or indexes as droppable by
+      anyone able to drop an extension.  Require that the calling user own the
+      specified object (and hence have privilege to drop it). (CVE-2020-1720)
+    - Details about these and many further changes can be found at:
+      https://www.postgresql.org/docs/10/static/release-10-11.html
+      https://www.postgresql.org/docs/10/static/release-10-12.html
+
+ -- Christian Ehrhardt <christian.ehrhardt@canonical.com>  Thu, 13 Feb 2020 15:18:22 +0100
+
 postgresql-10 (10.10-0ubuntu0.18.04.1) bionic-security; urgency=medium
 
   * SECURITY UPDATE: New upstream release (LP: #1839058)
