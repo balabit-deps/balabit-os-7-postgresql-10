@@ -2,12 +2,12 @@
 .\"     Title: COPY
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
-.\"      Date: 2019
-.\"    Manual: PostgreSQL 10.10 Documentation
-.\"    Source: PostgreSQL 10.10
+.\"      Date: 2020
+.\"    Manual: PostgreSQL 10.12 Documentation
+.\"    Source: PostgreSQL 10.12
 .\"  Language: English
 .\"
-.TH "COPY" "7" "2019" "PostgreSQL 10.10" "PostgreSQL 10.10 Documentation"
+.TH "COPY" "7" "2020" "PostgreSQL 10.12" "PostgreSQL 10.12 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -74,11 +74,12 @@ can also copy the results of a
 \fBSELECT\fR
 query\&.
 .PP
-If a list of columns is specified,
-\fBCOPY\fR
-will only copy the data in the specified columns to or from the file\&. If there are any columns in the table that are not in the column list,
+If a column list is specified,
+\fBCOPY TO\fR
+copies only the data in the specified columns to the file\&. For
+\fBCOPY FROM\fR, each field in the file is inserted, in order, into the specified column\&. Table columns not specified in the
 \fBCOPY FROM\fR
-will insert the default values for those columns\&.
+column list will receive their default values\&.
 .PP
 \fBCOPY\fR
 with a file name instructs the
@@ -914,11 +915,11 @@ COPY \fItable_name\fR [ ( \fIcolumn_name\fR [, \&.\&.\&.] ) ]
     [ [ WITH ]
           [ BINARY ]
           [ OIDS ]
-          [ DELIMITER [ AS ] \*(Aq\fIdelimiter\fR\*(Aq ]
+          [ DELIMITER [ AS ] \*(Aq\fIdelimiter_character\fR\*(Aq ]
           [ NULL [ AS ] \*(Aq\fInull string\fR\*(Aq ]
           [ CSV [ HEADER ]
-                [ QUOTE [ AS ] \*(Aq\fIquote\fR\*(Aq ]
-                [ ESCAPE [ AS ] \*(Aq\fIescape\fR\*(Aq ]
+                [ QUOTE [ AS ] \*(Aq\fIquote_character\fR\*(Aq ]
+                [ ESCAPE [ AS ] \*(Aq\fIescape_character\fR\*(Aq ]
                 [ FORCE NOT NULL \fIcolumn_name\fR [, \&.\&.\&.] ] ] ]
 
 COPY { \fItable_name\fR [ ( \fIcolumn_name\fR [, \&.\&.\&.] ) ] | ( \fIquery\fR ) }
@@ -926,11 +927,11 @@ COPY { \fItable_name\fR [ ( \fIcolumn_name\fR [, \&.\&.\&.] ) ] | ( \fIquery\fR 
     [ [ WITH ]
           [ BINARY ]
           [ OIDS ]
-          [ DELIMITER [ AS ] \*(Aq\fIdelimiter\fR\*(Aq ]
+          [ DELIMITER [ AS ] \*(Aq\fIdelimiter_character\fR\*(Aq ]
           [ NULL [ AS ] \*(Aq\fInull string\fR\*(Aq ]
           [ CSV [ HEADER ]
-                [ QUOTE [ AS ] \*(Aq\fIquote\fR\*(Aq ]
-                [ ESCAPE [ AS ] \*(Aq\fIescape\fR\*(Aq ]
+                [ QUOTE [ AS ] \*(Aq\fIquote_character\fR\*(Aq ]
+                [ ESCAPE [ AS ] \*(Aq\fIescape_character\fR\*(Aq ]
                 [ FORCE QUOTE { \fIcolumn_name\fR [, \&.\&.\&.] | * } ] ] ]
 .fi
 .if n \{\
@@ -955,13 +956,13 @@ version 7\&.3 and is still supported:
 .nf
 COPY [ BINARY ] \fItable_name\fR [ WITH OIDS ]
     FROM { \*(Aq\fIfilename\fR\*(Aq | STDIN }
-    [ [USING] DELIMITERS \*(Aq\fIdelimiter\fR\*(Aq ]
-    [ WITH NULL AS \*(Aq\fInull string\fR\*(Aq ]
+    [ [USING] DELIMITERS \*(Aq\fIdelimiter_character\fR\*(Aq ]
+    [ WITH NULL AS \*(Aq\fInull_string\fR\*(Aq ]
 
 COPY [ BINARY ] \fItable_name\fR [ WITH OIDS ]
     TO { \*(Aq\fIfilename\fR\*(Aq | STDOUT }
-    [ [USING] DELIMITERS \*(Aq\fIdelimiter\fR\*(Aq ]
-    [ WITH NULL AS \*(Aq\fInull string\fR\*(Aq ]
+    [ [USING] DELIMITERS \*(Aq\fIdelimiter_character\fR\*(Aq ]
+    [ WITH NULL AS \*(Aq\fInull_string\fR\*(Aq ]
 .fi
 .if n \{\
 .RE

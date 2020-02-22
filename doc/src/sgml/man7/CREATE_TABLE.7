@@ -2,12 +2,12 @@
 .\"     Title: CREATE TABLE
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
-.\"      Date: 2019
-.\"    Manual: PostgreSQL 10.10 Documentation
-.\"    Source: PostgreSQL 10.10
+.\"      Date: 2020
+.\"    Manual: PostgreSQL 10.12 Documentation
+.\"    Source: PostgreSQL 10.12
 .\"  Language: English
 .\"
-.TH "CREATE TABLE" "7" "2019" "PostgreSQL 10.10" "PostgreSQL 10.10 Documentation"
+.TH "CREATE TABLE" "7" "2020" "PostgreSQL 10.12" "PostgreSQL 10.12 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -284,7 +284,7 @@ then all partitions must have OIDs; the parent\*(Aqs OID column will be inherite
 CHECK
 constraints will be inherited automatically by every partition, but an individual partition may specify additional
 CHECK
-constraints; additional constraints with the same name and condition as in the parent will be merged with the parent constraint\&. Defaults may be specified separately for each partition\&.
+constraints; additional constraints with the same name and condition as in the parent will be merged with the parent constraint\&. Defaults may be specified separately for each partition\&. But note that a partition\*(Aqs default value is not applied when inserting a tuple through a partitioned table\&.
 .sp
 Rows inserted into a partitioned table will be automatically routed to the correct partition\&. If no suitable partition exists, an error will occur\&. Also, if updating a row in a given partition would require it to move to another partition due to new partition key values, an error will occur\&.
 .sp
@@ -460,7 +460,8 @@ clause specifies an expression producing a Boolean result which new or updated r
 .sp
 Currently,
 CHECK
-expressions cannot contain subqueries nor refer to variables other than columns of the current row\&. The system column
+expressions cannot contain subqueries nor refer to variables other than columns of the current row (see
+Section\ \&5.3.1)\&. The system column
 tableoid
 may be referenced, but not any other system column\&.
 .sp
