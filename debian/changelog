@@ -1,3 +1,9 @@
+postgresql-10 (10.12-0ubuntu0.18.04.1bb1) bionic; urgency=medium
+
+  * Balabit patched version
+
+ -- Balabit Platform Team <devnull@dev.null>  Sat, 22 Feb 2020 04:25:18 +0100
+
 postgresql-10 (10.12-0ubuntu0.18.04.1) bionic-security; urgency=medium
 
   * New upstream release (LP: #1863108)
