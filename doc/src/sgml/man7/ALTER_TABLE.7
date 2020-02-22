@@ -2,12 +2,12 @@
 .\"     Title: ALTER TABLE
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
-.\"      Date: 2019
-.\"    Manual: PostgreSQL 10.10 Documentation
-.\"    Source: PostgreSQL 10.10
+.\"      Date: 2020
+.\"    Manual: PostgreSQL 10.12 Documentation
+.\"    Source: PostgreSQL 10.12
 .\"  Language: English
 .\"
-.TH "ALTER TABLE" "7" "2019" "PostgreSQL 10.10" "PostgreSQL 10.10 Documentation"
+.TH "ALTER TABLE" "7" "2020" "PostgreSQL 10.12" "PostgreSQL 10.12 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -268,9 +268,16 @@ ADD \fItable_constraint\fR [ NOT VALID ]
 .RS 4
 This form adds a new constraint to a table using the same syntax as
 CREATE TABLE (\fBCREATE_TABLE\fR(7)), plus the option
-NOT VALID, which is currently only allowed for foreign key and CHECK constraints\&. If the constraint is marked
-NOT VALID, the potentially\-lengthy initial check to verify that all rows in the table satisfy the constraint is skipped\&. The constraint will still be enforced against subsequent inserts or updates (that is, they\*(Aqll fail unless there is a matching row in the referenced table, in the case of foreign keys; and they\*(Aqll fail unless the new row matches the specified check constraints)\&. But the database will not assume that the constraint holds for all rows in the table, until it is validated by using the
+NOT VALID, which is currently only allowed for foreign key and CHECK constraints\&.
+.sp
+Normally, this form will cause a scan of the table to verify that all existing rows in the table satisfy the new constraint\&. But if the
+NOT VALID
+option is used, this potentially\-lengthy scan is skipped\&. The constraint will still be enforced against subsequent inserts or updates (that is, they\*(Aqll fail unless there is a matching row in the referenced table, in the case of foreign keys, or they\*(Aqll fail unless the new row matches the specified check condition)\&. But the database will not assume that the constraint holds for all rows in the table, until it is validated by using the
 VALIDATE CONSTRAINT
+option\&. See
+NOTES
+below for more information about using the
+NOT VALID
 option\&.
 .RE
 .PP
@@ -330,15 +337,9 @@ This form alters the attributes of a constraint that was previously created\&. C
 VALIDATE CONSTRAINT
 .RS 4
 This form validates a foreign key or check constraint that was previously created as
-NOT VALID, by scanning the table to ensure there are no rows for which the constraint is not satisfied\&. Nothing happens if the constraint is already marked valid\&.
-.sp
-Validation can be a long process on larger tables\&. The value of separating validation from initial creation is that you can defer validation to less busy times, or can be used to give additional time to correct pre\-existing errors while preventing new errors\&. Note also that validation on its own does not prevent normal write commands against the table while it runs\&.
-.sp
-Validation acquires only a
-SHARE UPDATE EXCLUSIVE
-lock on the table being altered\&. If the constraint is a foreign key then a
-ROW SHARE
-lock is also required on the table referenced by the constraint\&.
+NOT VALID, by scanning the table to ensure there are no rows for which the constraint is not satisfied\&. Nothing happens if the constraint is already marked valid\&. (See
+NOTES
+below for an explanation of the usefulness of this command\&.)
 .RE
 .PP
 DROP CONSTRAINT [ IF EXISTS ]
@@ -467,14 +468,8 @@ or one of the forms of
 that forces a table rewrite\&. For planner related parameters, changes will take effect from the next time the table is locked so currently executing queries will not be affected\&.
 .sp
 SHARE UPDATE EXCLUSIVE
-lock will be taken for fillfactor and autovacuum storage parameters, as well as the following planner related parameters:
-\fIeffective_io_concurrency\fR,
-\fIparallel_workers\fR,
-\fIseq_page_cost\fR,
-\fIrandom_page_cost\fR,
-\fIn_distinct\fR
-and
-\fIn_distinct_inherited\fR\&.
+lock will be taken for fillfactor and autovacuum storage parameters, as well as the planner parameter
+\fIparallel_workers\fR\&.
 .if n \{\
 .sp
 .\}
@@ -598,13 +593,15 @@ FOREIGN KEY
 constraints are not considered\&. If any of the
 CHECK
 constraints of the table being attached is marked
-NO INHERIT, the command will fail; such a constraint must be recreated without the
+NO INHERIT, the command will fail; such constraints must be recreated without the
 NO INHERIT
 clause\&.
 .sp
-If the new partition is a regular table, a full table scan is performed to check that no existing row in the table violates the partition constraint\&. It is possible to avoid this scan by adding a valid
+If the new partition is a regular table, a full table scan is performed to check that existing rows in the table do not violate the partition constraint\&. It is possible to avoid this scan by adding a valid
 CHECK
-constraint to the table that would allow only the rows satisfying the desired partition constraint before running this command\&. It will be determined using such a constraint that the table need not be scanned to validate the partition constraint\&. This does not work, however, if any of the partition keys is an expression and the partition does not accept
+constraint to the table that allows only rows satisfying the desired partition constraint before running this command\&. The
+CHECK
+constraint will be used to determine that the table need not be scanned to validate the partition constraint\&. This does not work, however, if any of the partition keys is an expression and the partition does not accept
 NULL
 values\&. If attaching a list partition that will not accept
 NULL
@@ -791,6 +788,27 @@ Similarly, when attaching a new partition it may be scanned to verify that exist
 The main reason for providing the option to specify multiple changes in a single
 \fBALTER TABLE\fR
 is that multiple table scans or rewrites can thereby be combined into a single pass over the table\&.
+.PP
+Scanning a large table to verify a new foreign key or check constraint can take a long time, and other updates to the table are locked out until the
+\fBALTER TABLE ADD CONSTRAINT\fR
+command is committed\&. The main purpose of the
+NOT VALID
+constraint option is to reduce the impact of adding a constraint on concurrent updates\&. With
+NOT VALID, the
+\fBADD CONSTRAINT\fR
+command does not scan the table and can be committed immediately\&. After that, a
+VALIDATE CONSTRAINT
+command can be issued to verify that existing rows satisfy the constraint\&. The validation step does not need to lock out concurrent updates, since it knows that other transactions will be enforcing the constraint for rows that they insert or update; only pre\-existing rows need to be checked\&. Hence, validation acquires only a
+SHARE UPDATE EXCLUSIVE
+lock on the table being altered\&. (If the constraint is a foreign key then a
+ROW SHARE
+lock is also required on the table referenced by the constraint\&.) In addition to improving concurrency, it can be useful to use
+NOT VALID
+and
+VALIDATE CONSTRAINT
+in cases where the table is known to contain pre\-existing violations\&. Once the constraint is in place, no new violations can be inserted, and the existing problems can be corrected at leisure until
+VALIDATE CONSTRAINT
+finally succeeds\&.
 .PP
 The
 DROP COLUMN

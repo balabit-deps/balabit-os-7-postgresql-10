@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>ALTER DOMAIN</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="sql-alterdefaultprivileges.html" title="ALTER DEFAULT PRIVILEGES" /><link rel="next" href="sql-altereventtrigger.html" title="ALTER EVENT TRIGGER" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">ALTER DOMAIN</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="sql-alterdefaultprivileges.html" title="ALTER DEFAULT PRIVILEGES">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="sql-commands.html" title="SQL Commands">Up</a></td><th width="60%" align="center">SQL Commands</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.10 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="sql-altereventtrigger.html" title="ALTER EVENT TRIGGER">Next</a></td></tr></table><hr></hr></div><div class="refentry" id="SQL-ALTERDOMAIN"><div class="titlepage"></div><a id="id-1.9.3.9.1" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle">ALTER DOMAIN</span></h2><p>ALTER DOMAIN —    change the definition of a domain
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>ALTER DOMAIN</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="sql-alterdefaultprivileges.html" title="ALTER DEFAULT PRIVILEGES" /><link rel="next" href="sql-altereventtrigger.html" title="ALTER EVENT TRIGGER" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">ALTER DOMAIN</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="sql-alterdefaultprivileges.html" title="ALTER DEFAULT PRIVILEGES">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="sql-commands.html" title="SQL Commands">Up</a></td><th width="60%" align="center">SQL Commands</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.12 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="sql-altereventtrigger.html" title="ALTER EVENT TRIGGER">Next</a></td></tr></table><hr></hr></div><div class="refentry" id="SQL-ALTERDOMAIN"><div class="titlepage"></div><a id="id-1.9.3.9.1" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle">ALTER DOMAIN</span></h2><p>ALTER DOMAIN —    change the definition of a domain
   </p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><pre class="synopsis">ALTER DOMAIN <em class="replaceable"><code>name</code></em>
     { SET DEFAULT <em class="replaceable"><code>expression</code></em> | DROP DEFAULT }
 ALTER DOMAIN <em class="replaceable"><code>name</code></em>
@@ -40,8 +40,8 @@ ALTER DOMAIN <em class="replaceable"><code>name</code></em>
       does not exist, no error is thrown. In this case a notice is issued instead.
      </p></dd><dt><span class="term"><code class="literal">RENAME CONSTRAINT</code></span></dt><dd><p>      This form changes the name of a constraint on a domain.
      </p></dd><dt><span class="term"><code class="literal">VALIDATE CONSTRAINT</code></span></dt><dd><p>      This form validates a constraint previously added as
-      <code class="literal">NOT VALID</code>, that is, verify that all data in columns using the
-      domain satisfy the specified constraint.
+      <code class="literal">NOT VALID</code>, that is, it verifies that all values in
+      table columns of the domain type satisfy the specified constraint.
      </p></dd><dt><span class="term"><code class="literal">OWNER</code></span></dt><dd><p>      This form changes the owner of the domain to the specified user.
      </p></dd><dt><span class="term"><code class="literal">RENAME</code></span></dt><dd><p>      This form changes the name of the domain.
      </p></dd><dt><span class="term"><code class="literal">SET SCHEMA</code></span></dt><dd><p>      This form changes the schema of the domain.  Any constraints
@@ -58,7 +58,7 @@ ALTER DOMAIN <em class="replaceable"><code>name</code></em>
         alter.
        </p></dd><dt><span class="term"><em class="replaceable"><code>domain_constraint</code></em></span></dt><dd><p>        New domain constraint for the domain.
        </p></dd><dt><span class="term"><em class="replaceable"><code>constraint_name</code></em></span></dt><dd><p>        Name of an existing constraint to drop or rename.
-       </p></dd><dt><span class="term"><em class="replaceable"><code>NOT VALID</code></em></span></dt><dd><p>        Do not verify existing column data for constraint validity.
+       </p></dd><dt><span class="term"><em class="replaceable"><code>NOT VALID</code></em></span></dt><dd><p>        Do not verify existing stored data for constraint validity.
        </p></dd><dt><span class="term"><code class="literal">CASCADE</code></span></dt><dd><p>        Automatically drop objects that depend on the constraint,
         and in turn all objects that depend on those objects
         (see <a class="xref" href="ddl-depend.html" title="5.13. Dependency Tracking">Section 5.13</a>).
@@ -69,7 +69,19 @@ ALTER DOMAIN <em class="replaceable"><code>name</code></em>
        </p></dd><dt><span class="term"><em class="replaceable"><code>new_owner</code></em></span></dt><dd><p>        The user name of the new owner of the domain.
        </p></dd><dt><span class="term"><em class="replaceable"><code>new_schema</code></em></span></dt><dd><p>        The new schema for the domain.
        </p></dd></dl></div><p>
-   </p></div><div class="refsect1" id="id-1.9.3.9.7"><h2>Notes</h2><p>   Currently, <code class="command">ALTER DOMAIN ADD CONSTRAINT</code>, <code class="command">ALTER
+   </p></div><div class="refsect1" id="id-1.9.3.9.7"><h2>Notes</h2><p>   Although <code class="command">ALTER DOMAIN ADD CONSTRAINT</code> attempts to verify
+   that existing stored data satisfies the new constraint, this check is not
+   bulletproof, because the command cannot <span class="quote">“<span class="quote">see</span>”</span> table rows that
+   are newly inserted or updated and not yet committed.  If there is a hazard
+   that concurrent operations might insert bad data, the way to proceed is to
+   add the constraint using the <code class="literal">NOT VALID</code> option, commit
+   that command, wait until all transactions started before that commit have
+   finished, and then issue <code class="command">ALTER DOMAIN VALIDATE
+   CONSTRAINT</code> to search for data violating the constraint.  This
+   method is reliable because once the constraint is committed, all new
+   transactions are guaranteed to enforce it against new values of the domain
+   type.
+  </p><p>   Currently, <code class="command">ALTER DOMAIN ADD CONSTRAINT</code>, <code class="command">ALTER
    DOMAIN VALIDATE CONSTRAINT</code>, and <code class="command">ALTER DOMAIN SET NOT NULL</code>
    will fail if the validated named domain or
    any derived domain is used within a composite-type column of any
