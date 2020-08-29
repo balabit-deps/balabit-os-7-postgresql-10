@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>5.9. Inheritance</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="ddl-schemas.html" title="5.8. Schemas" /><link rel="next" href="ddl-partitioning.html" title="5.10. Table Partitioning" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">5.9. Inheritance</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="ddl-schemas.html" title="5.8. Schemas">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="ddl.html" title="Chapter 5. Data Definition">Up</a></td><th width="60%" align="center">Chapter 5. Data Definition</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.12 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="ddl-partitioning.html" title="5.10. Table Partitioning">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="DDL-INHERIT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">5.9. Inheritance</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="ddl-inherit.html#DDL-INHERIT-CAVEATS">5.9.1. Caveats</a></span></dt></dl></div><a id="id-1.5.4.11.2" class="indexterm"></a><a id="id-1.5.4.11.3" class="indexterm"></a><p>   <span class="productname">PostgreSQL</span> implements table inheritance,
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>5.9. Inheritance</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="ddl-schemas.html" title="5.8. Schemas" /><link rel="next" href="ddl-partitioning.html" title="5.10. Table Partitioning" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">5.9. Inheritance</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="ddl-schemas.html" title="5.8. Schemas">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="ddl.html" title="Chapter 5. Data Definition">Up</a></td><th width="60%" align="center">Chapter 5. Data Definition</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.14 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="ddl-partitioning.html" title="5.10. Table Partitioning">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="DDL-INHERIT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">5.9. Inheritance</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="ddl-inherit.html#DDL-INHERIT-CAVEATS">5.9.1. Caveats</a></span></dt></dl></div><a id="id-1.5.4.11.2" class="indexterm"></a><a id="id-1.5.4.11.3" class="indexterm"></a><p>   <span class="productname">PostgreSQL</span> implements table inheritance,
    which can be a useful tool for database designers.  (SQL:1999 and
    later define a type inheritance feature, which differs in many
    respects from the features described here.)
@@ -17,7 +17,7 @@
 </p><pre class="programlisting">CREATE TABLE cities (
     name            text,
     population      float,
-    altitude        int     -- in feet
+    elevation       int     -- in feet
 );
 
 CREATE TABLE capitals (
@@ -33,32 +33,32 @@ CREATE TABLE capitals (
    rows of a table or all rows of a table plus all of its descendant tables.
    The latter behavior is the default.
    For example, the following query finds the names of all cities,
-   including state capitals, that are located at an altitude over
+   including state capitals, that are located at an elevation over
    500 feet:
 
-</p><pre class="programlisting">SELECT name, altitude
+</p><pre class="programlisting">SELECT name, elevation
     FROM cities
-    WHERE altitude &gt; 500;</pre><p>
+    WHERE elevation &gt; 500;</pre><p>
 
    Given the sample data from the <span class="productname">PostgreSQL</span>
    tutorial (see <a class="xref" href="tutorial-sql-intro.html" title="2.1. Introduction">Section 2.1</a>), this returns:
 
-</p><pre class="programlisting">   name    | altitude
------------+----------
- Las Vegas |     2174
- Mariposa  |     1953
- Madison   |      845</pre><p>
+</p><pre class="programlisting">   name    | elevation
+-----------+-----------
+ Las Vegas |      2174
+ Mariposa  |      1953
+ Madison   |       845</pre><p>
   </p><p>   On the other hand, the following query finds all the cities that
-   are not state capitals and are situated at an altitude over 500 feet:
+   are not state capitals and are situated at an elevation over 500 feet:
 
-</p><pre class="programlisting">SELECT name, altitude
+</p><pre class="programlisting">SELECT name, elevation
     FROM ONLY cities
-    WHERE altitude &gt; 500;
+    WHERE elevation &gt; 500;
 
-   name    | altitude
------------+----------
- Las Vegas |     2174
- Mariposa  |     1953</pre><p>
+   name    | elevation
+-----------+-----------
+ Las Vegas |      2174
+ Mariposa  |      1953</pre><p>
   </p><p>   Here the <code class="literal">ONLY</code> keyword indicates that the query
    should apply only to <code class="structname">cities</code>, and not any tables
    below <code class="structname">cities</code> in the inheritance hierarchy.  Many
@@ -69,9 +69,9 @@ CREATE TABLE capitals (
   </p><p>   You can also write the table name with a trailing <code class="literal">*</code>
    to explicitly specify that descendant tables are included:
 
-</p><pre class="programlisting">SELECT name, altitude
+</p><pre class="programlisting">SELECT name, elevation
     FROM cities*
-    WHERE altitude &gt; 500;</pre><p>
+    WHERE elevation &gt; 500;</pre><p>
 
    Writing <code class="literal">*</code> is not necessary, since this behavior is always
    the default.  However, this syntax is still supported for
@@ -81,44 +81,44 @@ CREATE TABLE capitals (
    <code class="structfield">tableoid</code> in each table which can tell you the
    originating table:
 
-</p><pre class="programlisting">SELECT c.tableoid, c.name, c.altitude
+</p><pre class="programlisting">SELECT c.tableoid, c.name, c.elevation
 FROM cities c
-WHERE c.altitude &gt; 500;</pre><p>
+WHERE c.elevation &gt; 500;</pre><p>
 
    which returns:
 
-</p><pre class="programlisting"> tableoid |   name    | altitude
-----------+-----------+----------
-   139793 | Las Vegas |     2174
-   139793 | Mariposa  |     1953
-   139798 | Madison   |      845</pre><p>
+</p><pre class="programlisting"> tableoid |   name    | elevation
+----------+-----------+-----------
+   139793 | Las Vegas |      2174
+   139793 | Mariposa  |      1953
+   139798 | Madison   |       845</pre><p>
 
    (If you try to reproduce this example, you will probably get
    different numeric OIDs.)  By doing a join with
    <code class="structname">pg_class</code> you can see the actual table names:
 
-</p><pre class="programlisting">SELECT p.relname, c.name, c.altitude
+</p><pre class="programlisting">SELECT p.relname, c.name, c.elevation
 FROM cities c, pg_class p
-WHERE c.altitude &gt; 500 AND c.tableoid = p.oid;</pre><p>
+WHERE c.elevation &gt; 500 AND c.tableoid = p.oid;</pre><p>
 
    which returns:
 
-</p><pre class="programlisting"> relname  |   name    | altitude
-----------+-----------+----------
- cities   | Las Vegas |     2174
- cities   | Mariposa  |     1953
- capitals | Madison   |      845</pre><p>
+</p><pre class="programlisting"> relname  |   name    | elevation
+----------+-----------+-----------
+ cities   | Las Vegas |      2174
+ cities   | Mariposa  |      1953
+ capitals | Madison   |       845</pre><p>
   </p><p>   Another way to get the same effect is to use the <code class="type">regclass</code>
    alias type, which will print the table OID symbolically:
 
-</p><pre class="programlisting">SELECT c.tableoid::regclass, c.name, c.altitude
+</p><pre class="programlisting">SELECT c.tableoid::regclass, c.name, c.elevation
 FROM cities c
-WHERE c.altitude &gt; 500;</pre><p>
+WHERE c.elevation &gt; 500;</pre><p>
   </p><p>   Inheritance does not automatically propagate data from
    <code class="command">INSERT</code> or <code class="command">COPY</code> commands to
    other tables in the inheritance hierarchy. In our example, the
    following <code class="command">INSERT</code> statement will fail:
-</p><pre class="programlisting">INSERT INTO cities (name, population, altitude, state)
+</p><pre class="programlisting">INSERT INTO cities (name, population, elevation, state)
 VALUES ('Albany', NULL, NULL, 'NY');</pre><p>
    We might hope that the data would somehow be routed to the
    <code class="structname">capitals</code> table, but this does not happen:

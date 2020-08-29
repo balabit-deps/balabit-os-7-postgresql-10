@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>ALTER TABLE</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="sql-altersystem.html" title="ALTER SYSTEM" /><link rel="next" href="sql-altertablespace.html" title="ALTER TABLESPACE" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">ALTER TABLE</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="sql-altersystem.html" title="ALTER SYSTEM">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="sql-commands.html" title="SQL Commands">Up</a></td><th width="60%" align="center">SQL Commands</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.12 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="sql-altertablespace.html" title="ALTER TABLESPACE">Next</a></td></tr></table><hr></hr></div><div class="refentry" id="SQL-ALTERTABLE"><div class="titlepage"></div><a id="id-1.9.3.33.1" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle">ALTER TABLE</span></h2><p>ALTER TABLE — change the definition of a table</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><pre class="synopsis">ALTER TABLE [ IF EXISTS ] [ ONLY ] <em class="replaceable"><code>name</code></em> [ * ]
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>ALTER TABLE</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="sql-altersystem.html" title="ALTER SYSTEM" /><link rel="next" href="sql-altertablespace.html" title="ALTER TABLESPACE" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">ALTER TABLE</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="sql-altersystem.html" title="ALTER SYSTEM">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="sql-commands.html" title="SQL Commands">Up</a></td><th width="60%" align="center">SQL Commands</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.14 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="sql-altertablespace.html" title="ALTER TABLESPACE">Next</a></td></tr></table><hr></hr></div><div class="refentry" id="SQL-ALTERTABLE"><div class="titlepage"></div><a id="id-1.9.3.33.1" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle">ALTER TABLE</span></h2><p>ALTER TABLE — change the definition of a table</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><pre class="synopsis">ALTER TABLE [ IF EXISTS ] [ ONLY ] <em class="replaceable"><code>name</code></em> [ * ]
     <em class="replaceable"><code>action</code></em> [, ... ]
 ALTER TABLE [ IF EXISTS ] [ ONLY ] <em class="replaceable"><code>name</code></em> [ * ]
     RENAME [ COLUMN ] <em class="replaceable"><code>column_name</code></em> TO <em class="replaceable"><code>new_column_name</code></em>
@@ -54,7 +54,7 @@ ALTER TABLE [ IF EXISTS ] <em class="replaceable"><code>name</code></em>
     SET WITHOUT OIDS
     SET TABLESPACE <em class="replaceable"><code>new_tablespace</code></em>
     SET { LOGGED | UNLOGGED }
-    SET ( <em class="replaceable"><code>storage_parameter</code></em> = <em class="replaceable"><code>value</code></em> [, ... ] )
+    SET ( <em class="replaceable"><code>storage_parameter</code></em> [= <em class="replaceable"><code>value</code></em>] [, ... ] )
     RESET ( <em class="replaceable"><code>storage_parameter</code></em> [, ... ] )
     INHERIT <em class="replaceable"><code>parent_table</code></em>
     NO INHERIT <em class="replaceable"><code>parent_table</code></em>
@@ -69,9 +69,9 @@ ALTER TABLE [ IF EXISTS ] <em class="replaceable"><code>name</code></em>
     { UNIQUE | PRIMARY KEY } USING INDEX <em class="replaceable"><code>index_name</code></em>
     [ DEFERRABLE | NOT DEFERRABLE ] [ INITIALLY DEFERRED | INITIALLY IMMEDIATE ]</pre></div><div class="refsect1" id="id-1.9.3.33.5"><h2>Description</h2><p>   <code class="command">ALTER TABLE</code> changes the definition of an existing table.
    There are several subforms described below. Note that the lock level required
-   may differ for each subform. An <code class="literal">ACCESS EXCLUSIVE</code> lock is held
-   unless explicitly noted. When multiple subcommands are listed, the lock
-   held will be the strictest one required from any subcommand.
+   may differ for each subform. An <code class="literal">ACCESS EXCLUSIVE</code> lock is
+   acquired unless explicitly noted. When multiple subcommands are given, the
+   lock acquired will be the strictest one required by any subcommand.
 
   </p><div class="variablelist"><dl class="variablelist"><dt><span class="term"><code class="literal">ADD COLUMN [ IF NOT EXISTS ]</code></span></dt><dd><p>      This form adds a new column to the table, using the same syntax as
       <a class="xref" href="sql-createtable.html" title="CREATE TABLE"><span class="refentrytitle">CREATE TABLE</span></a>. If <code class="literal">IF NOT EXISTS</code>
@@ -180,8 +180,8 @@ ALTER TABLE [ IF EXISTS ] <em class="replaceable"><code>name</code></em>
       <code class="literal">SET STORAGE</code> doesn't itself change anything in the table,
       it just sets the strategy to be pursued during future table updates.
       See <a class="xref" href="storage-toast.html" title="66.2. TOAST">Section 66.2</a> for more information.
-     </p></dd><dt><span class="term"><code class="literal">ADD <em class="replaceable"><code>table_constraint</code></em> [ NOT VALID ]</code></span></dt><dd><p>      This form adds a new constraint to a table using the same syntax as
-      <a class="xref" href="sql-createtable.html" title="CREATE TABLE"><span class="refentrytitle">CREATE TABLE</span></a>, plus the option <code class="literal">NOT
+     </p></dd><dt><span class="term"><code class="literal">ADD <em class="replaceable"><code>table_constraint</code></em> [ NOT VALID ]</code></span></dt><dd><p>      This form adds a new constraint to a table using the same constraint
+      syntax as <a class="xref" href="sql-createtable.html" title="CREATE TABLE"><span class="refentrytitle">CREATE TABLE</span></a>, plus the option <code class="literal">NOT
       VALID</code>, which is currently only allowed for foreign key
       and CHECK constraints.
      </p><p>      Normally, this form will cause a scan of the table to verify that all
@@ -197,6 +197,14 @@ ALTER TABLE [ IF EXISTS ] <em class="replaceable"><code>name</code></em>
       CONSTRAINT</code> option.
       See <a class="xref" href="sql-altertable.html#SQL-ALTERTABLE-NOTES" title="Notes">Notes</a> below for more information
       about using the <code class="literal">NOT VALID</code> option.
+     </p><p>      Although most forms of <code class="literal">ADD
+      <em class="replaceable"><code>table_constraint</code></em></code>
+      require an <code class="literal">ACCESS EXCLUSIVE</code> lock, <code class="literal">ADD
+      FOREIGN KEY</code> requires only a <code class="literal">SHARE ROW
+      EXCLUSIVE</code> lock.  Note that <code class="literal">ADD FOREIGN KEY</code>
+      also acquires a <code class="literal">SHARE ROW EXCLUSIVE</code> lock on the
+      referenced table, in addition to the lock on the table on which the
+      constraint is declared.
      </p></dd><dt><span class="term"><code class="literal">ADD <em class="replaceable"><code>table_constraint_using_index</code></em></code></span></dt><dd><p>      This form adds a new <code class="literal">PRIMARY KEY</code> or <code class="literal">UNIQUE</code>
       constraint to a table based on an existing unique index.  All the
       columns of the index will be included in the constraint.
@@ -315,7 +323,7 @@ ALTER TABLE [ IF EXISTS ] <em class="replaceable"><code>name</code></em>
      </p></dd><dt><span class="term"><code class="literal">SET { LOGGED | UNLOGGED }</code></span></dt><dd><p>      This form changes the table from unlogged to logged or vice-versa
       (see <a class="xref" href="sql-createtable.html#SQL-CREATETABLE-UNLOGGED"><code class="literal">UNLOGGED</code></a>).  It cannot be applied
       to a temporary table.
-     </p></dd><dt><span class="term"><code class="literal">SET ( <em class="replaceable"><code>storage_parameter</code></em> = <em class="replaceable"><code>value</code></em> [, ... ] )</code></span></dt><dd><p>      This form changes one or more storage parameters for the table.  See
+     </p></dd><dt><span class="term"><code class="literal">SET ( <em class="replaceable"><code>storage_parameter</code></em> [= <em class="replaceable"><code>value</code></em>] [, ... ] )</code></span></dt><dd><p>      This form changes one or more storage parameters for the table.  See
       <a class="xref" href="sql-createtable.html#SQL-CREATETABLE-STORAGE-PARAMETERS" title="Storage Parameters">Storage Parameters</a>
       for details on the available parameters.  Note that the table contents
       will not be modified immediately by this command; depending on the
