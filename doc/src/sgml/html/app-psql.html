@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>psql</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="app-pgrestore.html" title="pg_restore" /><link rel="next" href="app-reindexdb.html" title="reindexdb" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center"><span xmlns="http://www.w3.org/1999/xhtml" class="application">psql</span></th></tr><tr><td width="10%" align="left"><a accesskey="p" href="app-pgrestore.html" title="pg_restore">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="reference-client.html" title="PostgreSQL Client Applications">Up</a></td><th width="60%" align="center">PostgreSQL Client Applications</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.14 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="app-reindexdb.html" title="reindexdb">Next</a></td></tr></table><hr></hr></div><div class="refentry" id="APP-PSQL"><div class="titlepage"></div><a id="id-1.9.4.18.1" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle"><span class="application">psql</span></span></h2><p><span class="application">psql</span> —       <span class="productname">PostgreSQL</span> interactive terminal
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>psql</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="app-pgrestore.html" title="pg_restore" /><link rel="next" href="app-reindexdb.html" title="reindexdb" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center"><span xmlns="http://www.w3.org/1999/xhtml" class="application">psql</span></th></tr><tr><td width="10%" align="left"><a accesskey="p" href="app-pgrestore.html" title="pg_restore">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="reference-client.html" title="PostgreSQL Client Applications">Up</a></td><th width="60%" align="center">PostgreSQL Client Applications</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.15 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="app-reindexdb.html" title="reindexdb">Next</a></td></tr></table><hr></hr></div><div class="refentry" id="APP-PSQL"><div class="titlepage"></div><a id="id-1.9.4.18.1" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle"><span class="application">psql</span></span></h2><p><span class="application">psql</span> —       <span class="productname">PostgreSQL</span> interactive terminal
     </p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p id="id-1.9.4.18.4.1"><code class="command">psql</code> [<em class="replaceable"><code>option</code></em>...] [<em class="replaceable"><code>dbname</code></em>
     [<em class="replaceable"><code>username</code></em>]]</p></div></div><div class="refsect1" id="id-1.9.4.18.5"><h2>Description</h2><p>     <span class="application">psql</span> is a terminal-based front-end to
      <span class="productname">PostgreSQL</span>. It enables you to type in
@@ -63,12 +63,10 @@ SELECT * FROM foo;
 EOF</pre><p>
       </p></dd><dt><span class="term"><code class="option">-d <em class="replaceable"><code>dbname</code></em></code><br /></span><span class="term"><code class="option">--dbname=<em class="replaceable"><code>dbname</code></em></code></span></dt><dd><p>       Specifies the name of the database to connect to. This is
        equivalent to specifying <em class="replaceable"><code>dbname</code></em> as the first non-option
-       argument on the command line.
-      </p><p>       If this parameter contains an <code class="symbol">=</code> sign or starts
-       with a valid <acronym class="acronym">URI</acronym> prefix
-       (<code class="literal">postgresql://</code>
-       or <code class="literal">postgres://</code>), it is treated as a
-       <em class="parameter"><code>conninfo</code></em> string. See <a class="xref" href="libpq-connect.html#LIBPQ-CONNSTRING" title="33.1.1. Connection Strings">Section 33.1.1</a> for more information.
+       argument on the command line.  The <em class="replaceable"><code>dbname</code></em>
+       can be a <a class="link" href="libpq-connect.html#LIBPQ-CONNSTRING" title="33.1.1. Connection Strings">connection string</a>.
+       If so, connection string parameters will override any conflicting
+       command line options.
       </p></dd><dt><span class="term"><code class="option">-e</code><br /></span><span class="term"><code class="option">--echo-queries</code></span></dt><dd><p>      Copy all SQL commands sent to the server to standard output as well.
       This is equivalent
       to setting the variable <code class="varname">ECHO</code> to
@@ -173,7 +171,7 @@ EOF</pre><p>
       connection state will get overwritten later.
       </p></dd><dt><span class="term"><code class="option">-V</code><br /></span><span class="term"><code class="option">--version</code></span></dt><dd><p>      Print the <span class="application">psql</span> version and exit.
       </p></dd><dt><span class="term"><code class="option">-w</code><br /></span><span class="term"><code class="option">--no-password</code></span></dt><dd><p>       Never issue a password prompt.  If the server requires password
-       authentication and a password is not available by other means
+       authentication and a password is not available from other sources
        such as a <code class="filename">.pgpass</code> file, the connection
        attempt will fail.  This option can be useful in batch jobs and
        scripts where no user is present to enter a password.
@@ -181,10 +179,12 @@ EOF</pre><p>
        and so it affects uses of the meta-command
        <code class="command">\connect</code> as well as the initial connection attempt.
       </p></dd><dt><span class="term"><code class="option">-W</code><br /></span><span class="term"><code class="option">--password</code></span></dt><dd><p>       Force <span class="application">psql</span> to prompt for a
-       password before connecting to a database.
-      </p><p>       This option is never essential, since <span class="application">psql</span>
-       will automatically prompt for a password if the server demands
-       password authentication.  However, <span class="application">psql</span>
+       password before connecting to a database, even if the password will
+       not be used.
+      </p><p>       If the server requires password authentication and a password is not
+       available from other sources such as a <code class="filename">.pgpass</code>
+       file, <span class="application">psql</span> will prompt for a
+       password in any case.  However, <span class="application">psql</span>
        will waste a connection attempt finding out that the server wants a
        password.  In some cases it is worth typing <code class="option">-W</code> to avoid
        the extra connection attempt.
@@ -223,7 +223,7 @@ EOF</pre><p>
       and <code class="literal">variables</code> shows help about <span class="application">psql</span> configuration
       variables.
       </p></dd></dl></div></div><div class="refsect1" id="id-1.9.4.18.7"><h2>Exit Status</h2><p>   <span class="application">psql</span> returns 0 to the shell if it
-   finished normally, 1 if a fatal error of its own occurs (e.g. out of memory,
+   finished normally, 1 if a fatal error of its own occurs (e.g., out of memory,
    file not found), 2 if the connection to the server went bad
    and the session was not interactive, and 3 if an error occurred in a
    script and the variable <code class="varname">ON_ERROR_STOP</code> was set.
@@ -282,7 +282,7 @@ $ <strong class="userinput"><code>psql postgresql://dbmaster:5433/mydb?sslmode=r
     <span class="application">psql</span> is currently connected, followed by
     the string <code class="literal">=&gt;</code>. For example:
 </p><pre class="programlisting">$ <strong class="userinput"><code>psql testdb</code></strong>
-psql (10.14)
+psql (10.15)
 Type "help" for help.
 
 testdb=&gt;</pre><p>
@@ -384,26 +384,38 @@ testdb=&gt;</pre><p>
         more general solution.
         </p></dd><dt><span class="term"><code class="literal">\c</code> or <code class="literal">\connect [ -reuse-previous=<em class="replaceable"><code>on|off</code></em> ] [ <em class="replaceable"><code>dbname</code></em> [ <em class="replaceable"><code>username</code></em> ] [ <em class="replaceable"><code>host</code></em> ] [ <em class="replaceable"><code>port</code></em> ] | <em class="replaceable"><code>conninfo</code></em> ]</code></span></dt><dd><p>        Establishes a new connection to a <span class="productname">PostgreSQL</span>
         server.  The connection parameters to use can be specified either
-        using a positional syntax, or using <em class="replaceable"><code>conninfo</code></em> connection
-        strings as detailed in <a class="xref" href="libpq-connect.html#LIBPQ-CONNSTRING" title="33.1.1. Connection Strings">Section 33.1.1</a>.
-        </p><p>        Where the command omits database name, user, host, or port, the new
-        connection can reuse values from the previous connection.  By default,
-        values from the previous connection are reused except when processing
-        a <em class="replaceable"><code>conninfo</code></em> string.  Passing a first argument
-        of <code class="literal">-reuse-previous=on</code>
-        or <code class="literal">-reuse-previous=off</code> overrides that default.
-        When the command neither specifies nor reuses a particular parameter,
-        the <span class="application">libpq</span> default is used.  Specifying any
+        using a positional syntax (one or more of database name, user,
+        host, and port), or using a <em class="replaceable"><code>conninfo</code></em>
+        connection string as detailed in
+        <a class="xref" href="libpq-connect.html#LIBPQ-CONNSTRING" title="33.1.1. Connection Strings">Section 33.1.1</a>.  If no arguments are given, a
+        new connection is made using the same parameters as before.
+        </p><p>        Specifying any
         of <em class="replaceable"><code>dbname</code></em>,
         <em class="replaceable"><code>username</code></em>,
         <em class="replaceable"><code>host</code></em> or
         <em class="replaceable"><code>port</code></em>
         as <code class="literal">-</code> is equivalent to omitting that parameter.
+        </p><p>        The new connection can re-use connection parameters from the previous
+        connection; not only database name, user, host, and port, but other
+        settings such as <em class="replaceable"><code>sslmode</code></em>.  By default,
+        parameters are re-used in the positional syntax, but not when
+        a <em class="replaceable"><code>conninfo</code></em> string is given.  Passing a
+        first argument of <code class="literal">-reuse-previous=on</code>
+        or <code class="literal">-reuse-previous=off</code> overrides that default.  If
+        parameters are re-used, then any parameter not explicitly specified as
+        a positional parameter or in the <em class="replaceable"><code>conninfo</code></em>
+        string is taken from the existing connection's parameters.  An
+        exception is that if the <em class="replaceable"><code>host</code></em> setting
+        is changed from its previous value using the positional syntax,
+        any <em class="replaceable"><code>hostaddr</code></em> setting present in the
+        existing connection's parameters is dropped.
+        When the command neither specifies nor reuses a particular parameter,
+        the <span class="application">libpq</span> default is used.
         </p><p>        If the new connection is successfully made, the previous
         connection is closed.
-        If the connection attempt failed (wrong user name, access
-        denied, etc.), the previous connection will only be kept if
-        <span class="application">psql</span> is in interactive mode. When
+        If the connection attempt fails (wrong user name, access
+        denied, etc.), the previous connection will be kept if
+        <span class="application">psql</span> is in interactive mode. But when
         executing a non-interactive script, processing will
         immediately stop with an error. This distinction was chosen as
         a user convenience against typos on the one hand, and a safety
@@ -413,6 +425,7 @@ testdb=&gt;</pre><p>
         </p><pre class="programlisting">=&gt; \c mydb myuser host.dom 6432
 =&gt; \c service=foo
 =&gt; \c "host=localhost port=5432 dbname=mydb connect_timeout=10 sslmode=disable"
+=&gt; \c -reuse-previous=on sslmode=require    -- changes only sslmode
 =&gt; \c postgresql://tom@localhost/mydb?application_name=myapp</pre></dd><dt><span class="term"><code class="literal">\C [ <em class="replaceable"><code>title</code></em> ]</code></span></dt><dd><p>        Sets the title of any tables being printed as the result of a
         query or unset any such title. This command is equivalent to
         <code class="literal">\pset title <em class="replaceable"><code>title</code></em></code>. (The name of
@@ -1309,7 +1322,7 @@ lo_import 152801</pre><p>
           </p><p>          In <code class="literal">latex-longtable</code> format, this controls
           the proportional width of each column containing a left-aligned
           data type.  It is specified as a whitespace-separated list of values,
-          e.g. <code class="literal">'0.2 0.2 0.6'</code>.  Unspecified output columns
+          e.g., <code class="literal">'0.2 0.2 0.6'</code>.  Unspecified output columns
           use the last specified value.
           </p></dd><dt><span class="term"><code class="literal">title</code> (or <code class="literal">C</code>)</span></dt><dd><p>          Sets the table title for any subsequently printed tables. This
           can be used to give your output descriptive tags. If no
@@ -1885,7 +1898,7 @@ testdb=&gt; <strong class="userinput"><code>INSERT INTO my_table VALUES (:'conte
     <span class="application">psql</span> starts up. Tab-completion is also
     supported, although the completion logic makes no claim to be an
     <acronym class="acronym">SQL</acronym> parser.  The queries generated by tab-completion
-    can also interfere with other SQL commands, e.g. <code class="literal">SET
+    can also interfere with other SQL commands, e.g., <code class="literal">SET
     TRANSACTION ISOLATION LEVEL</code>.
     If for some reason you do not like the tab completion, you
     can turn it off by putting this in a file named
@@ -2126,4 +2139,4 @@ testdb(&gt; <strong class="userinput"><code>\crosstabview "A" "B" "AxB" ord</cod
  2 | 202 | 204 | 206 | 208
  1 | 101 | 102 | 103 | 104
 (4 rows)</pre><p>
-</p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="app-pgrestore.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="reference-client.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="app-reindexdb.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">pg_restore </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> <span class="application">reindexdb</span></td></tr></table></div></body></html>
+</p></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navfooter"><hr></hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="app-pgrestore.html" title="pg_restore">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="reference-client.html" title="PostgreSQL Client Applications">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="app-reindexdb.html" title="reindexdb">Next</a></td></tr><tr><td width="40%" align="left" valign="top">pg_restore </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="PostgreSQL 10.15 Documentation">Home</a></td><td width="40%" align="right" valign="top"> <span xmlns="http://www.w3.org/1999/xhtml" class="application">reindexdb</span></td></tr></table></div></body></html>

@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>pg_upgrade</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="pgtesttiming.html" title="pg_test_timing" /><link rel="next" href="pgwaldump.html" title="pg_waldump" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center"><span xmlns="http://www.w3.org/1999/xhtml" class="application">pg_upgrade</span></th></tr><tr><td width="10%" align="left"><a accesskey="p" href="pgtesttiming.html" title="pg_test_timing">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="reference-server.html" title="PostgreSQL Server Applications">Up</a></td><th width="60%" align="center">PostgreSQL Server Applications</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.14 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="pgwaldump.html" title="pg_waldump">Next</a></td></tr></table><hr></hr></div><div class="refentry" id="PGUPGRADE"><div class="titlepage"></div><a id="id-1.9.5.11.1" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle"><span class="application">pg_upgrade</span></span></h2><p>pg_upgrade — upgrade a <span class="productname">PostgreSQL</span> server instance</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p id="id-1.9.5.11.4.1"><code class="command">pg_upgrade</code>  <code class="option">-b</code>   <em class="replaceable"><code>oldbindir</code></em>   <code class="option">-B</code>   <em class="replaceable"><code>newbindir</code></em>   <code class="option">-d</code>   <em class="replaceable"><code>oldconfigdir</code></em>   <code class="option">-D</code>   <em class="replaceable"><code>newconfigdir</code></em>  [<em class="replaceable"><code>option</code></em>...]</p></div></div><div class="refsect1" id="id-1.9.5.11.5"><h2>Description</h2><p>  <span class="application">pg_upgrade</span> (formerly called <span class="application">pg_migrator</span>) allows data
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>pg_upgrade</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="pgtesttiming.html" title="pg_test_timing" /><link rel="next" href="pgwaldump.html" title="pg_waldump" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center"><span xmlns="http://www.w3.org/1999/xhtml" class="application">pg_upgrade</span></th></tr><tr><td width="10%" align="left"><a accesskey="p" href="pgtesttiming.html" title="pg_test_timing">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="reference-server.html" title="PostgreSQL Server Applications">Up</a></td><th width="60%" align="center">PostgreSQL Server Applications</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.15 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="pgwaldump.html" title="pg_waldump">Next</a></td></tr></table><hr></hr></div><div class="refentry" id="PGUPGRADE"><div class="titlepage"></div><a id="id-1.9.5.11.1" class="indexterm"></a><div class="refnamediv"><h2><span class="refentrytitle"><span class="application">pg_upgrade</span></span></h2><p>pg_upgrade — upgrade a <span class="productname">PostgreSQL</span> server instance</p></div><div class="refsynopsisdiv"><h2>Synopsis</h2><div class="cmdsynopsis"><p id="id-1.9.5.11.4.1"><code class="command">pg_upgrade</code>  <code class="option">-b</code>   <em class="replaceable"><code>oldbindir</code></em>   <code class="option">-B</code>   <em class="replaceable"><code>newbindir</code></em>   <code class="option">-d</code>   <em class="replaceable"><code>oldconfigdir</code></em>   <code class="option">-D</code>   <em class="replaceable"><code>newconfigdir</code></em>  [<em class="replaceable"><code>option</code></em>...]</p></div></div><div class="refsect1" id="id-1.9.5.11.5"><h2>Description</h2><p>  <span class="application">pg_upgrade</span> (formerly called <span class="application">pg_migrator</span>) allows data
   stored in <span class="productname">PostgreSQL</span> data files to be upgraded to a later <span class="productname">PostgreSQL</span>
   major version without the data dump/reload typically required for
-  major version upgrades, e.g. from 9.5.8 to 9.6.4 or from 10.7 to 11.2.
-  It is not required for minor version upgrades, e.g. from 9.6.2 to 9.6.3
+  major version upgrades, e.g., from 9.5.8 to 9.6.4 or from 10.7 to 11.2.
+  It is not required for minor version upgrades, e.g., from 9.6.2 to 9.6.3
   or from 10.1 to 10.2.
  </p><p>  Major PostgreSQL releases regularly add new features that often
   change the layout of the system tables, but the internal data storage
@@ -15,7 +15,7 @@
   for such upgrades.  (The community will attempt to avoid such
   situations.)
  </p><p>  <span class="application">pg_upgrade</span> does its best to
-  make sure the old and new clusters are binary-compatible, e.g.  by
+  make sure the old and new clusters are binary-compatible, e.g.,  by
   checking for compatible compile-time settings, including 32/64-bit
   binaries.  It is important that
   any external modules are also binary compatible, though this cannot
@@ -41,10 +41,10 @@
       variable <code class="envar">PGUSER</code></p></dd><dt><span class="term"><code class="option">-v</code><br /></span><span class="term"><code class="option">--verbose</code></span></dt><dd><p>enable verbose internal logging</p></dd><dt><span class="term"><code class="option">-V</code><br /></span><span class="term"><code class="option">--version</code></span></dt><dd><p>display version information, then exit</p></dd><dt><span class="term"><code class="option">-?</code><br /></span><span class="term"><code class="option">--help</code></span></dt><dd><p>show help, then exit</p></dd></dl></div><p>
    </p></div><div class="refsect1" id="id-1.9.5.11.7"><h2>Usage</h2><p>   These are the steps to perform an upgrade
    with <span class="application">pg_upgrade</span>:
-  </p><div class="procedure"><ol class="procedure" type="1"><li class="step"><p class="title"><strong>Optionally move the old cluster</strong></p><p>     If you are using a version-specific installation directory, e.g.
+  </p><div class="procedure"><ol class="procedure" type="1"><li class="step"><p class="title"><strong>Optionally move the old cluster</strong></p><p>     If you are using a version-specific installation directory, e.g.,
      <code class="filename">/opt/PostgreSQL/10</code>, you do not need to move the old cluster. The
      graphical installers all use version-specific installation directories.
-    </p><p>     If your installation directory is not version-specific, e.g.
+    </p><p>     If your installation directory is not version-specific, e.g.,
      <code class="filename">/usr/local/pgsql</code>, it is necessary to move the current PostgreSQL install
      directory so it does not interfere with the new <span class="productname">PostgreSQL</span> installation.
      Once the current <span class="productname">PostgreSQL</span> server is shut down, it is safe to rename the
@@ -67,9 +67,9 @@
      prebuilt installers do this step automatically. There is no need to
      start the new cluster.
     </p></li><li class="step"><p class="title"><strong>Install custom shared object files</strong></p><p>     Install any custom shared object files (or DLLs) used by the old cluster
-     into the new cluster, e.g. <code class="filename">pgcrypto.so</code>,
+     into the new cluster, e.g., <code class="filename">pgcrypto.so</code>,
      whether they are from <code class="filename">contrib</code>
-     or some other source. Do not install the schema definitions, e.g.
+     or some other source. Do not install the schema definitions, e.g.,
      <code class="command">CREATE EXTENSION pgcrypto</code>, because these will be upgraded
      from the old cluster.
      Also, any custom full text search files (dictionary, synonym,
@@ -172,9 +172,10 @@ SET PATH=%PATH%;C:\Program Files\PostgreSQL\10\bin;</pre><p>
       </p></li><li class="step"><p class="title"><strong>Stop standby servers</strong></p><p>       If the standby servers are still running, stop them now using the
        above instructions.
       </p></li><li class="step"><p class="title"><strong>Save configuration files</strong></p><p>       Save any configuration files from the old standbys' configuration
-       directories you need to keep, e.g.  <code class="filename">postgresql.conf</code>,
-       <code class="literal">recovery.conf</code>, because these will be overwritten or
-       removed in the next step.
+       directories you need to keep, e.g.,  <code class="filename">postgresql.conf</code>
+       (and any files included by it), <code class="filename">postgresql.auto.conf</code>,
+       <code class="literal">recovery.conf</code>, <code class="literal">pg_hba.conf</code>,
+       because these will be overwritten or removed in the next step.
       </p></li><li class="step"><p class="title"><strong>Run <span class="application">rsync</span></strong></p><p>       When using link mode, standby servers can be quickly upgraded using
        <span class="application">rsync</span>.  To accomplish this, from a directory on
        the primary server that is above the old and new database cluster
@@ -189,7 +190,7 @@ SET PATH=%PATH%;C:\Program Files\PostgreSQL\10\bin;</pre><p>
        on the standby.  The directory structure under the specified
        directories on the primary and standbys must match.  Consult the
        <span class="application">rsync</span> manual page for details on specifying the
-       remote directory, e.g.
+       remote directory, e.g.,
 
 </p><pre class="programlisting">rsync --archive --delete --hard-links --size-only --no-inc-recursive /opt/PostgreSQL/9.5 \
       /opt/PostgreSQL/9.6 standby.example.com:/opt/PostgreSQL</pre><p>
@@ -225,7 +226,8 @@ SET PATH=%PATH%;C:\Program Files\PostgreSQL\10\bin;</pre><p>
        with the primary.)
       </p></li></ol></li><li class="step"><p class="title"><strong>Restore <code class="filename">pg_hba.conf</code></strong></p><p>     If you modified <code class="filename">pg_hba.conf</code>, restore its original settings.
      It might also be necessary to adjust other configuration files in the new
-     cluster to match the old cluster, e.g. <code class="filename">postgresql.conf</code>.
+     cluster to match the old cluster, e.g., <code class="filename">postgresql.conf</code>
+     (and any files included by it), <code class="filename">postgresql.auto.conf</code>.
     </p></li><li class="step"><p class="title"><strong>Start the new server</strong></p><p>     The new server can now be safely started, and then any
      <span class="application">rsync</span>'ed standby servers.
     </p></li><li class="step"><p class="title"><strong>Post-Upgrade processing</strong></p><p>     If any post-upgrade processing is required, pg_upgrade will issue
@@ -251,7 +253,7 @@ SET PATH=%PATH%;C:\Program Files\PostgreSQL\10\bin;</pre><p>
      <code class="command">pg_upgrade</code> completes. (Automatic deletion is not
      possible if you have user-defined tablespaces inside the old data
      directory.)  You can also delete the old installation directories
-     (e.g. <code class="filename">bin</code>, <code class="filename">share</code>).
+     (e.g., <code class="filename">bin</code>, <code class="filename">share</code>).
     </p></li><li class="step" id="PGUPGRADE-STEP-REVERT"><p class="title"><strong>Reverting to old cluster</strong></p><p>     If, after running <code class="command">pg_upgrade</code>, you wish to revert to the old cluster,
      there are several options:
 
@@ -294,7 +296,7 @@ SET PATH=%PATH%;C:\Program Files\PostgreSQL\10\bin;</pre><p>
   </p><p>   If you are upgrading a pre-<span class="productname">PostgreSQL</span> 9.2 cluster
    that uses a configuration-file-only directory, you must pass the
    real data directory location to <span class="application">pg_upgrade</span>, and
-   pass the configuration directory location to the server, e.g.
+   pass the configuration directory location to the server, e.g.,
    <code class="literal">-d /real-data-directory -o '-D /configuration-directory'</code>.
   </p><p>   If using a pre-9.1 old server that is using a non-default Unix-domain
    socket directory or a default that differs from the default of the
@@ -309,9 +311,9 @@ SET PATH=%PATH%;C:\Program Files\PostgreSQL\10\bin;</pre><p>
    copy with any changes to make it consistent.  (<code class="option">--checksum</code>
    is necessary because <code class="command">rsync</code> only has file modification-time
    granularity of one second.)  You might want to exclude some
-   files, e.g. <code class="filename">postmaster.pid</code>, as documented in <a class="xref" href="continuous-archiving.html#BACKUP-LOWLEVEL-BASE-BACKUP" title="25.3.3. Making a Base Backup Using the Low Level API">Section 25.3.3</a>.  If your file system supports
+   files, e.g., <code class="filename">postmaster.pid</code>, as documented in <a class="xref" href="continuous-archiving.html#BACKUP-LOWLEVEL-BASE-BACKUP" title="25.3.3. Making a Base Backup Using the Low Level API">Section 25.3.3</a>.  If your file system supports
    file system snapshots or copy-on-write file copies, you can use that
    to make a backup of the old cluster and tablespaces, though the snapshot
    and copies must be created simultaneously or while the database server
    is down.
-  </p></div><div class="refsect1" id="id-1.9.5.11.9"><h2>See Also</h2><span class="simplelist"><a class="xref" href="app-initdb.html" title="initdb"><span class="refentrytitle">initdb</span></a>, <a class="xref" href="app-pg-ctl.html" title="pg_ctl"><span class="refentrytitle"><span class="application">pg_ctl</span></span></a>, <a class="xref" href="app-pgdump.html" title="pg_dump"><span class="refentrytitle">pg_dump</span></a>, <a class="xref" href="app-postgres.html" title="postgres"><span class="refentrytitle"><span class="application">postgres</span></span></a></span></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="pgtesttiming.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="reference-server.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="pgwaldump.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top"><span class="application">pg_test_timing</span> </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> <span class="application">pg_waldump</span></td></tr></table></div></body></html>
+  </p></div><div class="refsect1" id="id-1.9.5.11.9"><h2>See Also</h2><span class="simplelist"><a class="xref" href="app-initdb.html" title="initdb"><span class="refentrytitle">initdb</span></a>, <a class="xref" href="app-pg-ctl.html" title="pg_ctl"><span class="refentrytitle"><span class="application">pg_ctl</span></span></a>, <a class="xref" href="app-pgdump.html" title="pg_dump"><span class="refentrytitle">pg_dump</span></a>, <a class="xref" href="app-postgres.html" title="postgres"><span class="refentrytitle"><span class="application">postgres</span></span></a></span></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navfooter"><hr></hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="pgtesttiming.html" title="pg_test_timing">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="reference-server.html" title="PostgreSQL Server Applications">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="pgwaldump.html" title="pg_waldump">Next</a></td></tr><tr><td width="40%" align="left" valign="top"><span xmlns="http://www.w3.org/1999/xhtml" class="application">pg_test_timing</span> </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="PostgreSQL 10.15 Documentation">Home</a></td><td width="40%" align="right" valign="top"> <span xmlns="http://www.w3.org/1999/xhtml" class="application">pg_waldump</span></td></tr></table></div></body></html>

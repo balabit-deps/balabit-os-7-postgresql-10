@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
 .\"      Date: 2020
-.\"    Manual: PostgreSQL 10.14 Documentation
-.\"    Source: PostgreSQL 10.14
+.\"    Manual: PostgreSQL 10.15 Documentation
+.\"    Source: PostgreSQL 10.15
 .\"  Language: English
 .\"
-.TH "CREATE POLICY" "7" "2020" "PostgreSQL 10.14" "PostgreSQL 10.14 Documentation"
+.TH "CREATE POLICY" "7" "2020" "PostgreSQL 10.15" "PostgreSQL 10.15 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -75,7 +75,7 @@ expressions are enforced before any other constraints\&.
 Policy names are per\-table\&. Therefore, one policy name can be used for many different tables and have a definition for each table which is appropriate to that table\&.
 .PP
 Policies can be applied for specific commands or for specific roles\&. The default for newly created policies is that they apply for all commands and roles, unless otherwise specified\&. Multiple policies may apply to a single command; see below for more details\&.
-Table\ \&240
+Table\ \&241
 summarizes how the different types of policy apply to specific commands\&.
 .PP
 For policies that can have both
@@ -398,7 +398,7 @@ expression, as it only applies in cases where records are being deleted from the
 .nr an-no-space-flag 1
 .nr an-break-flag 1
 .br
-.B Table\ \&240.\ \&Policies Applied by Command Type
+.B Table\ \&241.\ \&Policies Applied by Command Type
 .TS
 allbox tab(:);
 lB lB lB lB s lB

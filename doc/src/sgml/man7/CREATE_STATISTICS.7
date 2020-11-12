@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
 .\"      Date: 2020
-.\"    Manual: PostgreSQL 10.14 Documentation
-.\"    Source: PostgreSQL 10.14
+.\"    Manual: PostgreSQL 10.15 Documentation
+.\"    Source: PostgreSQL 10.15
 .\"  Language: English
 .\"
-.TH "CREATE STATISTICS" "7" "2020" "PostgreSQL 10.14" "PostgreSQL 10.14 Documentation"
+.TH "CREATE STATISTICS" "7" "2020" "PostgreSQL 10.15" "PostgreSQL 10.15 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -82,7 +82,7 @@ You must be the owner of a table to create a statistics object reading it\&. Onc
 .PP
 Create table
 t1
-with two functionally dependent columns, i\&.e\&. knowledge of a value in the first column is sufficient for determining the value in the other column\&. Then functional dependency statistics are built on those columns:
+with two functionally dependent columns, i\&.e\&., knowledge of a value in the first column is sufficient for determining the value in the other column\&. Then functional dependency statistics are built on those columns:
 .sp
 .if n \{\
 .RS 4
