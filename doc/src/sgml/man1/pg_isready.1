@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
 .\"      Date: 2020
-.\"    Manual: PostgreSQL 10.14 Documentation
-.\"    Source: PostgreSQL 10.14
+.\"    Manual: PostgreSQL 10.15 Documentation
+.\"    Source: PostgreSQL 10.15
 .\"  Language: English
 .\"
-.TH "PG_ISREADY" "1" "2020" "PostgreSQL 10.14" "PostgreSQL 10.14 Documentation"
+.TH "PG_ISREADY" "1" "2020" "PostgreSQL 10.15" "PostgreSQL 10.15 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -44,19 +44,10 @@ database server\&. The exit status specifies the result of the connection check\
 .br
 \fB\-\-dbname=\fR\fB\fIdbname\fR\fR
 .RS 4
-Specifies the name of the database to connect to\&.
-.sp
-If this parameter contains an
-=
-sign or starts with a valid
-URI
-prefix (postgresql://
-or
-postgres://), it is treated as a
-\fIconninfo\fR
-string\&. See
-Section\ \&33.1.1
-for more information\&.
+Specifies the name of the database to connect to\&. The
+\fIdbname\fR
+can be a
+connection string\&. If so, connection string parameters will override any conflicting command line options\&.
 .RE
 .PP
 \fB\-h \fR\fB\fIhostname\fR\fR

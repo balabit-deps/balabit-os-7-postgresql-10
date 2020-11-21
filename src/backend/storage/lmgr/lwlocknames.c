@@ -46,5 +46,7 @@ char *MainLWLockNames[] = {
 	"OldSnapshotTimeMapLock",
 	"BackendRandomLock",
 	"LogicalRepWorkerLock",
-	"CLogTruncationLock"
+	"CLogTruncationLock",
+	"WrapLimitsVacuumLock",
+	"NotifyQueueTailLock"
 };
