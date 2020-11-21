@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
 .\"      Date: 2020
-.\"    Manual: PostgreSQL 10.14 Documentation
-.\"    Source: PostgreSQL 10.14
+.\"    Manual: PostgreSQL 10.15 Documentation
+.\"    Source: PostgreSQL 10.15
 .\"  Language: English
 .\"
-.TH "PGBENCH" "1" "2020" "PostgreSQL 10.14" "PostgreSQL 10.14 Documentation"
+.TH "PGBENCH" "1" "2020" "PostgreSQL 10.15" "PostgreSQL 10.15 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -415,7 +415,7 @@ Execute transactions targeting the specified rate instead of running as fast as 
 .sp
 The rate is targeted by starting transactions along a Poisson\-distributed schedule time line\&. The expected start time schedule moves forward based on when the client first started, not when the previous transaction ended\&. That approach means that when transactions go past their original scheduled end time, it is possible for later ones to catch up again\&.
 .sp
-When throttling is active, the transaction latency reported at the end of the run is calculated from the scheduled start times, so it includes the time each transaction had to wait for the previous transaction to finish\&. The wait time is called the schedule lag time, and its average and maximum are also reported separately\&. The transaction latency with respect to the actual transaction start time, i\&.e\&. the time spent executing the transaction in the database, can be computed by subtracting the schedule lag time from the reported latency\&.
+When throttling is active, the transaction latency reported at the end of the run is calculated from the scheduled start times, so it includes the time each transaction had to wait for the previous transaction to finish\&. The wait time is called the schedule lag time, and its average and maximum are also reported separately\&. The transaction latency with respect to the actual transaction start time, i\&.e\&., the time spent executing the transaction in the database, can be computed by subtracting the schedule lag time from the reported latency\&.
 .sp
 If
 \fB\-\-latency\-limit\fR
@@ -503,7 +503,7 @@ When showing progress (option
 .RS 4
 Sampling rate, used when writing data into the log, to reduce the amount of log generated\&. If this option is given, only the specified fraction of transactions are logged\&. 1\&.0 means all transactions will be logged, 0\&.05 means only 5% of the transactions will be logged\&.
 .sp
-Remember to take the sampling rate into account when processing the log file\&. For example, when computing tps values, you need to multiply the numbers accordingly (e\&.g\&. with 0\&.01 sample rate, you\*(Aqll only get 1/100 of the actual tps)\&.
+Remember to take the sampling rate into account when processing the log file\&. For example, when computing tps values, you need to multiply the numbers accordingly (e\&.g\&., with 0\&.01 sample rate, you\*(Aqll only get 1/100 of the actual tps)\&.
 .RE
 .SS "Common Options"
 .PP
@@ -699,7 +699,7 @@ There is a simple variable\-substitution facility for script files\&. Variables 
 option, explained above, or by the meta commands explained below\&. In addition to any variables preset by
 \fB\-D\fR
 command\-line options, there are a few variables that are preset automatically, listed in
-Table\ \&241\&. A value specified for these variables using
+Table\ \&242\&. A value specified for these variables using
 \fB\-D\fR
 takes precedence over the automatic presets\&. Once set, a variable\*(Aqs value can be inserted into a SQL command by writing
 :\fIvariablename\fR\&. When running more than one client session, each session has its own set of variables\&.
@@ -708,7 +708,7 @@ takes precedence over the automatic presets\&. Once set, a variable\*(Aqs value 
 .nr an-no-space-flag 1
 .nr an-break-flag 1
 .br
-.B Table\ \&241.\ \&Automatic Variables
+.B Table\ \&242.\ \&Automatic Variables
 .TS
 allbox tab(:);
 lB lB.
@@ -839,7 +839,7 @@ Example:
 .SS "Built\-In Functions"
 .PP
 The functions listed in
-Table\ \&242
+Table\ \&243
 are built into
 pgbench
 and may be used in expressions appearing in
@@ -849,7 +849,7 @@ and may be used in expressions appearing in
 .nr an-no-space-flag 1
 .nr an-break-flag 1
 .br
-.B Table\ \&242.\ \&pgbench Functions
+.B Table\ \&243.\ \&pgbench Functions
 .TS
 allbox tab(:);
 lB lB lB lB lB.
@@ -1107,7 +1107,7 @@ around the mean, and 95% in the middle
 1\&.0 / parameter
 around the mean; for instance, if
 \fIparameter\fR
-is 4\&.0, 67% of values are drawn from the middle quarter (1\&.0 / 4\&.0) of the interval (i\&.e\&. from
+is 4\&.0, 67% of values are drawn from the middle quarter (1\&.0 / 4\&.0) of the interval (i\&.e\&., from
 3\&.0 / 8\&.0
 to
 5\&.0 / 8\&.0) and 95% from the middle half (2\&.0 / 4\&.0) of the interval (second and third quartiles)\&. The minimum
@@ -1279,7 +1279,7 @@ is the maximum latency within the interval\&. The next fields,
 \fImin_lag\fR, and
 \fImax_lag\fR, are only present if the
 \fB\-\-rate\fR
-option is used\&. They provide statistics about the time each transaction had to wait for the previous one to finish, i\&.e\&. the difference between each transaction\*(Aqs scheduled start time and the time it actually started\&. The very last field,
+option is used\&. They provide statistics about the time each transaction had to wait for the previous one to finish, i\&.e\&., the difference between each transaction\*(Aqs scheduled start time and the time it actually started\&. The very last field,
 \fIskipped\fR, is only present if the
 \fB\-\-latency\-limit\fR
 option is used, too\&. It counts the number of transactions skipped because they would have started too late\&. Each transaction is counted in the interval when it was committed\&.

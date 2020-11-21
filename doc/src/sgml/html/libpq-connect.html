@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>33.1. Database Connection Control Functions</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="libpq.html" title="Chapter 33. libpq - C Library" /><link rel="next" href="libpq-status.html" title="33.2. Connection Status Functions" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">33.1. Database Connection Control Functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="libpq.html" title="Chapter 33. libpq - C Library">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="libpq.html" title="Chapter 33. libpq - C Library">Up</a></td><th width="60%" align="center">Chapter 33. <span xmlns="http://www.w3.org/1999/xhtml" class="application">libpq</span> - C Library</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.14 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="libpq-status.html" title="33.2. Connection Status Functions">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="LIBPQ-CONNECT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">33.1. Database Connection Control Functions</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="libpq-connect.html#LIBPQ-CONNSTRING">33.1.1. Connection Strings</a></span></dt><dt><span class="sect2"><a href="libpq-connect.html#LIBPQ-PARAMKEYWORDS">33.1.2. Parameter Key Words</a></span></dt></dl></div><p>   The following functions deal with making a connection to a
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd"><html xmlns="http://www.w3.org/1999/xhtml"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8" /><title>33.1. Database Connection Control Functions</title><link rel="stylesheet" type="text/css" href="stylesheet.css" /><link rev="made" href="pgsql-docs@lists.postgresql.org" /><meta name="generator" content="DocBook XSL Stylesheets V1.79.1" /><link rel="prev" href="libpq.html" title="Chapter 33. libpq - C Library" /><link rel="next" href="libpq-status.html" title="33.2. Connection Status Functions" /></head><body><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navheader"><table width="100%" summary="Navigation header"><tr><th colspan="5" align="center">33.1. Database Connection Control Functions</th></tr><tr><td width="10%" align="left"><a accesskey="p" href="libpq.html" title="Chapter 33. libpq - C Library">Prev</a> </td><td width="10%" align="left"><a accesskey="u" href="libpq.html" title="Chapter 33. libpq - C Library">Up</a></td><th width="60%" align="center">Chapter 33. <span xmlns="http://www.w3.org/1999/xhtml" class="application">libpq</span> - C Library</th><td width="10%" align="right"><a accesskey="h" href="index.html" title="PostgreSQL 10.15 Documentation">Home</a></td><td width="10%" align="right"> <a accesskey="n" href="libpq-status.html" title="33.2. Connection Status Functions">Next</a></td></tr></table><hr></hr></div><div class="sect1" id="LIBPQ-CONNECT"><div class="titlepage"><div><div><h2 class="title" style="clear: both">33.1. Database Connection Control Functions</h2></div></div></div><div class="toc"><dl class="toc"><dt><span class="sect2"><a href="libpq-connect.html#LIBPQ-CONNSTRING">33.1.1. Connection Strings</a></span></dt><dt><span class="sect2"><a href="libpq-connect.html#LIBPQ-PARAMKEYWORDS">33.1.2. Parameter Key Words</a></span></dt></dl></div><p>   The following functions deal with making a connection to a
    <span class="productname">PostgreSQL</span> backend server.  An
    application program can have several backend connections open at
    one time.  (One reason to do that is to access more than one
@@ -34,19 +34,7 @@
      the child process to load a new executable is safe.
     </p></div><p>
 
-   </p><div class="note"><h3 class="title">Note</h3><p>     On Windows, there is a way to improve performance if a single
-     database connection is repeatedly started and shutdown.  Internally,
-     libpq calls <code class="function">WSAStartup()</code> and <code class="function">WSACleanup()</code> for connection startup
-     and shutdown, respectively.  <code class="function">WSAStartup()</code> increments an internal
-     Windows library reference count which is decremented by <code class="function">WSACleanup()</code>.
-     When the reference count is just one, calling <code class="function">WSACleanup()</code> frees
-     all resources and all DLLs are unloaded.  This is an expensive
-     operation.  To avoid this, an application can manually call
-     <code class="function">WSAStartup()</code> so resources will not be freed when the last database
-     connection is closed.
-    </p></div><p>
-
-   </p><div class="variablelist"><dl class="variablelist"><dt id="LIBPQ-PQCONNECTDBPARAMS"><span class="term"><code class="function">PQconnectdbParams</code><a id="id-1.7.3.8.2.12.1.1.2" class="indexterm"></a></span></dt><dd><p>       Makes a new connection to the database server.
+   </p><div class="variablelist"><dl class="variablelist"><dt id="LIBPQ-PQCONNECTDBPARAMS"><span class="term"><code class="function">PQconnectdbParams</code><a id="id-1.7.3.8.2.11.1.1.2" class="indexterm"></a></span></dt><dd><p>       Makes a new connection to the database server.
 
 </p><pre class="synopsis">PGconn *PQconnectdbParams(const char * const *keywords,
                           const char * const *values,
@@ -82,7 +70,7 @@
        value is retained. Therefore, through careful placement of the
        <em class="parameter"><code>dbname</code></em> key word, it is possible to determine what may
        be overridden by a <em class="parameter"><code>conninfo</code></em> string, and what may not.
-      </p></dd><dt id="LIBPQ-PQCONNECTDB"><span class="term"><code class="function">PQconnectdb</code><a id="id-1.7.3.8.2.12.2.1.2" class="indexterm"></a></span></dt><dd><p>       Makes a new connection to the database server.
+      </p></dd><dt id="LIBPQ-PQCONNECTDB"><span class="term"><code class="function">PQconnectdb</code><a id="id-1.7.3.8.2.11.2.1.2" class="indexterm"></a></span></dt><dd><p>       Makes a new connection to the database server.
 
 </p><pre class="synopsis">PGconn *PQconnectdb(const char *conninfo);</pre><p>
       </p><p>       This function opens a new database connection using the parameters taken
@@ -91,7 +79,7 @@
        contain one or more parameter settings separated by whitespace,
        or it can contain a <acronym class="acronym">URI</acronym>.
        See <a class="xref" href="libpq-connect.html#LIBPQ-CONNSTRING" title="33.1.1. Connection Strings">Section 33.1.1</a> for details.
-     </p></dd><dt id="LIBPQ-PQSETDBLOGIN"><span class="term"><code class="function">PQsetdbLogin</code><a id="id-1.7.3.8.2.12.3.1.2" class="indexterm"></a></span></dt><dd><p>       Makes a new connection to the database server.
+     </p></dd><dt id="LIBPQ-PQSETDBLOGIN"><span class="term"><code class="function">PQsetdbLogin</code><a id="id-1.7.3.8.2.11.3.1.2" class="indexterm"></a></span></dt><dd><p>       Makes a new connection to the database server.
 </p><pre class="synopsis">PGconn *PQsetdbLogin(const char *pghost,
                      const char *pgport,
                      const char *pgoptions,
@@ -108,7 +96,7 @@
         is taken as a <em class="parameter"><code>conninfo</code></em> string in exactly the same way as
         if it had been passed to <code class="function">PQconnectdb</code>, and the remaining
         parameters are then applied as specified for <code class="function">PQconnectdbParams</code>.
-      </p></dd><dt id="LIBPQ-PQSETDB"><span class="term"><code class="function">PQsetdb</code><a id="id-1.7.3.8.2.12.4.1.2" class="indexterm"></a></span></dt><dd><p>   Makes a new connection to the database server.
+      </p></dd><dt id="LIBPQ-PQSETDB"><span class="term"><code class="function">PQsetdb</code><a id="id-1.7.3.8.2.11.4.1.2" class="indexterm"></a></span></dt><dd><p>   Makes a new connection to the database server.
 </p><pre class="synopsis">PGconn *PQsetdb(char *pghost,
                 char *pgport,
                 char *pgoptions,
@@ -117,7 +105,7 @@
      </p><p>      This is a macro that calls <code class="function">PQsetdbLogin</code> with null pointers
       for the <em class="parameter"><code>login</code></em> and <em class="parameter"><code>pwd</code></em> parameters.  It is provided
       for backward compatibility with very old programs.
-     </p></dd><dt id="LIBPQ-PQCONNECTSTARTPARAMS"><span class="term"><code class="function">PQconnectStartParams</code><a id="id-1.7.3.8.2.12.5.1.2" class="indexterm"></a><br /></span><span class="term"><code class="function">PQconnectStart</code><a id="id-1.7.3.8.2.12.5.2.2" class="indexterm"></a><br /></span><span class="term"><code class="function">PQconnectPoll</code><a id="id-1.7.3.8.2.12.5.3.2" class="indexterm"></a></span></dt><dd><p>       <a id="id-1.7.3.8.2.12.5.4.1.1" class="indexterm"></a>
+     </p></dd><dt id="LIBPQ-PQCONNECTSTARTPARAMS"><span class="term"><code class="function">PQconnectStartParams</code><a id="id-1.7.3.8.2.11.5.1.2" class="indexterm"></a><br /></span><span class="term"><code class="function">PQconnectStart</code><a id="id-1.7.3.8.2.11.5.2.2" class="indexterm"></a><br /></span><span class="term"><code class="function">PQconnectPoll</code><a id="id-1.7.3.8.2.11.5.3.2" class="indexterm"></a></span></dt><dd><p>       <a id="id-1.7.3.8.2.11.5.4.1.1" class="indexterm"></a>
        Make a connection to the database server in a nonblocking manner.
 
 </p><pre class="synopsis">PGconn *PQconnectStartParams(const char * const *keywords,
@@ -177,7 +165,7 @@ PostgresPollingStatusType PQconnectPoll(PGconn *conn);</pre><p>
        Conversely, if <code class="function">PQconnectPoll(conn)</code> last returned
        <code class="symbol">PGRES_POLLING_WRITING</code>, wait until the socket is ready
        to write, then call <code class="function">PQconnectPoll(conn)</code> again.
-       On the first iteration, i.e. if you have yet to call
+       On the first iteration, i.e., if you have yet to call
        <code class="function">PQconnectPoll</code>, behave as if it last returned
        <code class="symbol">PGRES_POLLING_WRITING</code>.  Continue this loop until
        <code class="function">PQconnectPoll(conn)</code> returns
@@ -234,7 +222,7 @@ PostgresPollingStatusType PQconnectPoll(PGconn *conn);</pre><p>
        finished with it, in order to dispose of the structure and any
        associated memory blocks.  This must be done even if the connection
        attempt fails or is abandoned.
-      </p></dd><dt id="LIBPQ-PQCONNDEFAULTS"><span class="term"><code class="function">PQconndefaults</code><a id="id-1.7.3.8.2.12.6.1.2" class="indexterm"></a></span></dt><dd><p>       Returns the default connection options.
+      </p></dd><dt id="LIBPQ-PQCONNDEFAULTS"><span class="term"><code class="function">PQconndefaults</code><a id="id-1.7.3.8.2.11.6.1.2" class="indexterm"></a></span></dt><dd><p>       Returns the default connection options.
 </p><pre class="synopsis">PQconninfoOption *PQconndefaults(void);
 
 typedef struct
@@ -264,7 +252,7 @@ typedef struct
       </p><p>       After processing the options array, free it by passing it to
        <code class="function">PQconninfoFree</code>.  If this is not done, a small amount of memory
        is leaked for each call to <code class="function">PQconndefaults</code>.
-      </p></dd><dt id="LIBPQ-PQCONNINFO"><span class="term"><code class="function">PQconninfo</code><a id="id-1.7.3.8.2.12.7.1.2" class="indexterm"></a></span></dt><dd><p>       Returns the connection options used by a live connection.
+      </p></dd><dt id="LIBPQ-PQCONNINFO"><span class="term"><code class="function">PQconninfo</code><a id="id-1.7.3.8.2.11.7.1.2" class="indexterm"></a></span></dt><dd><p>       Returns the connection options used by a live connection.
 </p><pre class="synopsis">PQconninfoOption *PQconninfo(PGconn *conn);</pre><p>
       </p><p>       Returns a connection options array.  This can be used to determine
        all possible <code class="function">PQconnectdb</code> options and the
@@ -273,7 +261,7 @@ typedef struct
        structures, which ends with an entry having a null <code class="structfield">keyword</code>
        pointer. All notes above for <code class="function">PQconndefaults</code> also
        apply to the result of <code class="function">PQconninfo</code>.
-      </p></dd><dt id="LIBPQ-PQCONNINFOPARSE"><span class="term"><code class="function">PQconninfoParse</code><a id="id-1.7.3.8.2.12.8.1.2" class="indexterm"></a></span></dt><dd><p>       Returns parsed connection options from the provided connection string.
+      </p></dd><dt id="LIBPQ-PQCONNINFOPARSE"><span class="term"><code class="function">PQconninfoParse</code><a id="id-1.7.3.8.2.11.8.1.2" class="indexterm"></a></span></dt><dd><p>       Returns parsed connection options from the provided connection string.
 
 </p><pre class="synopsis">PQconninfoOption *PQconninfoParse(const char *conninfo, char **errmsg);</pre><p>
       </p><p>       Parses a connection string and returns the resulting options as an
@@ -297,7 +285,7 @@ typedef struct
        is leaked for each call to <code class="function">PQconninfoParse</code>.
        Conversely, if an error occurs and <code class="literal">errmsg</code> is not <code class="symbol">NULL</code>,
        be sure to free the error string using <code class="function">PQfreemem</code>.
-      </p></dd><dt id="LIBPQ-PQFINISH"><span class="term"><code class="function">PQfinish</code><a id="id-1.7.3.8.2.12.9.1.2" class="indexterm"></a></span></dt><dd><p>       Closes  the  connection to the server.  Also frees
+      </p></dd><dt id="LIBPQ-PQFINISH"><span class="term"><code class="function">PQfinish</code><a id="id-1.7.3.8.2.11.9.1.2" class="indexterm"></a></span></dt><dd><p>       Closes  the  connection to the server.  Also frees
        memory used by the <code class="structname">PGconn</code> object.
 </p><pre class="synopsis">void PQfinish(PGconn *conn);</pre><p>
       </p><p>       Note that even if the server connection attempt fails (as
@@ -305,14 +293,14 @@ typedef struct
        to free the memory used by the <code class="structname">PGconn</code> object.
        The <code class="structname">PGconn</code> pointer must not be used again after
        <code class="function">PQfinish</code> has been called.
-      </p></dd><dt id="LIBPQ-PQRESET"><span class="term"><code class="function">PQreset</code><a id="id-1.7.3.8.2.12.10.1.2" class="indexterm"></a></span></dt><dd><p>       Resets the communication channel to the server.
+      </p></dd><dt id="LIBPQ-PQRESET"><span class="term"><code class="function">PQreset</code><a id="id-1.7.3.8.2.11.10.1.2" class="indexterm"></a></span></dt><dd><p>       Resets the communication channel to the server.
 </p><pre class="synopsis">void PQreset(PGconn *conn);</pre><p>
       </p><p>       This function will close the connection
        to the server and attempt to  reestablish  a  new
        connection to the same server, using all the same
        parameters previously used.  This might be useful for
        error recovery if a working connection is lost.
-      </p></dd><dt id="LIBPQ-PQRESETSTART"><span class="term"><code class="function">PQresetStart</code><a id="id-1.7.3.8.2.12.11.1.2" class="indexterm"></a><br /></span><span class="term"><code class="function">PQresetPoll</code><a id="id-1.7.3.8.2.12.11.2.2" class="indexterm"></a></span></dt><dd><p>       Reset the communication channel to the server, in a nonblocking manner.
+      </p></dd><dt id="LIBPQ-PQRESETSTART"><span class="term"><code class="function">PQresetStart</code><a id="id-1.7.3.8.2.11.11.1.2" class="indexterm"></a><br /></span><span class="term"><code class="function">PQresetPoll</code><a id="id-1.7.3.8.2.11.11.2.2" class="indexterm"></a></span></dt><dd><p>       Reset the communication channel to the server, in a nonblocking manner.
 
 </p><pre class="synopsis">int PQresetStart(PGconn *conn);
 
@@ -329,7 +317,7 @@ PostgresPollingStatusType PQresetPoll(PGconn *conn);</pre><p>
        failed. If it returns 1, poll the reset using
        <code class="function">PQresetPoll</code> in exactly the same way as you
        would create the connection using <code class="function">PQconnectPoll</code>.
-      </p></dd><dt id="LIBPQ-PQPINGPARAMS"><span class="term"><code class="function">PQpingParams</code><a id="id-1.7.3.8.2.12.12.1.2" class="indexterm"></a></span></dt><dd><p>       <code class="function">PQpingParams</code> reports the status of the
+      </p></dd><dt id="LIBPQ-PQPINGPARAMS"><span class="term"><code class="function">PQpingParams</code><a id="id-1.7.3.8.2.11.12.1.2" class="indexterm"></a></span></dt><dd><p>       <code class="function">PQpingParams</code> reports the status of the
        server.  It accepts connection parameters identical to those of
        <code class="function">PQconnectdbParams</code>, described above.  It is not
        necessary to supply correct user name, password, or database name
@@ -355,7 +343,7 @@ PostgresPollingStatusType PQresetPoll(PGconn *conn);</pre><p>
            problem (for example, out of memory).
           </p></dd></dl></div><p>
 
-      </p></dd><dt id="LIBPQ-PQPING"><span class="term"><code class="function">PQping</code><a id="id-1.7.3.8.2.12.13.1.2" class="indexterm"></a></span></dt><dd><p>       <code class="function">PQping</code> reports the status of the
+      </p></dd><dt id="LIBPQ-PQPING"><span class="term"><code class="function">PQping</code><a id="id-1.7.3.8.2.11.13.1.2" class="indexterm"></a></span></dt><dd><p>       <code class="function">PQping</code> reports the status of the
        server.  It accepts connection parameters identical to those of
        <code class="function">PQconnectdb</code>, described above.  It is not
        necessary to supply correct user name, password, or database name
@@ -400,7 +388,7 @@ postgresql://host1:123,host2:456/somedb?target_session_attrs=any&amp;application
     be given as parameters.  For example:
 </p><pre class="programlisting">postgresql:///mydb?host=localhost&amp;port=5433</pre><p>
    </p><p>    Percent-encoding may be used to include symbols with special meaning in any
-    of the <acronym class="acronym">URI</acronym> parts, e.g. replace <code class="literal">=</code> with
+    of the <acronym class="acronym">URI</acronym> parts, e.g., replace <code class="literal">=</code> with
     <code class="literal">%3D</code>.
 
    </p><p>    Any connection parameters not corresponding to key words listed in <a class="xref" href="libpq-connect.html#LIBPQ-PARAMKEYWORDS" title="33.1.2. Parameter Key Words">Section 33.1.2</a> are ignored and a warning message about them
@@ -431,7 +419,7 @@ postgresql://%2Fvar%2Flib%2Fpostgresql/dbname</pre><p>
        <code class="literal">hostaddr</code>, and <code class="literal">port</code> options accept a comma-separated
        list of values. The same number of elements must be given in each
        option that is specified, such
-       that e.g. the first <code class="literal">hostaddr</code> corresponds to the first host name,
+       that e.g., the first <code class="literal">hostaddr</code> corresponds to the first host name,
        the second <code class="literal">hostaddr</code> corresponds to the second host name, and so
        forth. As an exception, if only one <code class="literal">port</code> is specified, it
        applies to all the hosts.
@@ -447,7 +435,7 @@ postgresql://%2Fvar%2Flib%2Fpostgresql/dbname</pre><p>
        authentication fails, the remaining hosts in the list are not tried.
      </p><p>       If a password file is used, you can have different passwords for
        different hosts. All the other connection options are the same for every
-       host in the list; it is not possible to e.g. specify different
+       host in the list; it is not possible to e.g., specify different
        usernames for different hosts.
      </p></div></div><div class="sect2" id="LIBPQ-PARAMKEYWORDS"><div class="titlepage"><div><div><h3 class="title">33.1.2. Parameter Key Words</h3></div></div></div><p>    The currently recognized parameter key words are:
 
@@ -531,7 +519,7 @@ postgresql://%2Fvar%2Flib%2Fpostgresql/dbname</pre><p>
        <code class="filename">%APPDATA%\postgresql\pgpass.conf</code> on Microsoft Windows.
        (No error is reported if this file does not exist.)
       </p></dd><dt id="LIBPQ-CONNECT-CONNECT-TIMEOUT"><span class="term"><code class="literal">connect_timeout</code></span></dt><dd><p>       Maximum wait for connection, in seconds (write as a decimal integer,
-       e.g. <code class="literal">10</code>).  Zero, negative, or not specified means
+       e.g., <code class="literal">10</code>).  Zero, negative, or not specified means
        wait indefinitely.  The minimum allowed timeout is 2 seconds, therefore
        a value of <code class="literal">1</code> is interpreted as <code class="literal">2</code>.
        This timeout applies separately to each host name or IP address.
@@ -704,4 +692,4 @@ postgresql://%2Fvar%2Flib%2Fpostgresql/dbname</pre><p>
         attempt had failed.  The default value of this parameter,
         <code class="literal">any</code>, regards all connections as acceptable.
       </p></dd></dl></div><p>
-   </p></div></div><div class="navfooter"><hr /><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="libpq.html">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="libpq.html">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="libpq-status.html">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 33. <span class="application">libpq</span> - C Library </td><td width="20%" align="center"><a accesskey="h" href="index.html">Home</a></td><td width="40%" align="right" valign="top"> 33.2. Connection Status Functions</td></tr></table></div></body></html>
+   </p></div></div><div xmlns="http://www.w3.org/TR/xhtml1/transitional" class="navfooter"><hr></hr><table width="100%" summary="Navigation footer"><tr><td width="40%" align="left"><a accesskey="p" href="libpq.html" title="Chapter 33. libpq - C Library">Prev</a> </td><td width="20%" align="center"><a accesskey="u" href="libpq.html" title="Chapter 33. libpq - C Library">Up</a></td><td width="40%" align="right"> <a accesskey="n" href="libpq-status.html" title="33.2. Connection Status Functions">Next</a></td></tr><tr><td width="40%" align="left" valign="top">Chapter 33. <span xmlns="http://www.w3.org/1999/xhtml" class="application">libpq</span> - C Library </td><td width="20%" align="center"><a accesskey="h" href="index.html" title="PostgreSQL 10.15 Documentation">Home</a></td><td width="40%" align="right" valign="top"> 33.2. Connection Status Functions</td></tr></table></div></body></html>
