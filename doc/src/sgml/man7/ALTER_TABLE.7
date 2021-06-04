@@ -3,11 +3,11 @@
 .\"    Author: The PostgreSQL Global Development Group
 .\" Generator: DocBook XSL Stylesheets v1.79.1 <http://docbook.sf.net/>
 .\"      Date: 2021
-.\"    Manual: PostgreSQL 10.16 Documentation
-.\"    Source: PostgreSQL 10.16
+.\"    Manual: PostgreSQL 10.17 Documentation
+.\"    Source: PostgreSQL 10.17
 .\"  Language: English
 .\"
-.TH "ALTER TABLE" "7" "2021" "PostgreSQL 10.16" "PostgreSQL 10.16 Documentation"
+.TH "ALTER TABLE" "7" "2021" "PostgreSQL 10.17" "PostgreSQL 10.17 Documentation"
 .\" -----------------------------------------------------------------
 .\" * Define some portability stuff
 .\" -----------------------------------------------------------------
@@ -354,6 +354,10 @@ This form validates a foreign key or check constraint that was previously create
 NOT VALID, by scanning the table to ensure there are no rows for which the constraint is not satisfied\&. Nothing happens if the constraint is already marked valid\&. (See
 NOTES
 below for an explanation of the usefulness of this command\&.)
+.sp
+This command acquires a
+SHARE UPDATE EXCLUSIVE
+lock\&.
 .RE
 .PP
 DROP CONSTRAINT [ IF EXISTS ]
