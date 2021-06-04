@@ -2537,8 +2537,8 @@ include_dir 'conf.d'
         The <literal>open_</>* options also use <literal>O_DIRECT</> if available.
         Not all of these choices are available on all platforms.
         The default is the first method in the above list that is supported
-        by the platform, except that <literal>fdatasync</> is the default on
-        Linux.  The default is not necessarily ideal; it might be
+        by the platform, except that <literal>fdatasync</literal> is the default on
+        Linux and FreeBSD.  The default is not necessarily ideal; it might be
         necessary to change this setting or other aspects of your system
         configuration in order to create a crash-safe configuration or
         achieve optimal performance.
@@ -3090,6 +3090,17 @@ include_dir 'conf.d'
          to <literal>replica</literal> or higher to allow replication slots to
          be used. Setting it to a lower value than the number of currently
          existing replication slots will prevent the server from starting.
+        </para>
+
+        <para>
+         On the subscriber side, specifies how many replication origins (see
+         <xref linkend="replication-origins">) can be tracked simultaneously,
+         effectively limiting how many logical replication subscriptions can
+         be created on the server. Setting it a lower value than the current
+         number of tracked replication origins (reflected in
+         <link linkend="view-pg-replication-origin-status">pg_replication_origin_status</link>,
+         not <link linkend="catalog-pg-replication-origin">pg_replication_origin</link>)
+         will prevent the server from starting.
         </para>
        </listitem>
       </varlistentry>
